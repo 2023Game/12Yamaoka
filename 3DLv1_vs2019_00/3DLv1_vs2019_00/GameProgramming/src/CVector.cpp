@@ -7,6 +7,9 @@ CVector::CVector()
 {}
 
 CVector::CVector(float x, float y, float z)
+	: mX(0.0f)
+	, mY(0.0f)
+	, mZ(0.0f)
 {
 	mX = x;
 	mY = y;
