@@ -3,7 +3,7 @@
 //OpenGL
 #include "glut.h"
 #include "CVector.h"
-
+#include "CTriangle.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
@@ -50,7 +50,7 @@ void CApplication::Update()
 
 	//法線(面の向き)の設定
 	//glNormal3f(X座標,Y座標,Z座標)
-	glNormal3f(n.X(),n.Y(),n.Z());
+	glNormal3f(n.X(), n.Y(), n.Z());
 
 	//頂点座標の設定
 	//glVertex3f(X座標,Y座標,Z座標)
@@ -82,4 +82,23 @@ void CApplication::Update()
 
 	//描画終了
 	glEnd();
+
+	//三角形クラスのインスタンス作成
+	CTriangle t0;
+	//法線と頂点の設定
+	t0.Vertex(CVector(1.0f, 0.0f, 0.5f), CVector(2.0f, 0.0f, 0.0f), CVector(1.0f, 0.0f, -0.5f));
+	t0.Normal(CVector(0.0f, 1.0f, 0.0f));
+	//三角形の描画
+	t0.Render();
+
+	//課題３
+	CTriangle t1;
+	t1.Vertex(CVector(0.5f, 1.0f, 0.0f), CVector(0.0f, 2.0f, 0.0f), CVector(-0.5f, 1.0f, 0.0f));
+	t1.Normal(CVector(0.0f, 0.0f, 1.0f));
+	t1.Render();
+
+	CTriangle t2;
+	t2.Vertex(CVector(0.0f, -0.5f, 1.0f), CVector(0.0f, 0.5f, 1.0f), CVector(0.0f, 0.0f, 2.0f));
+	t2.Normal(CVector(1.0f, 0.0f, 0.0f));
+	t2.Render();
 }
