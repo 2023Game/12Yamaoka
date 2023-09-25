@@ -3,7 +3,7 @@
 //OpenGL
 #include "glut.h"
 #include "CVector.h"
-
+#include "CTriangle.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
@@ -82,4 +82,12 @@ void CApplication::Update()
 
 	//描画終了
 	glEnd();
+
+	//三角形クラスのインスタンス作成
+	CTriangle t0;
+	//法線と頂点の設定
+	t0.Vertex(CVector(1.0f, 0.0f, 0.5f), CVector(2.0f, 0.0f, 0.0f), CVector(1.0f, 0.0f, -0.5f));
+	t0.Normal(CVector(0.0f, 1.0f, 0.0f));
+	//三角形の描画
+	t0.Render();
 }

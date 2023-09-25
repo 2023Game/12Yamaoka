@@ -1,1 +1,9 @@
-﻿  GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\Debug\GameProgramming.exe
+﻿  CApplication.cpp
+  CTriangle.cpp
+  CVector.cpp
+  コードを生成中...
+LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
+LINK : warning LNK4098: defaultlib 'LIBCMT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
+CApplication.obj : error LNK2019: 未解決の外部シンボル "public: __thiscall CVector::CVector(void)" (??0CVector@@QAE@XZ) が関数 "public: __thiscall CTriangle::CTriangle(void)" (??0CTriangle@@QAE@XZ) で参照されました
+CApplication.obj : error LNK2019: 未解決の外部シンボル "public: __thiscall CVector::CVector(float,float,float)" (??0CVector@@QAE@MMM@Z) が関数 "public: void __thiscall CApplication::Update(void)" (?Update@CApplication@@QAEXXZ) で参照されました
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\Debug\GameProgramming.exe : fatal error LNK1120: 2 件の未解決の外部参照
