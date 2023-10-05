@@ -25,7 +25,9 @@ int strcmp(const char* s1, const char* s2)
 void CModel::Load(char* obj, char* mtl)
 {
 	//頂点データの保存(CVector型)
-	std::vector	<CVector> vertex;
+	std::vector<CVector> vertex;
+	//法線ベクトル(CVector型)の可変長配列(std::vector)normal
+	//std::vector<CVector> normal;
 
 	//ファイルポインタ変数の作成
 	FILE* fp;
@@ -51,15 +53,15 @@ void CModel::Load(char* obj, char* mtl)
 	while (fgets(buf, sizeof(buf), fp) != NULL)
 	{
 		//データを分割する
-		char str[4][64] = { "","","","" };
+		char str[4][64] = { "", "", "", "" };
 		//文字列からデータを４つ変数へ代入する
 		//sscanf(文字列,変換指定子,変数)
-		sscanf(buf, "%s %s %s &s", str[0], str[1], str[2], str[3]);
+		sscanf(buf, "%s %s %s %s", str[0], str[1], str[2], str[3]);
 		//文字列の比較
 		//strcmp(文字列１,文字列２)
 		//文字列１と文字列２が同じ時０，異なるとき０以外を返す
 		//先頭がｖの時、頂点をvertexに追加する
-		if (strcmp(str[0], "v") == 0)
+		if (strcmp(str[0], "v") == 0) 
 		{
 			//可変長配列vertexに追加
 			//atof(文字列)　文字列からfloat型の値を返す
@@ -79,7 +81,10 @@ void CModel::Load(char* obj, char* mtl)
 			t.Vertex(vertex[v[0] - 1], vertex[v[1] - 1], vertex[v[2] - 1]);
 			//可変長配列mTrianglesに三角形を追加
 			mTriangles.push_back(t);
+			//.....
 		}
+		//先頭がvnの時、法線ベクトルを追加して作成する
+		//.....
 	}
 }
 

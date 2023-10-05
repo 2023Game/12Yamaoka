@@ -1,4 +1,4 @@
-#include "CGame.h"
+//#include "CGame.h"
 #include "CApplication.h"
 #include "CBlock.h"
 #include "CPlayer2.h"
