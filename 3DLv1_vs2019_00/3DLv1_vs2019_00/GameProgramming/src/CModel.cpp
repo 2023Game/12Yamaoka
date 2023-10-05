@@ -81,12 +81,10 @@ void CModel::Load(char* obj, char* mtl)
 			t.Vertex(vertex[v[0] - 1], vertex[v[1] - 1], vertex[v[2] - 1]);
 			//可変長配列mTrianglesに三角形を追加
 			mTriangles.push_back(t);
-			//.....
 		}
-		//先頭がvnの時、法線ベクトルを追加して作成する
-		//.....
 	}
 }
+
 
 //描画
 void CModel::Render() 
