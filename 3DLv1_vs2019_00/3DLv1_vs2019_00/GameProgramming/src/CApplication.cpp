@@ -6,7 +6,6 @@
 #include "CTriangle.h"
 //モデルデータの指定
 #define MODEL_OBJ "res\\obj.obj","res\\obj.mtl"
-#include "CModel.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
