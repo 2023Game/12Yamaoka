@@ -7,7 +7,7 @@
 //文字列s1と文字列s2の比較
 //s1とs2が等しければ0を
 //等しくなければ0以外を返す
-int strcmp(const char* s1, const char* s2)
+int strcmp(const char *s1, const char *s2)
 {
 	int i = 0;
 	//文字が同じ間は繰り返し
@@ -24,6 +24,9 @@ int strcmp(const char* s1, const char* s2)
 //Load(モデルファイル名, マテリアルファイル名)
 void CModel::Load(char* obj, char* mtl)
 {
+	//頂点データの保存(CVector型)
+	std::vector<CVector> vertex;
+
 	//ファイルポインタ変数の作成
 	FILE* fp;
 	//ファイルからデータを入力
@@ -33,7 +36,7 @@ void CModel::Load(char* obj, char* mtl)
 	//ファイルのオープン
 	//fopen(ファイル名,モード)
 	//オープンできない時はNULLを返す
-	fp = fopen(mtl, "r");
+	fp = fopen(obj, "r");
 	//ファイルオープンエラーの判定
 	//fpがNULLの時はエラー
 	if (fp == NULL)
@@ -42,9 +45,6 @@ void CModel::Load(char* obj, char* mtl)
 		printf("%s file open error￥n", mtl);
 		return;
 	}
-
-	//頂点データの保存(CVector型)
-	std::vector<CVector> vertex;
 
 	//ファイルから1行入力
 	//fgets(入力エリア,エリアサイズ,ファイルポインタ)
@@ -60,14 +60,15 @@ void CModel::Load(char* obj, char* mtl)
 		//strcmp(文字列1, 文字列2)
 		//文字列1と文字列2が同じ時0、異なる時0以外を返す
 		//先頭がvの時、頂点をvertexに追加する
-		if (strcmp(str[0], "v") == 0)
+		if (strcmp(str[0], "v") == 0) 
 		{
 			//可変長配列vertexに追加
 			//atof(文字列)　文字列からfloat型の値を返す
 			vertex.push_back(CVector(atof(str[1]), atof(str[2]), atof(str[3])));
 		}
 		//先頭がfの時、三角形を作成して追加する
-		else if (strcmp(str[0], "f") == 0) {
+		else if (strcmp(str[0], "f") == 0) 
+		{
 			//頂点と法線の番号作成
 			int v[3], n[3];
 			//頂点と法線の番号取得
@@ -81,9 +82,9 @@ void CModel::Load(char* obj, char* mtl)
 			mTriangles.push_back(t);
 		}
 	}
+
+	fclose(fp);
 }
-
-
 
 //描画
 void CModel::Render()
