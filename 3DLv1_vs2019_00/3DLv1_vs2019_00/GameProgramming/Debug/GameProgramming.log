@@ -1,6 +1,9 @@
 ﻿  CModel.cpp
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(67,61): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(67,47): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(67,33): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(92,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(69,61): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(69,47): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(69,33): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(92,61): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(92,47): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(92,33): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(102,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
   GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\Debug\GameProgramming.exe
