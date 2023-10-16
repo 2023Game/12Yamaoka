@@ -38,3 +38,17 @@ void CTriangle::Render()
 	glEnd();
 }
 
+//マテリアル番号の取得
+int CTriangle::MaterialIdx()
+{
+	//CTriangleクラスのmMaterialIdxの値を返します。
+	return mMaterialIdx;
+}
+
+//マテリアル番号の設定
+void CTriangle::MaterialIdx(int idx)
+{
+	//CTriangleクラスのmMaterialIdxに、引数idxの値を代入します。
+	mMaterialIdx = idx;
+}
+

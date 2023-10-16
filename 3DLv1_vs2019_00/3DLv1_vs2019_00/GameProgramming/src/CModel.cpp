@@ -38,6 +38,69 @@ void CModel::Load(char* obj, char* mtl)
 	//ファイルのオープン
 	//fopen(ファイル名,モード)
 	//オープンできない時はNULLを返す
+	fp = fopen(mtl, "r");
+	//ファイルオープンエラーの判定
+	//fpがNULLの時はエラー
+	if (fp == NULL)
+	{
+		//コンソールにエラー出力して戻る
+		printf("%s file open error￥n", mtl);
+		return;
+	}
+	//マテリアルインデックス
+	int idx = 0;
+	//ファイルから1行入力
+	//fgets(入力エリア,エリアサイズ,ファイルポインタ)
+	//ファイルの最後になるとNULLを返す
+	while (fgets(buf, sizeof(buf), fp) != NULL) 
+	{
+		//データを分割する
+		char str[4][64] = { "", "", "", "" };
+		//文字列からデータを4つ変数へ代入する
+		sscanf(buf, "%s %s %s %s", str[0], str[1], str[2], str[3]);
+		//先頭がnewmtlの時、マテリアルを追加する
+		if (strcmp(str[0], "newmtl") == 0)
+		{
+			CMaterial* pm = new CMaterial();
+			//マテリアル名の設定
+			pm->Name(str[1]);
+			//マテリアルの可変長配列に追加
+			mpMaterials.push_back(pm);
+			//配列の長さを取得
+			idx = mpMaterials.size() - 1;
+		}
+		//先頭がKdの時、Diffuseを設定する
+		else if (strcmp(str[0], "Kd") == 0)
+		{
+			mpMaterials[idx]->Diffuse()[0] = atof(str[1]);
+			mpMaterials[idx]->Diffuse()[1] = atof(str[2]);
+			mpMaterials[idx]->Diffuse()[2] = atof(str[3]);
+		}
+		//先頭がdの時、α値を設定する
+		else if (strcmp(str[0], "d") == 0)
+		{
+			mpMaterials[idx]->Diffuse()[3] = atof(str[1]);
+		}
+		//先頭がusemtlの時、マテリアルインデックスを取得する
+		else if (strcmp(str[0], "usemtl") == 0)
+		{
+			//可変長配列を後から比較
+			for (idx = mpMaterials.size() - 1; idx > 0; idx--)
+			{
+				//同じ名前のマテリアルがあればループ終了
+				if (strcmp(mpMaterials[idx]->Name(), str[1]) == 0) 
+				{
+					break; //ループから出る
+				}
+			}
+		}
+	}
+	//ファイルのクローズ
+	fclose(fp);
+
+	//ファイルのオープン
+	//fopen(ファイル名,モード)
+	//オープンできない時はNULLを返す
 	fp = fopen(obj, "r");
 	//ファイルオープンエラーの判定
 	//fpがNULLの時はエラー
@@ -62,14 +125,14 @@ void CModel::Load(char* obj, char* mtl)
 		//strcmp(文字列1, 文字列2)
 		//文字列1と文字列2が同じ時0、異なる時0以外を返す
 		//先頭がvの時、頂点をvertexに追加する
-		if (strcmp(str[0], "v") == 0) 
+		if (strcmp(str[0], "v") == 0)
 		{
 			//可変長配列vertexに追加
 			//atof(文字列)　文字列からfloat型の値を返す
 			vertex.push_back(CVector(atof(str[1]), atof(str[2]), atof(str[3])));
 		}
 		//先頭がfの時、三角形を作成して追加する
-		else if (strcmp(str[0], "f") == 0) 
+		else if (strcmp(str[0], "f") == 0)
 		{
 			//頂点と法線の番号作成
 			int v[3], n[3];
@@ -80,8 +143,10 @@ void CModel::Load(char* obj, char* mtl)
 			//三角形作成
 			CTriangle t;
 			t.Vertex(vertex[v[0] - 1], vertex[v[1] - 1], vertex[v[2] - 1]);
-		//  三角形tに法線データを設定
+			//三角形tに法線データを設定
 			t.Normal(normal[n[0] - 1], normal[n[1] - 1], normal[n[2] - 1]);
+			//マテリアル番号の設定
+			t.MaterialIdx(idx);
 			//可変長配列mTrianglesに三角形を追加
 			mTriangles.push_back(t);
 		}
@@ -101,7 +166,68 @@ void CModel::Render()
 	//可変長配列の要素数だけ繰り返し
 	for (int i = 0; i < mTriangles.size(); i++)
 	{
+		//マテリアルの適用
+		mpMaterials[mTriangles[i].MaterialIdx()]->Enabled();
 		//可変長配列に添え字でアクセスする
 		mTriangles[i].Render();
 	}
 }
+
+CModel::~CModel()
+{
+	for (int i = 0; i < mpMaterials.size(); i++)
+	{
+		delete mpMaterials[i];
+	}
+}
+
+/*
+	//ファイルから1行入力
+	//fgets(入力エリア,エリアサイズ,ファイルポインタ)
+	//ファイルの最後になるとNULLを返す
+	while (fgets(buf, sizeof(buf), fp) != NULL)
+	{
+		//データを分割する
+		char str[4][64] = { "", "", "", "" };
+		//文字列からデータを4つ変数へ代入する
+		//sscanf(文字列, 変換指定子, 変数)
+		sscanf(buf, "%s %s %s %s", str[0], str[1], str[2], str[3]);
+		//文字列の比較
+		//strcmp(文字列1, 文字列2)
+		//文字列1と文字列2が同じ時0、異なる時0以外を返す
+		//先頭がvの時、頂点をvertexに追加する
+		if (strcmp(str[0], "v") == 0)
+		{
+			//可変長配列vertexに追加
+			//atof(文字列)　文字列からfloat型の値を返す
+			vertex.push_back(CVector(atof(str[1]), atof(str[2]), atof(str[3])));
+		}
+		//先頭がfの時、三角形を作成して追加する
+		else if (strcmp(str[0], "f") == 0)
+		{
+			//頂点と法線の番号作成
+			int v[3], n[3];
+			//頂点と法線の番号取得
+			sscanf(str[1], "%d//%d", &v[0], &n[0]);
+			sscanf(str[2], "%d//%d", &v[1], &n[1]);
+			sscanf(str[3], "%d//%d", &v[2], &n[2]);
+			//三角形作成
+			CTriangle t;
+			t.Vertex(vertex[v[0] - 1], vertex[v[1] - 1], vertex[v[2] - 1]);
+			//三角形tに法線データを設定
+			t.Normal(normal[n[0] - 1], normal[n[1] - 1], normal[n[2] - 1]);
+			//マテリアル番号の設定
+			mpMaterials[mTriangls[i].MaterialIdx()]->Endblad();
+			//可変長配列mTrianglesに三角形を追加
+			mTriangles.push_back(t);
+		}
+		//先頭がvnの時、法線ベクトルを作成して追加する
+		else if (strcmp(str[0], "vn") == 0)
+		{
+			//可変長配列normalにCVectorの値を追加
+			normal.push_back(CVector(atof(str[1]), atof(str[2]), atof(str[3])));
+		}
+	}
+	fclose(fp);
+}
+*/
