@@ -41,6 +41,7 @@ private:
 //	std::vector<CCharacter*> mCharacters;
 	//モデルクラスのインスタンス作成
 	CModel mModel;
+	CModel mBackGround; //背景モデル
 public:
 	static CCharacterManager* CharacterManager();
 	static CTexture* Texture();
