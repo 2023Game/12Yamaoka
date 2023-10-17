@@ -83,19 +83,6 @@ void CModel::Load(char* obj, char* mtl)
 		{
 			mpMaterials[idx]->Diffuse()[3] = atof(str[1]);
 		}
-		//先頭がusemtlの時、マテリアルインデックスを取得する
-		else if (strcmp(str[0], "usemtl") == 0)
-		{
-			//可変長配列を後から比較
-			for (idx = mpMaterials.size() - 1; idx > 0; idx--)
-			{
-				//同じ名前のマテリアルがあればループ終了
-				if (strcmp(mpMaterials[idx]->Name(), str[1]) == 0)
-				{
-					break; //ループから出る
-				}
-			}
-		}
 		//先頭がmap_Kdの時、テクスチャを入力する
 		else if (strcmp(str[0], "map_Kd") == 0)
 		{
@@ -192,6 +179,19 @@ void CModel::Load(char* obj, char* mtl)
 			//可変長配列uvに追加
 			//atof(文字列)　文字列からfloat型の値を返す
 			uv.push_back(CVector(atof(str[1]), atof(str[2]), 0.0));
+		}
+		//先頭がusemtlの時、マテリアルインデックスを取得する
+		else if (strcmp(str[0], "usemtl") == 0)
+		{
+			//可変長配列を後から比較
+			for (idx = mpMaterials.size() - 1; idx > 0; idx--)
+			{
+				//同じ名前のマテリアルがあればループ終了
+				if (strcmp(mpMaterials[idx]->Name(), str[1]) == 0)
+				{
+					break; //ループから出る
+				}
+			}
 		}
 	}
 	fclose(fp);
