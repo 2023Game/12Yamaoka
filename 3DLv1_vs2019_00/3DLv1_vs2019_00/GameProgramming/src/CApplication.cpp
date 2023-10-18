@@ -8,6 +8,7 @@
 #define MODEL_OBJ "res\\f14.obj","res\\f14.mtl"
 //背景モデルデータの指定
 #define MODEL_BACKGROUND  "res\\sky.obj", "res\\sky.mtl"
+#include "CMatrix.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
@@ -34,6 +35,8 @@ void CApplication::Start()
 	//モデルファイルの入力
 	mModel.Load(MODEL_OBJ);
 	mBackGround.Load(MODEL_BACKGROUND);
+	CMatrix matrix;
+	matrix.Print();
 }
 
 void CApplication::Update()
