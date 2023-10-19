@@ -4,6 +4,7 @@
 #include <vector>
 #include "CTriangle.h"
 #include "CMaterial.h"
+#include "CMatrix.h"
 
 /*
 モデルクラス
@@ -19,6 +20,9 @@ public:
 	//描画
 	void Render();
 	~CModel();
+	//描画
+	//Render(行列)
+	void Render(const CMatrix& m);
 private:
 	//三角形の可変長配列
 	std::vector<CTriangle> mTriangles;
