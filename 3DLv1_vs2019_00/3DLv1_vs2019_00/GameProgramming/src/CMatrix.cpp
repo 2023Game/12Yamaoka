@@ -88,8 +88,6 @@ CMatrix CMatrix::RotateZ(float degree)
 	return *this;
 }
 
-//ここから
-
 //回転行列(X軸)の作成
 //RotateX(角度)
 CMatrix CMatrix::RotateX(float degree)
@@ -99,12 +97,9 @@ CMatrix CMatrix::RotateX(float degree)
 	//単位行列にする
 	Identity();
 	//X軸で回転する行列の設定
-	//mM[1][1] mM[1][2]
-	//mM[2][1] mM[2][2]
-
-	mM[1][1] = mM[1][2] = cosf(rad);
-	mM[2][1] = -sinf(rad);
-	mM[1][2] = mM[2][2];
+	mM[1][1] = mM[2][2] = cosf(rad);
+	mM[1][2] = sinf(rad);
+	mM[2][1] = -mM[1][2];
 	//行列を返す
 	return *this;
 }
