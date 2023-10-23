@@ -27,6 +27,16 @@ public:
 	{
 		return mM[r][c];
 	}
+	//‰ñ“]s—ñ(Y²)‚Ìì¬
+	//RetateY(Šp“x)
+	CMatrix RotateY(float degree);
+	//‰ñ“]s—ñ(Z²)‚Ìì¬
+	//RotateZ(Šp“x)
+	CMatrix RotateZ(float degree);
+	//‰ñ“]s—ñ(X²)‚Ìì¬
+	//RptateX(Šp“x)
+	CMatrix RotateX(float degree);
+private:
 	//‚S~‚S‚Ìs—ñƒf[ƒ^‚ğİ’è
 	float mM[4][4];
 };
