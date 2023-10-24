@@ -111,9 +111,9 @@ CMatrix CMatrix::Translate(float mx, float my, float mz)
 	//’PˆÊs—ñ‚É‚·‚é
 	Identity();
 	//ˆÚ“®—Ê‚Ìİ’è
-	mM[3][0] = -2.0;
-	mM[3][1] = 0.0;
-	mM[3][2] = -15.0;
+	mM[3][0] = mx;
+	mM[3][1] = my;
+	mM[3][2] = mz;
 	//‚±‚Ìs—ñ‚ğ•Ô‚·
 	return *this;
 }
