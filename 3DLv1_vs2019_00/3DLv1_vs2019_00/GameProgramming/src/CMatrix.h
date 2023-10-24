@@ -36,6 +36,12 @@ public:
 	//回転行列(X軸)の作成
 	//RptateX(角度)
 	CMatrix RotateX(float degree);
+	//移動行列の作成
+	//Translate(移動量X,移動量Y,移動量Z)
+	CMatrix Translate(float mx, float my, float mz);
+	//行列値の代入
+	//M(行数,列数,値)
+	void M(int row, int col, float value);
 private:
 	//４×４の行列データを設定
 	float mM[4][4];
