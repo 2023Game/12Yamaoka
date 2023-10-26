@@ -1,5 +1,9 @@
-﻿  CMatrix.cpp
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CMatrix.cpp(64,12): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CMatrix.cpp(80,12): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CMatrix.cpp(96,12): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+﻿  CApplication.cpp
+  CBullet.cpp
+  CEnemy.cpp
+  CEnemy2.cpp
+  CGame.cpp
+  CPlayer.cpp
+  main.cpp
+  コードを生成中...
   GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\Debug\GameProgramming.exe

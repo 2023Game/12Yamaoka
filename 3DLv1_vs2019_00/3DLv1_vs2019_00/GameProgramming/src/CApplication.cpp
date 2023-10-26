@@ -40,6 +40,10 @@ void CApplication::Start()
 	matrix.Print();
 	mCharacter.Model(&mModel);
 	mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
+	mPlayer.Model(&mModel);
+	mPlayer.Scale(CVector(0.1f, 0.1f, 0.1f)); //ägëÂèkè¨
+	mPlayer.Position(CVector(0.0f, 0.0f, -3.0)); //à íu
+	mPlayer.Rotation(CVector(0.0f, 180.0f, 0.0f)); //âÒì]
 }
 
 void CApplication::Update()
@@ -87,13 +91,8 @@ void CApplication::Update()
 
 	mCharacter.Update();
 	mCharacter.Render();
-
-	CTransform trans;
-	trans.Scale(CVector(0.1f, 0.1f, 0.1f)); //ägëÂèkè¨
-	trans.Position(CVector(0.0f, 0.0f, -3.0)); //à íu
-	trans.Rotation(CVector(0.0f, 180.0f, 0.0f)); //âÒì]
-	trans.Update();
-	mModel.Render(trans.Matrix());
+	mPlayer.Update();
+	mPlayer.Render();
 
 	mBackGround.Render();
 }
