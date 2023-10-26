@@ -9,6 +9,7 @@
 //背景モデルデータの指定
 #define MODEL_BACKGROUND  "res\\sky.obj", "res\\sky.mtl"
 #include "CMatrix.h"
+#include "CTransform.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
@@ -37,6 +38,8 @@ void CApplication::Start()
 	mBackGround.Load(MODEL_BACKGROUND);
 	CMatrix matrix;
 	matrix.Print();
+	mCharacter.Model(&mModel);
+	mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
 }
 
 void CApplication::Update()
@@ -82,11 +85,31 @@ void CApplication::Update()
 	//gluLookAt(視点X,視点Y,視点Z,中心X,中心Y,中心Z,上向X,上向Y,上向Z)
 	gluLookAt(mEye.X(), mEye.Y(), mEye.Z(), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
-	CMatrix matrix, position, rotation, scale;
-	position.Translate(0.5f, 1.8f, 0.5f); //移動行列設定
-	rotation.RotateY(180.0f); //回転行列設定
-	scale.Scale(0.1f, 0.1f, 0.1f); //拡大縮小行列設定
-	matrix = scale * rotation * position; //合成行列設定
-	mModel.Render(matrix); //モデルの描画
+	mCharacter.Update();
+	mCharacter.Render();
+
+	CTransform trans;
+	trans.Scale(CVector(0.1f, 0.1f, 0.1f)); //拡大縮小
+	trans.Position(CVector(0.0f, 0.0f, -3.0)); //位置
+	trans.Rotation(CVector(0.0f, 180.0f, 0.0f)); //回転
+	trans.Update();
+	mModel.Render(trans.Matrix());
+
 	mBackGround.Render();
 }
+
+/*
+CCharacter3クラスのインスタンス変数mPlayerを追加し、機体を２つ表示してください。
+
+次の内容でプログラムを作成してください。
+
+１．CApplicationクラスにCCharacter3クラスの変数mPlayerを追加してください。
+
+２．mPlayerに以下の内容を設定してください。
+モデルデータ　mModel
+拡大縮小　X軸：0.1　Y軸：0.1　Z軸：0.1　
+位置座標　X軸：0.0　Y軸：0.0　Z軸：-3.0　
+回転　Y軸：180度
+
+３．追加したキャラクタを表示してください。
+*/
