@@ -42,6 +42,9 @@ public:
 	//行列値の代入
 	//M(行数,列数,値)
 	void M(int row, int col, float value);
+	//*演算子のオーバーロード
+	//CMatrix * CMatrix の演算結果を返す
+	const CMatrix operator*(const CMatrix& m) const;
 private:
 	//４×４の行列データを設定
 	float mM[4][4];
