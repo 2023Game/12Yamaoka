@@ -96,19 +96,3 @@ void CApplication::Update()
 
 	mBackGround.Render();
 }
-
-/*
-CCharacter3クラスのインスタンス変数mPlayerを追加し、機体を２つ表示してください。
-
-次の内容でプログラムを作成してください。
-
-１．CApplicationクラスにCCharacter3クラスの変数mPlayerを追加してください。
-
-２．mPlayerに以下の内容を設定してください。
-モデルデータ　mModel
-拡大縮小　X軸：0.1　Y軸：0.1　Z軸：0.1　
-位置座標　X軸：0.0　Y軸：0.0　Z軸：-3.0　
-回転　Y軸：180度
-
-３．追加したキャラクタを表示してください。
-*/
