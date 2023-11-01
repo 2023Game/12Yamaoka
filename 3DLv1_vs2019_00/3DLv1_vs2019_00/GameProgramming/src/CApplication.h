@@ -17,6 +17,13 @@
 
 class CApplication
 {
+public:
+	static CCharacterManager* CharacterManager();
+	static CTexture* Texture();
+	//最初に一度だけ実行するプログラム
+	void Start();
+	//繰り返し実行するプログラム
+	void Update();
 private:
 	CSound mSoundBgm;	//BGM
 	CSound mSoundOver;	//ゲームオーバー
@@ -46,11 +53,5 @@ private:
 	CCharacter3 mCharacter;
 //	CCharacter3 mPlayer;
 	CPlayer mPlayer;
-public:
-	static CCharacterManager* CharacterManager();
-	static CTexture* Texture();
-	//最初に一度だけ実行するプログラム
-	void Start();
-	//繰り返し実行するプログラム
-	void Update();
+	CModel Render;
 };

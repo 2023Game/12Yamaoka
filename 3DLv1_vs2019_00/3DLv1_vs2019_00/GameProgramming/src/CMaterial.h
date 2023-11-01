@@ -27,9 +27,15 @@ public:
 	CTexture* Texture();
 	//頂点数の設定
 	//VertexNum(頂点数)
-	void VertexNum(int num);
+	void VertexNum(int num)
+	{
+		mVertexNum = num;
+	}
 	//頂点数の取得
-	int VertexNum();
+	int VertexNum()
+	{
+		return mVertexNum;
+	}
 private:
 	//マテリアル名
 	char mName[MATERIAL_NAME_LEN + 1];

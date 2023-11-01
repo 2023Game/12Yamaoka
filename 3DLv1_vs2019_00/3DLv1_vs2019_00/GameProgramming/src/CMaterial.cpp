@@ -2,6 +2,7 @@
 //memset,strncpyのインクルード
 #include <string.h>
 #include "glut.h"
+#include "CVertex.h"
 
 /*
 * strncpy(char* str1, const char* str2, int len)

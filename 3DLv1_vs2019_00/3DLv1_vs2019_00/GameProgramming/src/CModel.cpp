@@ -200,6 +200,21 @@ void CModel::Load(char* obj, char* mtl)
 	CreateVertexBuffer();
 }
 
+//描画
+void CModel::Render()
+{
+	//可変長配列の要素数だけ繰り返し
+	for (int i = 0; i < mTriangles.size(); i++)
+	{
+		//マテリアルの適用
+		mpMaterials[mTriangles[i].MaterialIdx()]->Enabled();
+		//可変長配列に添え字でアクセスする
+		mTriangles[i].Render();
+		//マテリアルを無効
+		mpMaterials[mTriangles[i].MaterialIdx()]->Disabled();
+	}
+}
+
 void CModel::Render(const CMatrix& m)
 {
 	//行列の退避
