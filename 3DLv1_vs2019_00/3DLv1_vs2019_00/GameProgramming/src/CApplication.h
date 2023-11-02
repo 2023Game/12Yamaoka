@@ -37,21 +37,15 @@ private:
 		EOVER,	//ゲームオーバー
 	};
 	EState mState;
-//	CCharacter mRectangle;
 	CPlayer* mpPlayer;
 	static CTexture mTexture;
 	CEnemy* mpEnemy;
-//	CBullet* mpBullet;
 	CInput mInput;
 	CFont mFont;
 	CMiss* mpMiss;
-	//CCharacterのポインタの可変長配列
-//	std::vector<CCharacter*> mCharacters;
 	//モデルクラスのインスタンス作成
 	CModel mModel;
 	CModel mBackGround; //背景モデル
-	CCharacter3 mCharacter;
-//	CCharacter3 mPlayer;
 	CPlayer mPlayer;
 	CModel Render;
 };

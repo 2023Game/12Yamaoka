@@ -1,10 +1,2 @@
-﻿  CModel.cpp
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(244,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(255,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(257,21): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
-LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
-LINK : warning LNK4098: defaultlib 'LIBCMT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
-CApplication.obj : error LNK2019: 未解決の外部シンボル "public: void __thiscall CModel::Render(void)" (?Render@CModel@@QAEXXZ) が関数 "public: void __thiscall CApplication::Update(void)" (?Update@CApplication@@QAEXXZ) で参照されました
-CModel.obj : error LNK2019: 未解決の外部シンボル "public: void __thiscall CMaterial::VertexNum(int)" (?VertexNum@CMaterial@@QAEXH@Z) が関数 "private: void __thiscall CModel::CreateVertexBuffer(void)" (?CreateVertexBuffer@CModel@@AAEXXZ) で参照されました
-CModel.obj : error LNK2019: 未解決の外部シンボル "public: int __thiscall CMaterial::VertexNum(void)" (?VertexNum@CMaterial@@QAEHXZ) が関数 "private: void __thiscall CModel::CreateVertexBuffer(void)" (?CreateVertexBuffer@CModel@@AAEXXZ) で参照されました
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\Debug\GameProgramming.exe : fatal error LNK1120: 3 件の未解決の外部参照
+﻿  CPlayer.cpp
+  GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\Debug\GameProgramming.exe
