@@ -10,6 +10,7 @@
 #define MODEL_BACKGROUND  "res\\sky.obj", "res\\sky.mtl"
 #include "CMatrix.h"
 #include "CTransform.h"
+#include "CPlayer.h"
 
 //ƒNƒ‰ƒX‚Ìstatic•Ï”
 CTexture CApplication::mTexture;
@@ -97,4 +98,7 @@ void CApplication::Update()
 	mPlayer.Render();
 
 	mBackGround.Render();
+
+	mPlayer.bullet.Update();
+	mPlayer.bullet.Render();
 }

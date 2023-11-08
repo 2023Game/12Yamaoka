@@ -3,6 +3,7 @@
 #define ROTATION_YV CVector(0.0f,1.0f,0.0f) //回転速度
 #define VELOCITY CVector(0.0f,0.0f,0.1f) //移動速度
 #define ROTATION_XV	CVector(1.0f, 0.0f, 0.0f) //回転速度
+#include "CBullet.h"
 
 //CPlayer(位置、回転、スケール)
 CPlayer::CPlayer(const CVector& pos, const CVector& rot, const CVector& scale)
@@ -41,6 +42,13 @@ void CPlayer::Update()
 	{
 		//X軸の回転値を加算
 		mRotation = mRotation + ROTATION_XV;
+	}
+	//スペースキー入力で弾発射
+	if (mInput.Key(VK_SPACE)) 
+	{
+		bullet.Set(0.1f, 1.5f);
+		bullet.Position(CVector(0.0f, 0.0f, 10.0f) * mMatrix);
+		bullet.Rotation(mRotation);
 	}
 
 	//変換行列の更新
