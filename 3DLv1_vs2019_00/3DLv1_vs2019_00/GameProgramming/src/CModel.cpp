@@ -260,7 +260,7 @@ CModel::~CModel()
 	{
 		delete mpMaterials[i];
 	}
-	delete[] mpVertexes;
+	delete[] mpVertexes; //—áŠO‚ªƒXƒ[‚³‚ê‚Ü‚µ‚½
 }
 
 void CModel::CreateVertexBuffer()
