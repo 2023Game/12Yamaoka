@@ -44,7 +44,7 @@ public:
 	void M(int row, int col, float value);
 	//*演算子のオーバーロード
 	//CMatrix * CMatrix の演算結果を返す
-	const CMatrix operator*(const CMatrix& m) const;
+	const CMatrix operator*(const CMatrix &m) const;
 	//行列の取得
 	float* M() const;
 private:

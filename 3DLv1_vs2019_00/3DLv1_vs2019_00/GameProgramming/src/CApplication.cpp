@@ -29,6 +29,12 @@ CTexture* CApplication::Texture()
 	return &mTexture;
 }
 
+CTaskManager CApplication::mTaskManager;
+CTaskManager* CApplication::TaskManager()
+{
+	return &mTaskManager;
+}
+
 CVector mEye;
 
 void CApplication::Start()
@@ -99,6 +105,8 @@ void CApplication::Update()
 
 	mBackGround.Render();
 
-	mPlayer.bullet.Update();
-	mPlayer.bullet.Render();
+	//タスクマネージャの更新
+	mTaskManager.Update();
+	//タスクマネージャの描画
+	mTaskManager.Render();
 }

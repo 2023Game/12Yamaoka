@@ -14,6 +14,7 @@
 #include "CSound.h"
 #include "CModel.h"
 #include "CCharacter3.h"
+#include "CTaskManager.h"
 
 class CApplication
 {
@@ -24,6 +25,7 @@ public:
 	void Start();
 	//繰り返し実行するプログラム
 	void Update();
+	static CTaskManager* TaskManager();
 private:
 	CSound mSoundBgm;	//BGM
 	CSound mSoundOver;	//ゲームオーバー
@@ -48,4 +50,5 @@ private:
 	CModel mBackGround; //背景モデル
 	CPlayer mPlayer;
 	CModel Render;
+	static CTaskManager mTaskManager;
 };

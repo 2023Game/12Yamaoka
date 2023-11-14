@@ -3,6 +3,7 @@
 //キャラクタクラスのインクルード
 #include "CCharacter3.h"
 #include "CInput.h"
+#include "CMatrix.h"
 #include "CBullet.h"
 
 /*
