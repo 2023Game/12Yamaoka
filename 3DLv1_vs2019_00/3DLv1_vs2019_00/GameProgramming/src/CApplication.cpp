@@ -4,13 +4,13 @@
 #include "glut.h"
 #include "CVector.h"
 #include "CTriangle.h"
+#include "CMatrix.h"
+#include "CTransform.h"
+#include "CPlayer.h"
 //モデルデータの指定
 #define MODEL_OBJ "res\\f14.obj","res\\f14.mtl"
 //背景モデルデータの指定
 #define MODEL_BACKGROUND  "res\\sky.obj", "res\\sky.mtl"
-#include "CMatrix.h"
-#include "CTransform.h"
-#include "CPlayer.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
@@ -18,6 +18,8 @@ CCharacterManager CApplication::mCharacterManager;
 
 #define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
 #define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
+//敵輸送機モデル
+#define MODEL_C5 "res\\c5.obj","res\\c5.mtl"
 
 CCharacterManager* CApplication::CharacterManager()
 {
@@ -49,6 +51,11 @@ void CApplication::Start()
 	mPlayer.Scale(CVector(0.1f, 0.1f, 0.1f)); //拡大縮小
 	mPlayer.Position(CVector(0.0f, 0.0f, -3.0f)); //位置
 	mPlayer.Rotation(CVector(0.0f, 180.0f, 0.0f)); //回転
+	//C5モデルの読み込み
+	mModelC5.Load(MODEL_C5);
+	//敵機のインスタンス作成
+	new CEnemy(&mModelC5, CVector(0.0f, 10.0f, -100.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelC5, CVector(30.0f, 10.0f, -130.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
 }
 
 void CApplication::Update()

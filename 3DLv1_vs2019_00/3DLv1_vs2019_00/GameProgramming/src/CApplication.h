@@ -51,4 +51,6 @@ private:
 	CPlayer mPlayer;
 	CModel Render;
 	static CTaskManager mTaskManager;
+	//C5ƒ‚ƒfƒ‹
+	CModel mModelC5;
 };
