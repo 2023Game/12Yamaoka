@@ -19,9 +19,12 @@ public:
 	void Update();
 	//•`‰æ
 	void Render();
+	CBullet();
 private:
 	//OŠpŒ`
 	CTriangle mT;
+	//¶‘¶ŠÔ
+	int mLife;
 };
 
 #endif
