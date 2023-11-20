@@ -15,6 +15,7 @@
 #include "CModel.h"
 #include "CCharacter3.h"
 #include "CTaskManager.h"
+#include "CCollisionManager.h"
 
 class CApplication
 {
@@ -25,7 +26,7 @@ public:
 	void Start();
 	//繰り返し実行するプログラム
 	void Update();
-	static CTaskManager* TaskManager();
+//	static CTaskManager* TaskManager();
 private:
 	CSound mSoundBgm;	//BGM
 	CSound mSoundOver;	//ゲームオーバー
@@ -50,7 +51,7 @@ private:
 	CModel mBackGround; //背景モデル
 	CPlayer mPlayer;
 	CModel Render;
-	static CTaskManager mTaskManager;
+//	static CTaskManager mTaskManager;
 	//C5モデル
 	CModel mModelC5;
 };
