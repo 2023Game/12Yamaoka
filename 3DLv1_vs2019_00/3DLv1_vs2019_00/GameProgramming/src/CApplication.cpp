@@ -31,14 +31,6 @@ CTexture* CApplication::Texture()
 	return &mTexture;
 }
 
-/*
-CTaskManager CApplication::mTaskManager;
-CTaskManager* CApplication::TaskManager()
-{
-	return &mTaskManager;
-}
-*/
-
 CVector mEye;
 
 void CApplication::Start()
@@ -64,6 +56,8 @@ void CApplication::Update()
 {
 	//タスクマネージャの更新
 	CTaskManager::Instance()->Update();
+	//コリジョンマネージャの衝突処理
+	CCollisionManager::Instance()->Collision();
 
 	//頂点１，頂点２，頂点３，法線データの作成
 	CVector v0, v1, v2, n;
@@ -79,7 +73,6 @@ void CApplication::Update()
 	if (mInput.Key('J'))
 	{
 		mEye = mEye - CVector(0.1f, 0.0f, 0.0f);
-
 	}
 	if (mInput.Key('L'))
 	{

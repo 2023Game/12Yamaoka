@@ -6,7 +6,7 @@
 //コンストラクタ
 //CEnemy(モデル、位置、回転、拡縮)
 CEnemy::CEnemy(CModel* model, const CVector& position, const CVector& rotation, const CVector& scale)
-	:mCollider1(this, &mMatrix, CVector(0.0f, 5.0f, 0.0f), 0.8f)
+	: mCollider1(this, &mMatrix, CVector(0.0f, 5.0f, 0.0f), 0.8f)
 	, mCollider2(this, &mMatrix, CVector(0.0f, 5.0f, 20.0f), 0.8f)
 	, mCollider3(this, &mMatrix, CVector(0.0f, 5.0f, -20.0f), 0.8f)
 {
@@ -24,4 +24,13 @@ void CEnemy::Update()
 	CTransform::Update();
 	//位置を移動
 	mPosition = mPosition + VELOCITY * mMatrixRotate;
+}
+
+//衝突処理
+void CEnemy::Collision(CCollider* m, CCollider* o) 
+{
+	if (CCollider::Collision(m, o)) 
+	{
+		mEnabled = false;
+	}
 }
