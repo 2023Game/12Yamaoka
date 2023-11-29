@@ -26,7 +26,8 @@ public:
 	void Start();
 	//繰り返し実行するプログラム
 	void Update();
-//	static CTaskManager* TaskManager();
+	//モデルビュー行列の取得
+	static const CMatrix& ModelViewInverse();
 private:
 	CSound mSoundBgm;	//BGM
 	CSound mSoundOver;	//ゲームオーバー
@@ -51,7 +52,8 @@ private:
 	CModel mBackGround; //背景モデル
 	CPlayer mPlayer;
 	CModel Render;
-//	static CTaskManager mTaskManager;
 	//C5モデル
 	CModel mModelC5;
+	//モデルビューの逆行列
+	static CMatrix mModelViewInverse;
 };
