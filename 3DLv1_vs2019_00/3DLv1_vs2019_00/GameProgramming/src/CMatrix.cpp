@@ -156,7 +156,7 @@ float* CMatrix::M() const
 	return(float*)mM[0];
 }
 
-
+//“]’us—ñ
 CMatrix CMatrix::Transpose() const
 {
 	CMatrix tmp;

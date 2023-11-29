@@ -1,4 +1,5 @@
 #include "CEnemy.h"
+#include "CEffect.h"
 
 //移動速度
 #define VELOCITY CVector(0.0f,0.0f,0.09f)
@@ -31,6 +32,8 @@ void CEnemy::Collision(CCollider* m, CCollider* o)
 {
 	if (CCollider::Collision(m, o)) 
 	{
-		mEnabled = false;
-	}
+		//エフェクト生成
+		new CEffect(o->Parent()->Position(), 1.0f, 1.0f, "exp.tga", 4, 4, 2);
+		//mEnabled = false;
+	}	
 }
