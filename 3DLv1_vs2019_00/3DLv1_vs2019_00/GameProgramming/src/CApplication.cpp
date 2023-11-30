@@ -53,6 +53,15 @@ void CApplication::Start()
 	new CEnemy(&mModelC5, CVector(30.0f, 10.0f, -130.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
 	//ビルボードの生成
 	new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);
+	//三角コライダの確認
+	mColliderTriangle.Set(nullptr, nullptr
+		, CVector(-50.0f, 0.0f, -50.0f)
+		, CVector(-50.0f, 0.0f, 50.0f)
+		, CVector(50.0f, 0.0f, -50.0f));
+	mColliderTriangle2.Set(nullptr, nullptr
+		, CVector(50.0f, 0.0f, 50.0f)
+		, CVector(50.0f, 0.0f, -50.0f)
+		, CVector(-50.0f, 0.0f, 50.0f));
 }
 
 void CApplication::Update()
