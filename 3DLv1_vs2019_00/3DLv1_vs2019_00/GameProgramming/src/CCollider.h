@@ -2,7 +2,6 @@
 #define CCOLLIDER_H
 //キャラクタクラスのインクルード
 #include "CCharacter3.h"
-#include "CColliderTriangle.h"
 
 class CCollisionManager;
 
