@@ -86,7 +86,7 @@ CVector CVector::Cross(const CVector& v) const
 	return CVector(
 		mY * v.mZ - mZ * v.mY,
 		mZ * v.mX - mX * v.mZ,
-		mZ + v.mY - mY * v.mX
+		mZ * v.mY - mY * v.mX
 	);
 }
 
