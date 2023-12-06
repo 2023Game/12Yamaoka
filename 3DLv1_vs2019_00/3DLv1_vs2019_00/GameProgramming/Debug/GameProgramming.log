@@ -1,5 +1,44 @@
-﻿  CMatrix.cpp
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CMatrix.cpp(64,12): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CMatrix.cpp(80,12): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CMatrix.cpp(96,12): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-  GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\Debug\GameProgramming.exe
+﻿  CApplication.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+  CBillBoard.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+  CBullet.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+  CCharacter3.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+  CCollider.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+  CColliderLine.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+  CColliderTriangle.cpp
+  CCollisionManager.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+  CEffect.cpp
+  CEnemy.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+  CEnemy2.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+  CGame.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+  CMaterial.cpp
+  CModel.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(207,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(259,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(270,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(272,21): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  CPlayer.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CPlayer.cpp(6,1): warning C4005: 'VELOCITY': マクロが再定義されました。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CCharacter.h(6): message : 'VELOCITY' の以前の定義を確認してください
+  CPlayer2.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CPlayer2.cpp(11,1): warning C4005: 'VELOCITY': マクロが再定義されました。
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CCharacter.h(6): message : 'VELOCITY' の以前の定義を確認してください
+  CTransform.cpp
+  CTriangle.cpp
+  CVector.cpp
+  main.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CColliderTriangle.h(8,1): error C2504: 'CCollider': 定義されていない基底クラスが宣言されています。
+  コードを生成中...
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CVector.cpp(90): error C4716: 'CVector::operator*': 値を返さなければいけません
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CVector.cpp(85): error C4716: 'CVector::Cross': 値を返さなければいけません

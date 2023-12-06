@@ -2,6 +2,7 @@
 #define CCOLLIDER_H
 //キャラクタクラスのインクルード
 #include "CCharacter3.h"
+#include "CColliderTriangle.h"
 
 class CCollisionManager;
 
@@ -34,6 +35,11 @@ public:
 	};
 	//デフォルトコンストラクタ
 	CCollider();
+	//CollisionTriangleLine(三角コライダ、線分コライダ、調整値)
+	//return:true(衝突している)false(衝突していない)
+	//調整値:衝突しない位置まで戻す値
+	static bool CollisionTriangleLine(CCollider* triangle, CCollider* line, CVector* adjust);
+	EType Type();
 protected:
 	CCharacter3* mpParent; //親
 	CMatrix* mpMatrix; //親行列
