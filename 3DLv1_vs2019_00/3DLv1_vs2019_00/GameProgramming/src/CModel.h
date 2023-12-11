@@ -6,6 +6,7 @@
 #include "CMaterial.h"
 #include "CMatrix.h"
 #include "CVertex.h"
+#include "CColliderMesh.h"
 
 /*
 モデルクラス
@@ -24,6 +25,7 @@ public:
 	//描画
 	//Render(行列)
 	void Render(const CMatrix& m);
+	std::vector<CTriangle> Triangles() const;
 private:
 	//三角形の可変長配列
 	std::vector<CTriangle> mTriangles;
