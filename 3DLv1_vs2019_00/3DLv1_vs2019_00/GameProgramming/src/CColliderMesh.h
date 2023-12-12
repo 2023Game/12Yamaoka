@@ -10,7 +10,7 @@ class CColliderMesh
 public:
 	CColliderMesh();
 	~CColliderMesh();
-	//Set(親、親行列、モデル)
+	//Set(親, 親行列, モデル)
 	//モデルから三角コライダの生成
 	void Set(CCharacter3* parent, CMatrix* matrix, CModel* model);
 private:

@@ -53,6 +53,9 @@ void CApplication::Start()
 	new CEnemy(&mModelC5, CVector(30.0f, 10.0f, -130.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
 	//ビルボードの生成
 	new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);
+	//背景モデルから三角コライダを生成
+	//親インスタンスと親行列はなし
+	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
 	//三角コライダの確認
 	/*
 	mColliderTriangle.Set(nullptr, nullptr
@@ -64,9 +67,6 @@ void CApplication::Start()
 		, CVector(50.0f, 0.0f, -50.0f)
 		, CVector(-50.0f, 0.0f, 50.0f));
 	*/
-	//背景モデルから三角コライダを生成
-	//親インスタンスと親行列はなし
-	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
 }
 
 void CApplication::Update()

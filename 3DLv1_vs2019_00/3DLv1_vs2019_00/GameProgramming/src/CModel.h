@@ -6,7 +6,6 @@
 #include "CMaterial.h"
 #include "CMatrix.h"
 #include "CVertex.h"
-#include "CColliderMesh.h"
 
 /*
 ƒ‚ƒfƒ‹ƒNƒ‰ƒX
