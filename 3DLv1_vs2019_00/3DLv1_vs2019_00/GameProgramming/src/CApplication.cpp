@@ -56,17 +56,6 @@ void CApplication::Start()
 	//背景モデルから三角コライダを生成
 	//親インスタンスと親行列はなし
 	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
-	//三角コライダの確認
-	/*
-	mColliderTriangle.Set(nullptr, nullptr
-		, CVector(-50.0f, 0.0f, -50.0f)
-		, CVector(-50.0f, 0.0f, 50.0f)
-		, CVector(50.0f, 0.0f, -50.0f));
-	mColliderTriangle2.Set(nullptr, nullptr
-		, CVector(50.0f, 0.0f, 50.0f)
-		, CVector(50.0f, 0.0f, -50.0f)
-		, CVector(-50.0f, 0.0f, 50.0f));
-	*/
 }
 
 void CApplication::Update()
