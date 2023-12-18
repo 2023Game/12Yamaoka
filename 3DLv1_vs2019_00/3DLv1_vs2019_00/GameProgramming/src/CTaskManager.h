@@ -26,6 +26,7 @@ public:
 	void Remove(CTask* task);
 	//タスクの削除
 	void Delete();
+	void Collision();
 protected:
 	//デフォルトコンストラクタ
 	CTaskManager();

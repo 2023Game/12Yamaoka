@@ -27,6 +27,7 @@ public:
 	void Update();
 	//Õ“Ëˆ—
 	void Collision(CCollider* m, CCollider* o);
+	void Collision();
 private:
 	CInput mInput;
 	CColliderLine mLine; //ü•ªƒRƒ‰ƒCƒ_
