@@ -4,6 +4,7 @@
 #define COLLISIONRANGE 30
 
 #include "CTaskManager.h"
+#include "CCollider.h"
 
 class CCollisionManager : public CTaskManager
 {
