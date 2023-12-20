@@ -18,10 +18,12 @@
 #include "CCollisionManager.h"
 #include "CColliderTriangle.h"
 #include "CColliderMesh.h"
+#include "CUi.h"
 
 class CApplication
 {
 public:
+	~CApplication();
 	static CCharacterManager* CharacterManager();
 	static CTexture* Texture();
 	//最初に一度だけ実行するプログラム
@@ -30,6 +32,7 @@ public:
 	void Update();
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();
+	static CUi* Ui(); //UIクラスのインスタンスを取得
 private:
 	CSound mSoundBgm;	//BGM
 	CSound mSoundOver;	//ゲームオーバー
@@ -60,7 +63,5 @@ private:
 	static CMatrix mModelViewInverse;
 	//モデルからコライダを生成
 	CColliderMesh mColliderMesh;
-	//三角コライダの作成
-	//CColliderTriangle mColliderTriangle;
-	//CColliderTriangle mColliderTriangle2;
+	static CUi* spUi;
 };
