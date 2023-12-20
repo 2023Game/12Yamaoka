@@ -18,6 +18,7 @@ public:
 	void Update();
 	//Õ“Ëˆ—
 	void Collision(CCollider* m, CCollider* o);
+	void Collision();
 private:
 	//ƒRƒ‰ƒCƒ_
 	CCollider mCollider1;

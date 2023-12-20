@@ -24,6 +24,7 @@ public:
 	//衝突判定
 	//Collision(コライダ1,コライダ2)
 	void Collision(CCollider* m, CCollider* o);
+	void Collision();
 private:
 	//三角形
 	CTriangle mT;

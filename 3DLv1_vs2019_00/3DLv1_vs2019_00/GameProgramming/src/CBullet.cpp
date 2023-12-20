@@ -1,5 +1,6 @@
 #include "CBullet.h"
 #define VELOCITY CVector(0.0f,0.0f,1.0f)
+#include "CCollisionManager.h"
 
 //幅と奥行きの設定
 //Set(幅, 奥行)
@@ -55,4 +56,12 @@ void CBullet::Collision(CCollider* m, CCollider* o)
 		//衝突している時は無効にする
 		mEnabled = false;
 	}
+}
+
+void CBullet::Collision()
+{
+	// コライダの優先度変更
+	mCollider.ChangePriority();
+	// 衝突処理を実行
+	CCollisionManager::Instance()->Collision(&mCollider, COLLISIONRANGE);
 }
