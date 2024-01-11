@@ -8,6 +8,7 @@
 #include "CTransform.h"
 #include "CPlayer.h"
 #include "CBillBoard.h"
+#include "CEnemy3.h"
 //モデルデータの指定
 #define MODEL_OBJ "res\\f14.obj","res\\f14.mtl"
 //背景モデルデータの指定
@@ -57,6 +58,9 @@ void CApplication::Start()
 	//親インスタンスと親行列はなし
 	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
 	spUi = new CUi(); //UIクラスの生成
+	//敵戦闘機
+	new CEnemy3(CVector(-5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy3(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
 }
 
 void CApplication::Update()
