@@ -6,6 +6,7 @@
 ４行４列の行列データを扱います
 */
 
+class CVector;
 class CMatrix
 {
 public:
@@ -49,6 +50,9 @@ public:
 	float* M() const;
 	//逆行列取得
 	CMatrix Transpose() const;
+	CVector VectorZ() const; //Z軸ベクトルの取得
+	CVector VectorX() const; //X軸ベクトルの取得
+	CVector VectorY() const; //Y軸ベクトルの取得
 private:
 	//４×４の行列データを設定
 	float mM[4][4];

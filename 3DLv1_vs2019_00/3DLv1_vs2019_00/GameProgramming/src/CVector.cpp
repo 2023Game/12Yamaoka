@@ -1,5 +1,4 @@
 #include "CVector.h"
-#include "CMatrix.h"
 #include "math.h"
 
 CVector::CVector()

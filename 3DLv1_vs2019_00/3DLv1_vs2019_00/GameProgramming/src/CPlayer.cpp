@@ -97,3 +97,10 @@ void CPlayer::Collision()
 	CCollisionManager::Instance()->Collision(&mLine2, COLLISIONRANGE);
 	CCollisionManager::Instance()->Collision(&mLine3, COLLISIONRANGE);
 }
+
+CPlayer* CPlayer::spInstance = nullptr;
+
+CPlayer* CPlayer::Instance()
+{
+	return spInstance;
+}
