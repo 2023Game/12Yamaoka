@@ -1,15 +1,15 @@
 #pragma once
-#include "CRectangle.h"
+//#include "CRectangle.h"
 #include "CTexture.h"
-#include "CCharacter.h"
+//#include "CCharacter.h"
 #include "CBullet.h"
 #include "CEnemy.h"
 #include "CPlayer.h"
 #include "CInput.h"
 #include "CFont.h"
-#include "CMiss.h"
+//#include "CMiss.h"
 #include <vector>
-#include "CCharacterManager.h"
+//#include "CCharacterManager.h"
 #include "CGame.h"
 #include "CSound.h"
 #include "CModel.h"
@@ -24,7 +24,7 @@ class CApplication
 {
 public:
 	~CApplication();
-	static CCharacterManager* CharacterManager();
+//	static CCharacterManager* CharacterManager();
 	static CTexture* Texture();
 	//最初に一度だけ実行するプログラム
 	void Start();
@@ -37,7 +37,7 @@ private:
 	CSound mSoundBgm;	//BGM
 	CSound mSoundOver;	//ゲームオーバー
 	CGame* mpGame;
-	static CCharacterManager mCharacterManager;
+//	static CCharacterManager mCharacterManager;
 	enum class EState
 	{
 		ESTART,	//ゲーム開始
@@ -51,7 +51,7 @@ private:
 	CEnemy* mpEnemy;
 	CInput mInput;
 	CFont mFont;
-	CMiss* mpMiss;
+//	CMiss* mpMiss;
 	//モデルクラスのインスタンス作成
 	CModel mModel;
 	CModel mBackGround; //背景モデル

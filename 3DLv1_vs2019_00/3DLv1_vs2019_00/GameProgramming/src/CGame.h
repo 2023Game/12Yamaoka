@@ -1,6 +1,6 @@
 #pragma once
 #include "CUi.h"
-#include "CPlayer2.h"
+//#include "CPlayer2.h"
 
 //定数の定義
 #define TEXTURE "image.png" //テクスチャのファイル名
@@ -31,7 +31,7 @@ public:
 private:
 	int mCdx, mCdy; //カメラとプレイヤーの座標の差分
 	void CameraSet(); //カメラ設定
-	CPlayer2 *mpPlayer; //プレイヤーのポインタ
+//	CPlayer2 *mpPlayer; //プレイヤーのポインタ
 	int mTime; //経過時間
 	CUi *mpUi; //UIクラスのポインタ
 };
