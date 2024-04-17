@@ -19,6 +19,7 @@
 #include "CColliderTriangle.h"
 #include "CColliderMesh.h"
 #include "CUi.h"
+#include "CModelX.h"
 
 class CApplication
 {
@@ -64,4 +65,5 @@ private:
 	//モデルからコライダを生成
 	CColliderMesh mColliderMesh;
 	static CUi* spUi;
+	CModelX mModelX;
 };
