@@ -42,14 +42,14 @@ void CModelX::Load(char* file)
 		//単語がFrameの場合
 		if (strcmp(mToken, "Frame") == 0)
 		{
-			printf("%s", mToken); //Frame出力
+			printf("%s ", mToken); //Frame出力
 			GetToken(); //Frame名を取得
 			printf("%s\n", mToken); //Frame名を出力
 		}
 		//単語がAnimationSetの場合
 		if (strcmp(mToken, "AnimationSet") == 0)
 		{
-			printf("%s", mToken);
+			printf("%s ", mToken);
 			GetToken();
 			printf("%s\n", mToken);
 		}
