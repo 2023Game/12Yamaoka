@@ -1,7 +1,10 @@
 #ifndef CMODELX_H // インクルードガード
 #define CMODELX_H
-
 #define MODEL_FILE "res\\sample.blend.x" //ファイル名
+#include <vector> //vectorクラスのインクルード(動的配置)
+#include "CMatrix.h" //マトリクスクラスのインクルード
+class CModelX; //CModelクラスの宣言
+class CModelXFrame; //CModelXFrameクラスの宣言
 
 //領域開放をマクロ化
 #define SAFE_DELETE_ARRAY(a) { if(a) delete[] a; a = nullptr;}
@@ -11,17 +14,38 @@ Xファイル形式の3Dモデルデータをプログラムで認識する
 */
 class CModelX
 {
+	friend CModelXFrame;
 public:
+	~CModelX();
+	//ノードの読み飛ばし
+	void SkipNode();
 	CModelX();
 	//ファイル読み込み
 	void Load(char* file);
 	//単語の取り出し
 	char* GetToken();
 private:
+	std::vector<CModelXFrame*> mFrame; //フレームの配列
 	char* mpPointer; //読み込み位置
 	char mToken[1024]; //取り出した単語の領域
 	//cが区切り文字ならtrueを返す
 	bool IsDelimiter(char c);
+};
+
+//CModelXFrameクラスの定義
+class CModelXFrame
+{
+	friend CModelX;
+public:
+	//コンストラクタ
+	CModelXFrame(CModelX* model);
+	//デストラクタ
+	~CModelXFrame();
+private:
+	std::vector<CModelXFrame*> mChild; //子フレームの配列
+	CMatrix mTransformMatrix; //変換行列
+	char* mpName; //フレーム名前
+	int mIndex; //フレーム番号
 };
 
 #endif
