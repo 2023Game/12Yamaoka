@@ -53,6 +53,8 @@ public:
 	CVector VectorZ() const; //Z軸ベクトルの取得
 	CVector VectorX() const; //X軸ベクトルの取得
 	CVector VectorY() const; //Y軸ベクトルの取得
+	//要素数の取得
+	int Size();
 private:
 	//４×４の行列データを設定
 	float mM[4][4];
