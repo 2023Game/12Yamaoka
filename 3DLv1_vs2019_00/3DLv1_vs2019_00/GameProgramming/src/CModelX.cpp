@@ -205,11 +205,11 @@ CModelXFrame::CModelXFrame(CModelX* model)
 		else if (strcmp(model->mToken, "FrameTransformMatrix") == 0)
 		{
 			model->GetToken(); //{
-				for (int i = 0; i < mTransformMatrix.Size(); i++)
-				{
-					mTransformMatrix.M()[i] = atof(model->GetToken());
-				}
-				model->GetToken(); //}
+			for (int i = 0; i < mTransformMatrix.Size(); i++)
+			{
+				mTransformMatrix.M()[i] = atof(model->GetToken());
+			}
+			model->GetToken(); //}
 		}
 		else
 		{
