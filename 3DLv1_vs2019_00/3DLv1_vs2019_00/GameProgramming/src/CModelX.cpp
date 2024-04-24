@@ -223,7 +223,11 @@ CModelXFrame::CModelXFrame(CModelX* model)
 	// デバッグ時に、フレーム名に続いて、mTransformMatrixの内容をコンソール出力する
 	for (int i = 0; i < mTransformMatrix.Size(); i++)
 	{
-		printf("%f ", mTransformMatrix.M()[i]);
+		printf("% f ", mTransformMatrix.M()[i]);
+		if ((i + 1) % 4 == 0)
+		{
+			printf("\n");
+		}
 	}
 #endif
 }
