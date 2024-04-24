@@ -201,6 +201,7 @@ CModelXFrame::CModelXFrame(CModelX* model)
 			//フレームを作成し、、子フレームの配列に追加
 			mChild.push_back(new CModelXFrame(model));
 		}
+		//mTokenがFrameTransformMatrixの時、条件を満たす
 		else if (strcmp(model->mToken, "FrameTransformMatrix") == 0)
 		{
 			model->GetToken(); //{
@@ -219,6 +220,10 @@ CModelXFrame::CModelXFrame(CModelX* model)
 	//デバッグバージョンのみ有効
 #ifdef _DEBUG
 	printf("%s\n", mpName);
+	// デバッグ時に、フレーム名に続いて、mTransformMatrixの内容をコンソール出力する
+	for (int i = 0; i < mTransformMatrix.Size(); i++)
+	{
+		printf("%f ", mTransformMatrix.M()[i]);
+	}
 #endif
 }
-
