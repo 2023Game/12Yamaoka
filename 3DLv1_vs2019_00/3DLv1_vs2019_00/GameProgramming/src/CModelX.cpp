@@ -113,7 +113,7 @@ bool CModelX::IsDelimiter(char c)
 	Œ©‚Â‚©‚Á‚½•¶š‚Ö‚Ìƒ|ƒCƒ“ƒ^‚ğ•Ô‚·
 	Œ©‚Â‚©‚ç‚È‚©‚Á‚½‚çNULL‚ğ•Ô‚·
 	*/
-	if (strchr(",\"", c) != NULL)
+	if (strchr(",;\"", c) != NULL)
 		return true;
 	//‹æØ‚è•¶š‚Å‚Í‚È‚¢
 	return false;
