@@ -45,6 +45,9 @@ public:
 	//正規化
 	//大きさ１のベクトルを返す
 	CVector Normalize() const;
+	void X(float f);
+	void Y(float f);
+	void Z(float f);
 private:
 	//3D各種での値を設定
 	float mX, mY, mZ;

@@ -5,6 +5,7 @@
 #include "CMatrix.h" //マトリクスクラスのインクルード
 class CModelX; //CModelクラスの宣言
 class CModelXFrame; //CModelXFrameクラスの宣言
+class CMesh; //CMeshクラスの宣言
 
 //領域開放をマクロ化
 #define SAFE_DELETE_ARRAY(a) { if(a) delete[] a; a = nullptr;}
@@ -24,6 +25,7 @@ public:
 	void Load(char* file);
 	//単語の取り出し
 	char* GetToken();
+	char* Token();
 private:
 	std::vector<CModelXFrame*> mFrame; //フレームの配列
 	char* mpPointer; //読み込み位置
@@ -46,6 +48,21 @@ private:
 	CMatrix mTransformMatrix; //変換行列
 	char* mpName; //フレーム名前
 	int mIndex; //フレーム番号
+	CMesh* mpMesh; //Meshデータ
+};
+
+class CMesh
+{
+public:
+	//コンストラクタ
+	CMesh();
+	//デストラクタ
+	~CMesh();
+	//読み込み処理
+	void Init(CModelX* model);
+private:
+	int mVertexNum; //頂点座標
+	CVector* mpVertex; //頂点データ
 };
 
 #endif
