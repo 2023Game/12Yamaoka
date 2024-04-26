@@ -292,7 +292,7 @@ void CMesh::Init(CModelX* model)
 	printf("VertexNum:%d\n", mVertexNum);
 	for (int i = 0; i < mVertexNum; i++)
 	{
-		printf("% f  % f  % f \n",mpVertex[i].X(), mpVertex[i].Y(), mpVertex[i].Z());
+		printf("%10f %10f %10f\n",mpVertex[i].X(), mpVertex[i].Y(), mpVertex[i].Z());
 	}
 
 #endif
