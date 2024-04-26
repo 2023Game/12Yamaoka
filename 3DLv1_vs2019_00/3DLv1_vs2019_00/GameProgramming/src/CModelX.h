@@ -63,6 +63,8 @@ public:
 private:
 	int mVertexNum; //頂点座標
 	CVector* mpVertex; //頂点データ
+	int mFaceNum; //面積
+	int* mpVertexIndex; //面を構成する頂点インデックス
 };
 
 #endif
