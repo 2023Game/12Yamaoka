@@ -26,6 +26,7 @@ public:
 	//単語の取り出し
 	char* GetToken();
 	char* Token();
+	void Render();
 private:
 	std::vector<CModelXFrame*> mFrame; //フレームの配列
 	char* mpPointer; //読み込み位置
@@ -43,6 +44,7 @@ public:
 	CModelXFrame(CModelX* model);
 	//デストラクタ
 	~CModelXFrame();
+	void Render();
 private:
 	std::vector<CModelXFrame*> mChild; //子フレームの配列
 	CMatrix mTransformMatrix; //変換行列
@@ -60,6 +62,7 @@ public:
 	~CMesh();
 	//読み込み処理
 	void Init(CModelX* model);
+	void Render();
 private:
 	int mVertexNum; //頂点座標
 	CVector* mpVertex; //頂点データ

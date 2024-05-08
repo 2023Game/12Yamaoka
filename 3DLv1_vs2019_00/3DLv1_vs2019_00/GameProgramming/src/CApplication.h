@@ -66,4 +66,5 @@ private:
 	CColliderMesh mColliderMesh;
 	static CUi* spUi;
 	CModelX mModelX;
+	CMatrix mMatrix;
 };
