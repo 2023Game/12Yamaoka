@@ -36,6 +36,8 @@ public:
 	{
 		return mVertexNum;
 	}
+	CMaterial(CModelX* model);
+	~CMaterial();
 private:
 	//マテリアル名
 	char mName[MATERIAL_NAME_LEN + 1];
@@ -45,6 +47,11 @@ private:
 	CTexture mTexture;
 	//マテリアル毎の頂点数
 	int mVertexNum;
+	float mPower;
+	float mSpecular[3];
+	float mEmissive[3];
+	//テクスチャファイル名
+	char* mpTextureFilename;
 };
 
 #endif

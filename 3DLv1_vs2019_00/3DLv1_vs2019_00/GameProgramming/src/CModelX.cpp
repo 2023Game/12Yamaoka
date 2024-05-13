@@ -4,6 +4,7 @@
 #include "CModelX.h"
 #include "glut.h"
 #include "CVector.h"
+#include "CMaterial.h"
 
 CModelX::CModelX()
 	:mpPointer(nullptr)
@@ -259,6 +260,9 @@ CMesh::CMesh()
 	, mpVertexIndex(nullptr)
 	, mNormalNum(0)
 	, mpNormal(nullptr)
+	, mMaterialNum(0)
+	, mMaterialIndexNum(0)
+	, mpMaterialIndex(nullptr)
 {
 }
 
@@ -268,6 +272,7 @@ CMesh::~CMesh()
 	SAFE_DELETE_ARRAY(mpVertex);
 	SAFE_DELETE_ARRAY(mpVertexIndex);
 	SAFE_DELETE_ARRAY(mpNormal);
+	SAFE_DELETE_ARRAY(mpMaterialIndex);
 }
 
 /*
@@ -276,93 +281,126 @@ Meshのデータを取り込む
 */
 void CMesh::Init(CModelX* model)
 {
-	model->GetToken(); // { or 名前
-	if (!strchr(model->Token(), '{')) {
-		//名前の場合、次が{
-		model->GetToken(); // {
-	}
-
-	//頂点数の取得
-	mVertexNum = atoi(model->GetToken());
-	//頂点数分エリア確保
-	mpVertex = new CVector[mVertexNum];
-	//頂点数分データを取り込む
-	for (int i = 0; i < mVertexNum; i++)
+	//単語がある間繰り返し
+	while (!model->EOT())
 	{
-		mpVertex[i].X(atof(model->GetToken()));
-		mpVertex[i].Y(atof(model->GetToken()));
-		mpVertex[i].Z(atof(model->GetToken()));
-	}
-	//面数読み込み
-	mFaceNum = atoi(model->GetToken());
-	//頂点数は１面に３頂点
-	mpVertexIndex = new int[mFaceNum * 3];
-	for (int i = 0; i < mFaceNum * 3; i += 3)
-	{
-		model->GetToken(); //頂点数読み飛ばし
-		mpVertexIndex[i] = atoi(model->GetToken());
-		mpVertexIndex[i + 1] = atoi(model->GetToken());
-		mpVertexIndex[i + 2] = atoi(model->GetToken());
-	}
-	
-	model->GetToken(); //MeshNormals
-	if (strcmp(model->Token(), "MeshNormals") == 0)
-	{
-		model->GetToken(); // {
-		//法線データ数を取得
-		mNormalNum = atoi(model->GetToken());
-		//法線データを配列に取り込む
-		CVector* pNormal = new CVector[mNormalNum];
-		for (int i = 0; i < mNormalNum; i++)
+		model->GetToken();	//MeshNormals 
+		//}かっこの場合は終了
+		if (strchr(model->Token(), '}'))
+			break;
+		if (strcmp(model->Token(), "MeshNormals") == 0) 
 		{
-			pNormal[i].X(atof(model->GetToken()));
-			pNormal[i].Y(atof(model->GetToken()));
-			pNormal[i].Z(atof(model->GetToken()));
+			model->GetToken();	// {
 		}
-		//法線数＝面数×３
-		mNormalNum = atoi(model->GetToken()) * 3; //FaceNum
-		int ni;
-		//頂点毎に法線データを設定する
-		mpNormal = new CVector[mNormalNum];
-		for (int i = 0; i < mNormalNum; i += 3)
+
+		//頂点数の取得
+		mVertexNum = atoi(model->GetToken());
+		//頂点数分エリア確保
+		mpVertex = new CVector[mVertexNum];
+		//頂点数分データを取り込む
+		for (int i = 0; i < mVertexNum; i++)
 		{
-			model->GetToken(); // 3
-			ni = atoi(model->GetToken());
-			mpNormal[i] = pNormal[ni];
-
-			ni = atoi(model->GetToken());
-			mpNormal[i + 1] = pNormal[ni];
-
-			ni = atoi(model->GetToken());
-			mpNormal[i + 2] = pNormal[ni];
+			mpVertex[i].X(atof(model->GetToken()));
+			mpVertex[i].Y(atof(model->GetToken()));
+			mpVertex[i].Z(atof(model->GetToken()));
 		}
-		delete[] pNormal;
-		model->GetToken(); // }
+		//面数読み込み
+		mFaceNum = atoi(model->GetToken());
+		//頂点数は１面に３頂点
+		mpVertexIndex = new int[mFaceNum * 3];
+		for (int i = 0; i < mFaceNum * 3; i += 3)
+		{
+			model->GetToken(); //頂点数読み飛ばし
+			mpVertexIndex[i] = atoi(model->GetToken());
+			mpVertexIndex[i + 1] = atoi(model->GetToken());
+			mpVertexIndex[i + 2] = atoi(model->GetToken());
+		}
+
+		model->GetToken(); //MeshNormals
+		if (strcmp(model->Token(), "MeshNormals") == 0)
+		{
+			model->GetToken(); // {
+			//法線データ数を取得
+			mNormalNum = atoi(model->GetToken());
+			//法線データを配列に取り込む
+			CVector* pNormal = new CVector[mNormalNum];
+			for (int i = 0; i < mNormalNum; i++)
+			{
+				pNormal[i].X(atof(model->GetToken()));
+				pNormal[i].Y(atof(model->GetToken()));
+				pNormal[i].Z(atof(model->GetToken()));
+			}
+			//法線数＝面数×３
+			mNormalNum = atoi(model->GetToken()) * 3; //FaceNum
+			int ni;
+			//頂点毎に法線データを設定する
+			mpNormal = new CVector[mNormalNum];
+			for (int i = 0; i < mNormalNum; i += 3)
+			{
+				model->GetToken(); // 3
+				ni = atoi(model->GetToken());
+				mpNormal[i] = pNormal[ni];
+
+				ni = atoi(model->GetToken());
+				mpNormal[i + 1] = pNormal[ni];
+
+				ni = atoi(model->GetToken());
+				mpNormal[i + 2] = pNormal[ni];
+			}
+			delete[] pNormal;
+			model->GetToken(); // }
 	} // End of MeshNormals
+	// MeshMaterialListのとき
+		else if (strcmp(model->Token(), "MeshMaterialList") == 0)
+		{
+			model->GetToken(); // {
+			// Materialの数
+			mMaterialNum = atoi(model->GetToken());
+			// FaceNum
+			mMaterialIndexNum = atoi(model->GetToken());
+			//マテリアルインデックスの作成
+			mpMaterialIndex = new int[mMaterialIndexNum];
+			for (int i = 0; i < mMaterialIndexNum; i++)
+			{
+				mpMaterialIndex[i] = atoi(model->GetToken());
+			}
+			//マテリアルデータの作成
+			for (int i = 0; i < mMaterialNum; i++)
+			{
+				model->GetToken();	// Material
+				if (strcmp(model->Token(), "Material") == 0)
+				{
+					mMaterial.push_back(new CMaterial(model));
+				}
+			}
+			model->GetToken();	// } //End of MeshMaterialList
+		} //End of MeshMaterialList
 
 #ifdef _DEBUG
-	/*
-	//デバッグ時に、読み込んだ頂点数と頂点座用をコンソール出力する
-	printf("VertexNum:%d\n", mVertexNum);
-	for (int i = 0; i < mVertexNum; i++)
-	{
-		printf("%10f %10f %10f\n", mpVertex[i].X(), mpVertex[i].Y(), mpVertex[i].Z());
-	}
-	//デバッグ時に、読み込んだ面数と面を構成する頂点番号をコンソール出力する
-	printf("FaceNum:%d\n", mFaceNum);
-	for (int i = 0; i < mFaceNum * 3; i += 3)
-	{
-		printf("%2d %2d %2d\n", mpVertexIndex[i], mpVertexIndex[i + 1], mpVertexIndex[i + 2]);
-	}
-	*/
-	//デバッグ時に、法線数と法線ベクトル84個を頂点の順にコンソール出力する
-	printf("NormalNum:%d\n", mNormalNum);
-	for (int i = 0; i < mNormalNum; i++)
-	{
-		printf("%10f %10f %10f\n", mpNormal[i].X(), mpNormal[i].Y(), mpNormal[i].Z());
-	}
-#endif
+/*
+//デバッグ時に、読み込んだ頂点数と頂点座用をコンソール出力する
+printf("VertexNum:%d\n", mVertexNum);
+for (int i = 0; i < mVertexNum; i++)
+{
+	printf("%10f %10f %10f\n", mpVertex[i].X(), mpVertex[i].Y(), mpVertex[i].Z());
 }
+//デバッグ時に、読み込んだ面数と面を構成する頂点番号をコンソール出力する
+printf("FaceNum:%d\n", mFaceNum);
+for (int i = 0; i < mFaceNum * 3; i += 3)
+{
+	printf("%2d %2d %2d\n", mpVertexIndex[i], mpVertexIndex[i + 1], mpVertexIndex[i + 2]);
+}
+*/
+//デバッグ時に、法線数と法線ベクトル84個を頂点の順にコンソール出力する
+		printf("NormalNum:%d\n", mNormalNum);
+		for (int i = 0; i < mNormalNum; i++)
+		{
+			printf("%10f %10f %10f\n", mpNormal[i].X(), mpNormal[i].Y(), mpNormal[i].Z());
+		}
+#endif
+	}
+}
+
 /*
 Render
 画面に描画する
@@ -377,8 +415,15 @@ void CMesh::Render()
 	glVertexPointer(3, GL_FLOAT, 0, mpVertex);
 	glNormalPointer(GL_FLOAT, 0, mpNormal);
 	
-	//頂点のインデックスの場所を指定して図形を描画する
-	glDrawElements(GL_TRIANGLES, 3 * mFaceNum, GL_UNSIGNED_INT, mpVertexIndex);
+	/* 頂点のインデックスの場所を指定して図形を描画する */
+	for (int i = 0; i < mFaceNum; i++)
+	{
+		//マテリアルを適用する
+		mMaterial[mpMaterialIndex[i]]->Enabled();
+		glDrawElements(GL_TRIANGLES, 3,
+			GL_UNSIGNED_INT, (mpVertexIndex + i * 3));
+	}
+
 
 	//頂点データ、法線のデータの配列を無効にする
 	glDisableClientState(GL_VERTEX_ARRAY);
@@ -406,3 +451,13 @@ void CModelX::Render()
 		mFrame[i]->Render();
 	}
 }
+
+bool CModelX::EOT()
+{
+	if (*mpPointer = '\0')
+	{
+		return true;
+	}
+	return false;
+}
+

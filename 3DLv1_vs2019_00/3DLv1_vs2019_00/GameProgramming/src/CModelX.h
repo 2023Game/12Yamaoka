@@ -6,6 +6,7 @@
 class CModelX; //CModelクラスの宣言
 class CModelXFrame; //CModelXFrameクラスの宣言
 class CMesh; //CMeshクラスの宣言
+class CMaterial; //マテリアルの宣言
 
 //領域開放をマクロ化
 #define SAFE_DELETE_ARRAY(a) { if(a) delete[] a; a = nullptr;}
@@ -27,6 +28,7 @@ public:
 	char* GetToken();
 	char* Token();
 	void Render();
+	bool EOT(); // トークンが無くなったらtrue
 private:
 	std::vector<CModelXFrame*> mFrame; //フレームの配列
 	char* mpPointer; //読み込み位置
@@ -70,6 +72,10 @@ private:
 	int* mpVertexIndex; //面を構成する頂点インデックス
 	int mNormalNum; //法線数
 	CVector* mpNormal; //法線ベクトル
+	int mMaterialNum;	//マテリアル数
+	int mMaterialIndexNum;//マテリアル番号数（面数）
+	int* mpMaterialIndex;	  //マテリアル番号
+	std::vector<CMaterial*> mMaterial;//マテリアルデータ
 };
 
 #endif
