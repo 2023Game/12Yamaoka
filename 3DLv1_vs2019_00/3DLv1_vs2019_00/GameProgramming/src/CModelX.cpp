@@ -288,7 +288,7 @@ void CMesh::Init(CModelX* model)
 		//}かっこの場合は終了
 		if (strchr(model->Token(), '}'))
 			break;
-		if (strcmp(model->Token(), "MeshNormals") == 0) 
+		if (strcmp(model->Token(), "MeshNormals") == 0)
 		{
 			model->GetToken();	// {
 		}
@@ -349,8 +349,8 @@ void CMesh::Init(CModelX* model)
 			}
 			delete[] pNormal;
 			model->GetToken(); // }
-	} // End of MeshNormals
-	// MeshMaterialListのとき
+		} // End of MeshNormals
+		// MeshMaterialListのとき
 		else if (strcmp(model->Token(), "MeshMaterialList") == 0)
 		{
 			model->GetToken(); // {
@@ -375,9 +375,10 @@ void CMesh::Init(CModelX* model)
 			}
 			model->GetToken();	// } //End of MeshMaterialList
 		} //End of MeshMaterialList
-
-#ifdef _DEBUG
+	}
+}
 /*
+#ifdef _DEBUG
 //デバッグ時に、読み込んだ頂点数と頂点座用をコンソール出力する
 printf("VertexNum:%d\n", mVertexNum);
 for (int i = 0; i < mVertexNum; i++)
@@ -390,7 +391,7 @@ for (int i = 0; i < mFaceNum * 3; i += 3)
 {
 	printf("%2d %2d %2d\n", mpVertexIndex[i], mpVertexIndex[i + 1], mpVertexIndex[i + 2]);
 }
-*/
+
 //デバッグ時に、法線数と法線ベクトル84個を頂点の順にコンソール出力する
 		printf("NormalNum:%d\n", mNormalNum);
 		for (int i = 0; i < mNormalNum; i++)
@@ -398,8 +399,7 @@ for (int i = 0; i < mFaceNum * 3; i += 3)
 			printf("%10f %10f %10f\n", mpNormal[i].X(), mpNormal[i].Y(), mpNormal[i].Z());
 		}
 #endif
-	}
-}
+*/
 
 /*
 Render
