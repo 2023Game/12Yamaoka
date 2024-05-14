@@ -2,7 +2,7 @@
 #define CMATERIAL_H
 #define MATERIAL_NAME_LEN 64 //名前の長さ
 #include "CTexture.h"
-
+#include "CModelX.h"
 /*
 マテリアルクラス
 マテリアルのデータを扱う
@@ -36,6 +36,7 @@ public:
 	{
 		return mVertexNum;
 	}
+
 	CMaterial(CModelX* model);
 	~CMaterial();
 private:
@@ -47,6 +48,7 @@ private:
 	CTexture mTexture;
 	//マテリアル毎の頂点数
 	int mVertexNum;
+	
 	float mPower;
 	float mSpecular[3];
 	float mEmissive[3];

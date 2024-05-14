@@ -3,7 +3,6 @@
 #include <string.h>
 #include "glut.h"
 #include "CVertex.h"
-#include "CModelX.h"
 
 /*
 * strncpy(char* str1, const char* str2, int len)
@@ -33,6 +32,17 @@ CMaterial::CMaterial()
 	//0で埋める
 	memset(mDiffuse, 0, sizeof(mDiffuse));
 }
+
+//デストラクタの定義
+CMaterial::~CMaterial()
+{
+	if (mpTextureFilename)
+	{
+		delete[] mpTextureFilename;
+	}
+	mpTextureFilename = nullptr;
+}
+
 
 //マテリアルを有効にする
 void CMaterial::Enabled() 
@@ -92,22 +102,12 @@ CTexture* CMaterial::Texture()
 	return &mTexture;
 }
 
-CMaterial::~CMaterial() 
-{
-	if (mpTextureFilename)
-	{
-		delete[] mpTextureFilename;
-	}
-	mpTextureFilename = nullptr;
-}
-
 //Materialデータの読み込みと設定
 CMaterial::CMaterial(CModelX* model)
 	: mpTextureFilename(nullptr)
 {
 	model->GetToken(); // { ? Name
-	if (strcmp(model->Token(), "{") != 0) 
-	{
+	if (strcmp(model->Token(), "{") != 0) {
 		//{でないときはマテリアル名
 		strcpy(mName, model->Token());
 		model->GetToken(); // {
@@ -130,8 +130,7 @@ CMaterial::CMaterial(CModelX* model)
 
 	model->GetToken(); // TextureFilename or }
 
-	if (strcmp(model->Token(), "TextureFilename") == 0)
-	{
+	if (strcmp(model->Token(), "TextureFilename") == 0) {
 		//テクスチャありの場合、テクスチャファイル名取得
 		model->GetToken(); // {
 		model->GetToken(); // filename

@@ -4,7 +4,6 @@
 #include "CModelX.h"
 #include "glut.h"
 #include "CVector.h"
-#include "CMaterial.h"
 
 CModelX::CModelX()
 	:mpPointer(nullptr)
@@ -350,7 +349,8 @@ void CMesh::Init(CModelX* model)
 			delete[] pNormal;
 			model->GetToken(); // }
 		} // End of MeshNormals
-		// MeshMaterialListのとき
+		  
+		  // MeshMaterialListのとき
 		else if (strcmp(model->Token(), "MeshMaterialList") == 0)
 		{
 			model->GetToken(); // {
@@ -365,8 +365,7 @@ void CMesh::Init(CModelX* model)
 				mpMaterialIndex[i] = atoi(model->GetToken());
 			}
 			//マテリアルデータの作成
-			for (int i = 0; i < mMaterialNum; i++)
-			{
+			for (int i = 0; i < mMaterialNum; i++) {
 				model->GetToken();	// Material
 				if (strcmp(model->Token(), "Material") == 0)
 				{
@@ -423,7 +422,6 @@ void CMesh::Render()
 		glDrawElements(GL_TRIANGLES, 3,
 			GL_UNSIGNED_INT, (mpVertexIndex + i * 3));
 	}
-
 
 	//頂点データ、法線のデータの配列を無効にする
 	glDisableClientState(GL_VERTEX_ARRAY);
