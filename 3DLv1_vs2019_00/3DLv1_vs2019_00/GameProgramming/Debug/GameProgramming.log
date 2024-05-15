@@ -1,10 +1,2 @@
 ﻿  CModelX.cpp
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CMaterial.h(40,12): error C2061: 構文エラー: 識別子 'CModelX'
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CMaterial.h(40,11): error C2535: 'CMaterial::CMaterial(void)': メンバー関数は、既に定義または宣言されています。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CMaterial.h(14): message : 'CMaterial::CMaterial' の宣言を確認してください
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.cpp(372,46): error C2664: 'CMaterial::CMaterial(const CMaterial &)': 引数 1 を 'CModelX *' から 'const CMaterial &' へ変換できません。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.cpp(372,46): message : 理由: 'CModelX *' から 'const CMaterial' へは変換できません。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.cpp(372,46): message : コンストラクターはソース型を持てません、またはコンストラクターのオーバーロードの解決があいまいです。
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CMaterial.h(57,1): message : 'CMaterial::CMaterial' の宣言を確認してください
-  main.cpp
-  コードを生成中...
+  GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\Debug\GameProgramming.exe

@@ -4,6 +4,7 @@
 #include "CModelX.h"
 #include "glut.h"
 #include "CVector.h"
+#include "CMaterial.h"
 
 CModelX::CModelX()
 	:mpPointer(nullptr)
@@ -453,9 +454,6 @@ void CModelX::Render()
 bool CModelX::EOT()
 {
 	if (*mpPointer = '\0')
-	{
 		return true;
-	}
 	return false;
 }
-

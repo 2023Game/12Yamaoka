@@ -3,7 +3,6 @@
 #define MODEL_FILE "res\\sample.blend.x" //ファイル名
 #include <vector> //vectorクラスのインクルード(動的配置)
 #include "CMatrix.h" //マトリクスクラスのインクルード
-#include "CMaterial.h"
 class CModelX; //CModelクラスの宣言
 class CModelXFrame; //CModelXFrameクラスの宣言
 class CMesh; //CMeshクラスの宣言
