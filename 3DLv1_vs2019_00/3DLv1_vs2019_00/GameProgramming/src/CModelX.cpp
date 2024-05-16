@@ -415,7 +415,7 @@ void CMesh::Render()
 	glVertexPointer(3, GL_FLOAT, 0, mpVertex);
 	glNormalPointer(GL_FLOAT, 0, mpNormal);
 	
-	/* 頂点のインデックスの場所を指定して図形を描画する */
+	// 頂点のインデックスの場所を指定して図形を描画する
 	for (int i = 0; i < mFaceNum; i++)
 	{
 		//マテリアルを適用する
@@ -453,7 +453,7 @@ void CModelX::Render()
 
 bool CModelX::EOT()
 {
-	if (*mpPointer = '\0')
+	if (*mpPointer == '\0')
 		return true;
 	return false;
 }
