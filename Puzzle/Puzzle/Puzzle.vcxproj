@@ -130,7 +130,6 @@
     <ClCompile Include="15piecepuzzle.cpp" />
     <ClCompile Include="jigsawpuzzle.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="tetris.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
