@@ -41,14 +41,14 @@ void CPlayer::Update()
 
 	if (isMoving)
 	{
-		if (GetAsyncKeyState(VK_UP))
-		{
-			float y = Y() + 4.0f;
-			Y(y);
-		}
 		if (GetAsyncKeyState(VK_DOWN))
 		{
 			float y = Y() - 4.0f;
+			Y(y);
+		}
+		if (GetAsyncKeyState(VK_UP))
+		{
+			float y = Y() + 4.0f;
 			Y(y);
 		}
 
@@ -61,6 +61,42 @@ void CPlayer::Update()
 		{
 			float x = X() + 4.0f;
 			X(x);
+		}
+	}
+
+	static int lastMouseY = 0;
+	static int lastMouseX = 0;
+
+	POINT mousePos;
+	if (GetCursorPos(&mousePos))
+	{
+		ScreenToClient(HWND_BOTTOM, &mousePos);
+		if (GetAsyncKeyState(VK_LBUTTON))
+		{
+			if (mousePos.y < lastMouseY)
+			{
+				float y = Y() + 4.0f;
+				Y(y);
+			}
+			else if (mousePos.y > lastMouseY)
+			{
+				float y = Y() - 4.0f;
+				Y(y);
+			}
+			lastMouseY = mousePos.y;
+
+			if (mousePos.x < lastMouseX)
+			{
+				float x = X() - 4.0f;
+				X(x);
+			}
+			else if (mousePos.x > lastMouseX)
+			{
+				float x = X() + 4.0f;
+				X(x);
+			}
+			lastMouseX = mousePos.x;
+			
 		}
 	}
 }
