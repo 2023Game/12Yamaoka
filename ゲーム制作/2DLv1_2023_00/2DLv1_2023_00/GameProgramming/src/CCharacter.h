@@ -5,7 +5,7 @@
 class CCharacter :public CRectangle
 {
 public:
-	void Texture(CTexture* pTexture, int left, int bottom, int top);
+	void Texture(CTexture* pTexture, int left, int right, int bottom, int top);
 	void Render();
 private:
 	CTexture* mpTexture;

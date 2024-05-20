@@ -1,13 +1,6 @@
-﻿  CCharacter.cpp
-C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.cpp(4,1): error C2511: 'void CCharacter::Texture(CTexture *,int,int,int,int)': オーバーロードされたメンバー関数が 'CCharacter' にありません。
-C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.h(5): message : 'CCharacter' の宣言を確認してください
-C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.cpp(5,2): error C2597: 静的でないメンバー 'CCharacter::mpTexture' への参照が正しくありません。
-C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.h(11): message : 'CCharacter::mpTexture' の宣言を確認してください
-C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.cpp(6,2): error C2597: 静的でないメンバー 'CCharacter::mLeft' への参照が正しくありません。
-C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.h(12): message : 'CCharacter::mLeft' の宣言を確認してください
-C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.cpp(7,2): error C2597: 静的でないメンバー 'CCharacter::mRight' への参照が正しくありません。
-C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.h(12): message : 'CCharacter::mRight' の宣言を確認してください
-C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.cpp(8,2): error C2597: 静的でないメンバー 'CCharacter::mBottom' への参照が正しくありません。
-C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.h(12): message : 'CCharacter::mBottom' の宣言を確認してください
-C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.cpp(9,2): error C2597: 静的でないメンバー 'CCharacter::mTop' への参照が正しくありません。
-C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.h(12): message : 'CCharacter::mTop' の宣言を確認してください
+﻿  CApplication.cpp
+LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
+LINK : warning LNK4098: defaultlib 'LIBCMT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
+CApplication.obj : error LNK2019: 未解決の外部シンボル "public: void __thiscall CCharacter::Render(void)" (?Render@CCharacter@@QAEXXZ) が関数 "public: void __thiscall CApplication::Update(void)" (?Update@CApplication@@QAEXXZ) で参照されました
+main.obj : error LNK2019: 未解決の外部シンボル "public: __thiscall CInput::CInput(void)" (??0CInput@@QAE@XZ) が関数 "public: __thiscall CPlayer::CPlayer(void)" (??0CPlayer@@QAE@XZ) で参照されました
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\Debug\GameProgramming.exe : fatal error LNK1120: 2 件の未解決の外部参照

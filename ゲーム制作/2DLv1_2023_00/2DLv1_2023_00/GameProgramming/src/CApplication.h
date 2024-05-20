@@ -1,6 +1,7 @@
 #pragma once
 #include "CRectangle.h"
 #include "CTexture.h"
+#include "CPlayer.h"
 
 class CApplication
 {
@@ -12,4 +13,5 @@ public:
 private:
 	CRectangle mRectangle;
 	CTexture mTexture;
+	CPlayer mPlayer;
 };
