@@ -281,16 +281,24 @@ Meshのデータを取り込む
 */
 void CMesh::Init(CModelX* model)
 {
-	//単語がある間繰り返し
+	/*
+		model->GetToken();
+		if (!strchr(model->Token(), '{'))
+		{
+			model->GetToken();
+		}
+		*/
+
+		//単語がある間は繰り返し
 	while (!model->EOT())
 	{
-		model->GetToken();	//MeshNormals 
+		model->GetToken(); //MeshNormals
 		//}かっこの場合は終了
 		if (strchr(model->Token(), '}'))
 			break;
-		if (strcmp(model->Token(), "MeshNormals") == 0)
+		if (!strchr(model->Token(), '{'))
 		{
-			model->GetToken();	// {
+			model->GetToken();
 		}
 
 		//頂点数の取得
@@ -304,6 +312,8 @@ void CMesh::Init(CModelX* model)
 			mpVertex[i].Y(atof(model->GetToken()));
 			mpVertex[i].Z(atof(model->GetToken()));
 		}
+		delete[] mpVertex;
+
 		//面数読み込み
 		mFaceNum = atoi(model->GetToken());
 		//頂点数は１面に３頂点
@@ -315,6 +325,7 @@ void CMesh::Init(CModelX* model)
 			mpVertexIndex[i + 1] = atoi(model->GetToken());
 			mpVertexIndex[i + 2] = atoi(model->GetToken());
 		}
+		delete[] mpVertexIndex;
 
 		model->GetToken(); //MeshNormals
 		if (strcmp(model->Token(), "MeshNormals") == 0)
@@ -350,7 +361,7 @@ void CMesh::Init(CModelX* model)
 			delete[] pNormal;
 			model->GetToken(); // }
 		} // End of MeshNormals
-		  
+
 		  // MeshMaterialListのとき
 		else if (strcmp(model->Token(), "MeshMaterialList") == 0)
 		{
@@ -375,31 +386,33 @@ void CMesh::Init(CModelX* model)
 			}
 			model->GetToken();	// } //End of MeshMaterialList
 		} //End of MeshMaterialList
-	}
-}
-/*
-#ifdef _DEBUG
-//デバッグ時に、読み込んだ頂点数と頂点座用をコンソール出力する
-printf("VertexNum:%d\n", mVertexNum);
-for (int i = 0; i < mVertexNum; i++)
-{
-	printf("%10f %10f %10f\n", mpVertex[i].X(), mpVertex[i].Y(), mpVertex[i].Z());
-}
-//デバッグ時に、読み込んだ面数と面を構成する頂点番号をコンソール出力する
-printf("FaceNum:%d\n", mFaceNum);
-for (int i = 0; i < mFaceNum * 3; i += 3)
-{
-	printf("%2d %2d %2d\n", mpVertexIndex[i], mpVertexIndex[i + 1], mpVertexIndex[i + 2]);
-}
 
-//デバッグ時に、法線数と法線ベクトル84個を頂点の順にコンソール出力する
+	/*
+	#ifdef _DEBUG
+	//デバッグ時に、読み込んだ頂点数と頂点座用をコンソール出力する
+		printf("VertexNum:%d\n", mVertexNum);
+		for (int i = 0; i < mVertexNum; i++)
+		{
+			printf("%10f %10f %10f\n", mpVertex[i].X(), mpVertex[i].Y(), mpVertex[i].Z());
+		}
+		//デバッグ時に、読み込んだ面数と面を構成する頂点番号をコンソール出力する
+		printf("FaceNum:%d\n", mFaceNum);
+		for (int i = 0; i < mFaceNum * 3; i += 3)
+		{
+			printf("%2d %2d %2d\n", mpVertexIndex[i], mpVertexIndex[i + 1], mpVertexIndex[i + 2]);
+		}
+
+		//デバッグ時に、法線数と法線ベクトル84個を頂点の順にコンソール出力する
 		printf("NormalNum:%d\n", mNormalNum);
 		for (int i = 0; i < mNormalNum; i++)
 		{
 			printf("%10f %10f %10f\n", mpNormal[i].X(), mpNormal[i].Y(), mpNormal[i].Z());
 		}
-#endif
-*/
+	#endif
+	*/
+	}
+}
+
 
 /*
 Render
@@ -414,14 +427,12 @@ void CMesh::Render()
 	//頂点データ、法線データの場所を指定する
 	glVertexPointer(3, GL_FLOAT, 0, mpVertex);
 	glNormalPointer(GL_FLOAT, 0, mpNormal);
-	
+
 	// 頂点のインデックスの場所を指定して図形を描画する
 	for (int i = 0; i < mFaceNum; i++)
 	{
-		//マテリアルを適用する
 		mMaterial[mpMaterialIndex[i]]->Enabled();
-		glDrawElements(GL_TRIANGLES, 3,
-			GL_UNSIGNED_INT, (mpVertexIndex + i * 3));
+		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (mpVertexIndex + i * 3));
 	}
 
 	//頂点データ、法線のデータの配列を無効にする
@@ -457,3 +468,4 @@ bool CModelX::EOT()
 		return true;
 	return false;
 }
+
