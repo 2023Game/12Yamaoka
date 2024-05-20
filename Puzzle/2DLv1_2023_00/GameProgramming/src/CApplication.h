@@ -2,6 +2,7 @@
 #include "CRectangle.h"
 #include "CTexture.h"
 #include "CPlayer.h"
+#include "CCharacter.h"
 
 class CApplication
 {
@@ -13,5 +14,6 @@ public:
 private:
 	CRectangle mRectangle;
 	CTexture mTexture;
-	//CPlayer mPlayer;
+	CCharacter mCharacter;
+	CPlayer mPlayer;
 };

@@ -8,3 +8,14 @@ void CCharacter::Texture(CTexture* pTexture, int left, int right, int bottom, in
 	mBottom = bottom;
 	mTop = top;
 }
+
+void CCharacter::Render()
+{
+	mpTexture->DrawImage(
+		X() - W(),
+		X() + W(),
+		Y() - H(),
+		Y() + H(),
+		mLeft, mRight, mBottom, mTop
+	);
+}

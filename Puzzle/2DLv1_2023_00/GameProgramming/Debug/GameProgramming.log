@@ -1,6 +1,2 @@
-﻿  CApplication.cpp
-  main.cpp
-  コードを生成中...
-LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
-LINK : warning LNK4098: defaultlib 'LIBCMT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
+﻿  CPlayer.cpp
   GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\Debug\GameProgramming.exe
