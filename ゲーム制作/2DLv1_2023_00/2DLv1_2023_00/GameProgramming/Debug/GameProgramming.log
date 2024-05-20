@@ -1,0 +1,13 @@
+﻿  CCharacter.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.cpp(4,1): error C2511: 'void CCharacter::Texture(CTexture *,int,int,int,int)': オーバーロードされたメンバー関数が 'CCharacter' にありません。
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.h(5): message : 'CCharacter' の宣言を確認してください
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.cpp(5,2): error C2597: 静的でないメンバー 'CCharacter::mpTexture' への参照が正しくありません。
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.h(11): message : 'CCharacter::mpTexture' の宣言を確認してください
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.cpp(6,2): error C2597: 静的でないメンバー 'CCharacter::mLeft' への参照が正しくありません。
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.h(12): message : 'CCharacter::mLeft' の宣言を確認してください
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.cpp(7,2): error C2597: 静的でないメンバー 'CCharacter::mRight' への参照が正しくありません。
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.h(12): message : 'CCharacter::mRight' の宣言を確認してください
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.cpp(8,2): error C2597: 静的でないメンバー 'CCharacter::mBottom' への参照が正しくありません。
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.h(12): message : 'CCharacter::mBottom' の宣言を確認してください
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.cpp(9,2): error C2597: 静的でないメンバー 'CCharacter::mTop' への参照が正しくありません。
+C:\Users\yama877\Downloads\git\12Yamaoka\ゲーム制作\2DLv1_2023_00\2DLv1_2023_00\GameProgramming\src\CCharacter.h(12): message : 'CCharacter::mTop' の宣言を確認してください
