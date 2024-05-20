@@ -464,8 +464,6 @@ void CModelX::Render()
 
 bool CModelX::EOT()
 {
-	if (*mpPointer == '\0')
-		return true;
-	return false;
+	return *mpPointer == '\0';
 }
 

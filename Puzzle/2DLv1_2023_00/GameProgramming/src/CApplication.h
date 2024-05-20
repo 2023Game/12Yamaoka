@@ -13,5 +13,5 @@ public:
 private:
 	CRectangle mRectangle;
 	CTexture mTexture;
-	CPlayer mPlayer;
+	//CPlayer mPlayer;
 };

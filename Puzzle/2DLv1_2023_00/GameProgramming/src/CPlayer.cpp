@@ -1,3 +1,4 @@
+/*
 #include "CPlayer.h"
 
 void CPlayer::Update()
@@ -8,3 +9,4 @@ void CPlayer::Update()
 		X(x);
 	}
 }
+*/
