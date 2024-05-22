@@ -107,7 +107,8 @@ CMaterial::CMaterial(CModelX* model)
 	: mpTextureFilename(nullptr)
 {
 	model->GetToken(); // { ? Name
-	if (strcmp(model->Token(), "{") != 0) {
+	if (strcmp(model->Token(), "{") != 0)
+	{
 		//{でないときはマテリアル名
 		strcpy(mName, model->Token());
 		model->GetToken(); // {
@@ -130,7 +131,8 @@ CMaterial::CMaterial(CModelX* model)
 
 	model->GetToken(); // TextureFilename or }
 
-	if (strcmp(model->Token(), "TextureFilename") == 0) {
+	if (strcmp(model->Token(), "TextureFilename") == 0) 
+	{
 		//テクスチャありの場合、テクスチャファイル名取得
 		model->GetToken(); // {
 		model->GetToken(); // filename
