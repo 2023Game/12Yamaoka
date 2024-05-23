@@ -1,18 +1,51 @@
 #include "CApplication.h"
 #include "CRectangle.h"
+#include <vector>
+
+std::vector<CPlayer> players;
 
 void CApplication::Start()
-{
-	mTexture.Load("apple.psd");
-	mPlayer.Set(200.0f, 50.0f, 50.0f, 50.0f);
-	mPlayer.Texture(&mTexture, 0, 600, 400, 0);
+{	
+	texture1.Load("apple.psd");
+	CPlayer player1;
+	player1.Set(100.0f, 50.0f, 50.0f, 50.0f);
+	player1.Texture(&texture1, 0, 600, 400, 0);
+	players.push_back(player1);
+
+	texture2.Load("orange.psd");
+	CPlayer player2;
+	player2.Set(600.0f, 50.0f, 50.0f, 50.0f);
+	player2.Texture(&texture2, 0, 600, 400, 0);
+	players.push_back(player2);
 }
 
 void CApplication::Update()
 {
 	mRectangle.Render();
-	//mCharacter.Render();
-	//mTexture.DrawImage(0.0f, 100.0f, 10.0f, 75.0f, 0, 600, 400, 0);
-	mPlayer.Render();
-	mPlayer.Update();
+	for (auto& player : players)
+	{
+		player.Render();
+		player.Update();
+	}
+}
+
+void UpdatePlayers()
+{
+	for (auto& player : players)
+	{
+		player.HandleInput();
+		player.Update();
+	}
+}
+
+void CApplication::OnMouseClick(float x, float y)
+{
+	for (auto& player : players)
+	{
+		if (player.IsPointInside(x, y))
+		{
+			activePlayer = &player;
+			break;
+		}
+	}
 }

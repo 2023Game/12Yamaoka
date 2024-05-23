@@ -29,6 +29,7 @@ void CPlayer::Update()
 
 #include "CPlayer.h"
 #include <windows.h>
+#include <vector>
 
 bool isMoving = true;
 
@@ -62,41 +63,58 @@ void CPlayer::Update()
 			float x = X() + 4.0f;
 			X(x);
 		}
+
+		static int lastMouseY = 0;
+		static int lastMouseX = 0;
+
+		POINT mousePos;
+		if (GetCursorPos(&mousePos))
+		{
+			ScreenToClient(HWND_BOTTOM, &mousePos);
+			if (GetAsyncKeyState(VK_LBUTTON))
+			{
+				if (mousePos.y < lastMouseY)
+				{
+					float y = Y() + 4.0f;
+					Y(y);
+				}
+				else if (mousePos.y > lastMouseY)
+				{
+					float y = Y() - 4.0f;
+					Y(y);
+				}
+				lastMouseY = mousePos.y;
+
+				if (mousePos.x < lastMouseX)
+				{
+					float x = X() - 4.0f;
+					X(x);
+				}
+				else if (mousePos.x > lastMouseX)
+				{
+					float x = X() + 4.0f;
+					X(x);
+				}
+				lastMouseX = mousePos.x;
+			}
+		}
 	}
+}
 
-	static int lastMouseY = 0;
-	static int lastMouseX = 0;
-
+void CPlayer::HandleInput()
+{
 	POINT mousePos;
 	if (GetCursorPos(&mousePos))
 	{
 		ScreenToClient(HWND_BOTTOM, &mousePos);
 		if (GetAsyncKeyState(VK_LBUTTON))
 		{
-			if (mousePos.y < lastMouseY)
+			if (mousePos.x >= X() && mousePos.x <= X() + width &&
+				mousePos.y >= Y() && mousePos.y <= Y() + height)
 			{
 				float y = Y() + 4.0f;
 				Y(y);
 			}
-			else if (mousePos.y > lastMouseY)
-			{
-				float y = Y() - 4.0f;
-				Y(y);
-			}
-			lastMouseY = mousePos.y;
-
-			if (mousePos.x < lastMouseX)
-			{
-				float x = X() - 4.0f;
-				X(x);
-			}
-			else if (mousePos.x > lastMouseX)
-			{
-				float x = X() + 4.0f;
-				X(x);
-			}
-			lastMouseX = mousePos.x;
-			
 		}
 	}
 }

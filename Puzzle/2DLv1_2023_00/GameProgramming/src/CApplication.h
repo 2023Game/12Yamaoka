@@ -11,9 +11,13 @@ public:
 	void Start();
 	//ŒJ‚è•Ô‚µÀs‚·‚éƒvƒƒOƒ‰ƒ€
 	void Update();
+	void OnMouseClick(float x, float y);
 private:
 	CRectangle mRectangle;
 	CTexture mTexture;
+	CTexture texture1;
+	CTexture texture2;
 	CCharacter mCharacter;
 	CPlayer mPlayer;
+	CPlayer* activePlayer;
 };

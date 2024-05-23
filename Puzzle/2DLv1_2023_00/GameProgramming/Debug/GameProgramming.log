@@ -1,2 +1,136 @@
-﻿  CPlayer.cpp
-  GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\Debug\GameProgramming.exe
+﻿  CApplication.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,15): error C2663: 'CRectangle::X': オーバーロードされた関数に 'this' ポインターの有効な変換がありません
+  (ソース ファイル 'src/CApplication.cpp' をコンパイルしています)
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CRectangle.h(11,8):
+  'float CRectangle::X(void)' の可能性があります
+  	C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,15):
+  	'float CRectangle::X(void)': 'const CPlayer' から 'CRectangle &' へ 'this' ポインターを変換できません。
+  		C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,15):
+  		変換で修飾子が失われます。
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,15):
+  引数リスト '()' を一致させようとしているとき
+  
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,27): error C2663: 'CRectangle::X': オーバーロードされた関数に 'this' ポインターの有効な変換がありません
+  (ソース ファイル 'src/CApplication.cpp' をコンパイルしています)
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CRectangle.h(11,8):
+  'float CRectangle::X(void)' の可能性があります
+  	C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,27):
+  	'float CRectangle::X(void)': 'const CPlayer' から 'CRectangle &' へ 'this' ポインターを変換できません。
+  		C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,27):
+  		変換で修飾子が失われます。
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,27):
+  引数リスト '()' を一致させようとしているとき
+  
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,47): error C2663: 'CRectangle::Y': オーバーロードされた関数に 'this' ポインターの有効な変換がありません
+  (ソース ファイル 'src/CApplication.cpp' をコンパイルしています)
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CRectangle.h(12,8):
+  'float CRectangle::Y(void)' の可能性があります
+  	C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,47):
+  	'float CRectangle::Y(void)': 'const CPlayer' から 'CRectangle &' へ 'this' ポインターを変換できません。
+  		C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,47):
+  		変換で修飾子が失われます。
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,47):
+  引数リスト '()' を一致させようとしているとき
+  
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,59): error C2663: 'CRectangle::Y': オーバーロードされた関数に 'this' ポインターの有効な変換がありません
+  (ソース ファイル 'src/CApplication.cpp' をコンパイルしています)
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CRectangle.h(12,8):
+  'float CRectangle::Y(void)' の可能性があります
+  	C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,59):
+  	'float CRectangle::Y(void)': 'const CPlayer' から 'CRectangle &' へ 'this' ポインターを変換できません。
+  		C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,59):
+  		変換で修飾子が失われます。
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,59):
+  引数リスト '()' を一致させようとしているとき
+  
+  CPlayer.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,15): error C2663: 'CRectangle::X': オーバーロードされた関数に 'this' ポインターの有効な変換がありません
+  (ソース ファイル 'src/CPlayer.cpp' をコンパイルしています)
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CRectangle.h(11,8):
+  'float CRectangle::X(void)' の可能性があります
+  	C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,15):
+  	'float CRectangle::X(void)': 'const CPlayer' から 'CRectangle &' へ 'this' ポインターを変換できません。
+  		C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,15):
+  		変換で修飾子が失われます。
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,15):
+  引数リスト '()' を一致させようとしているとき
+  
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,27): error C2663: 'CRectangle::X': オーバーロードされた関数に 'this' ポインターの有効な変換がありません
+  (ソース ファイル 'src/CPlayer.cpp' をコンパイルしています)
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CRectangle.h(11,8):
+  'float CRectangle::X(void)' の可能性があります
+  	C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,27):
+  	'float CRectangle::X(void)': 'const CPlayer' から 'CRectangle &' へ 'this' ポインターを変換できません。
+  		C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,27):
+  		変換で修飾子が失われます。
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,27):
+  引数リスト '()' を一致させようとしているとき
+  
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,47): error C2663: 'CRectangle::Y': オーバーロードされた関数に 'this' ポインターの有効な変換がありません
+  (ソース ファイル 'src/CPlayer.cpp' をコンパイルしています)
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CRectangle.h(12,8):
+  'float CRectangle::Y(void)' の可能性があります
+  	C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,47):
+  	'float CRectangle::Y(void)': 'const CPlayer' から 'CRectangle &' へ 'this' ポインターを変換できません。
+  		C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,47):
+  		変換で修飾子が失われます。
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,47):
+  引数リスト '()' を一致させようとしているとき
+  
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,59): error C2663: 'CRectangle::Y': オーバーロードされた関数に 'this' ポインターの有効な変換がありません
+  (ソース ファイル 'src/CPlayer.cpp' をコンパイルしています)
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CRectangle.h(12,8):
+  'float CRectangle::Y(void)' の可能性があります
+  	C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,59):
+  	'float CRectangle::Y(void)': 'const CPlayer' から 'CRectangle &' へ 'this' ポインターを変換できません。
+  		C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,59):
+  		変換で修飾子が失われます。
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,59):
+  引数リスト '()' を一致させようとしているとき
+  
+  main.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,15): error C2663: 'CRectangle::X': オーバーロードされた関数に 'this' ポインターの有効な変換がありません
+  (ソース ファイル 'src/main.cpp' をコンパイルしています)
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CRectangle.h(11,8):
+  'float CRectangle::X(void)' の可能性があります
+  	C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,15):
+  	'float CRectangle::X(void)': 'const CPlayer' から 'CRectangle &' へ 'this' ポインターを変換できません。
+  		C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,15):
+  		変換で修飾子が失われます。
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,15):
+  引数リスト '()' を一致させようとしているとき
+  
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,27): error C2663: 'CRectangle::X': オーバーロードされた関数に 'this' ポインターの有効な変換がありません
+  (ソース ファイル 'src/main.cpp' をコンパイルしています)
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CRectangle.h(11,8):
+  'float CRectangle::X(void)' の可能性があります
+  	C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,27):
+  	'float CRectangle::X(void)': 'const CPlayer' から 'CRectangle &' へ 'this' ポインターを変換できません。
+  		C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,27):
+  		変換で修飾子が失われます。
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,27):
+  引数リスト '()' を一致させようとしているとき
+  
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,47): error C2663: 'CRectangle::Y': オーバーロードされた関数に 'this' ポインターの有効な変換がありません
+  (ソース ファイル 'src/main.cpp' をコンパイルしています)
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CRectangle.h(12,8):
+  'float CRectangle::Y(void)' の可能性があります
+  	C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,47):
+  	'float CRectangle::Y(void)': 'const CPlayer' から 'CRectangle &' へ 'this' ポインターを変換できません。
+  		C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,47):
+  		変換で修飾子が失われます。
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,47):
+  引数リスト '()' を一致させようとしているとき
+  
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,59): error C2663: 'CRectangle::Y': オーバーロードされた関数に 'this' ポインターの有効な変換がありません
+  (ソース ファイル 'src/main.cpp' をコンパイルしています)
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CRectangle.h(12,8):
+  'float CRectangle::Y(void)' の可能性があります
+  	C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,59):
+  	'float CRectangle::Y(void)': 'const CPlayer' から 'CRectangle &' へ 'this' ポインターを変換できません。
+  		C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,59):
+  		変換で修飾子が失われます。
+  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.h(21,59):
+  引数リスト '()' を一致させようとしているとき
+  
+  コードを生成中...
