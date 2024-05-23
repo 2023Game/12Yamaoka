@@ -298,7 +298,7 @@ void CMesh::Init(CModelX* model)
 		mpVertex[i].Y(atof(model->GetToken()));
 		mpVertex[i].Z(atof(model->GetToken()));
 	}
-	delete[] mpVertex;
+
 
 	//–Ê”“Ç‚Ýž‚Ý
 	mFaceNum = atoi(model->GetToken());
