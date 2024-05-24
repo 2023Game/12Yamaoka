@@ -1,6 +1,7 @@
 #include "CApplication.h"
 #include "CRectangle.h"
 #include <vector>
+#include "CUi.h"
 
 std::vector<CPlayer> players;
 
@@ -17,6 +18,8 @@ void CApplication::Start()
 	player2.Set(600.0f, 50.0f, 50.0f, 50.0f);
 	player2.Texture(&texture2, 0, 600, 400, 0);
 	players.push_back(player2);
+
+	mFont.Load("FontWhite.png", 1, 64);
 }
 
 void CApplication::Update()
@@ -27,6 +30,8 @@ void CApplication::Update()
 		player.Render();
 		player.Update();
 	}
+
+	mFont.Draw(40.0f, 300.0f, 15.0f, 30.0f, 'I');
 }
 
 void UpdatePlayers()
@@ -42,10 +47,12 @@ void CApplication::OnMouseClick(float x, float y)
 {
 	for (auto& player : players)
 	{
+		/*
 		if (player.IsPointInside(x, y))
 		{
 			activePlayer = &player;
 			break;
 		}
+		*/
 	}
 }

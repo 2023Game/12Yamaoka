@@ -14,12 +14,14 @@ CRectangle::~CRectangle()
 
 void CRectangle::Render()
 {
+	/*
 	glBegin(GL_QUADS);
 	glVertex2f(100.0f, 100.0f);
 	glVertex2f(700.0f, 100.0f);
 	glVertex2f(700.0f, 500.0f);
 	glVertex2f(100.0f, 500.0f);
 	glEnd();
+	*/
 }
 
 void CRectangle::Render(float x, float y, float w, float h)

@@ -3,6 +3,8 @@
 #include "CTexture.h"
 #include "CPlayer.h"
 #include "CCharacter.h"
+#include "CFont.h"
+#include "CGame.h"
 
 class CApplication
 {
@@ -20,4 +22,6 @@ private:
 	CCharacter mCharacter;
 	CPlayer mPlayer;
 	CPlayer* activePlayer;
+	CFont mFont;
+	CGame* mpGame;
 };
