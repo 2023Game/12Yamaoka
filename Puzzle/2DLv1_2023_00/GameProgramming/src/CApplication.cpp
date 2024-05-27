@@ -11,16 +11,21 @@ void CApplication::Start()
 	player1.Set(100.0f, 50.0f, 50.0f, 50.0f);
 	player1.Texture(&texture1, 0, 600, 400, 0);
 	players.push_back(player1);
-	player1.SetPlayers(players);
 	
 	texture2.Load("orange.psd");
 	CPlayer player2;
 	player2.Set(600.0f, 50.0f, 50.0f, 50.0f);
 	player2.Texture(&texture2, 0, 600, 400, 0);
 	players.push_back(player2);
-	player2.SetPlayers(players);
+	
+	for (auto& player : players)
+	{
+		player.SetPlayers(players);
+	}
 
 	mFont.Load("FontWhite.png", 1, 64);
+
+	players[0].isActive = true;
 }
 
 void CApplication::Update()
@@ -35,25 +40,17 @@ void CApplication::Update()
 	mFont.Draw(40.0f, 300.0f, 15.0f, 30.0f, 'I');
 }
 
-void UpdatePlayers()
-{
-	for (auto& player : players)
-	{
-		player.HandleInput();
-		player.Update();
-	}
-}
-
 void CApplication::OnMouseClick(float x, float y)
 {
-	for (auto& player : players)
+	for (int i = 0; i < players.size(); i++)
 	{
-		/*
-		if (player.IsPointInside(x, y))
+		if (x >= players[i].X() && x <= players[i].X() + players[i].width &&
+			y >= players[i].Y() && y <= players[i].Y() + players[i].height)
 		{
-			activePlayer = &player;
+			players[activePlayerIndex].isActive = false;
+			activePlayerIndex = i;
+			players[activePlayerIndex].isActive = true;
 			break;
 		}
-		*/
 	}
 }

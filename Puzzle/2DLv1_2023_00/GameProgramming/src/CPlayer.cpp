@@ -35,25 +35,32 @@ int activePlayerIndex = 0;
 
 void CPlayer::Update()
 {
-	if (GetAsyncKeyState(VK_RETURN))
+	if (players == nullptr) return;
+
+	if (isActive)
 	{
-		activePlayerIndex++;
-		if (activePlayerIndex >= players->size())
+		if (GetAsyncKeyState(VK_RETURN))
 		{
-			activePlayerIndex = 0;
+			isActive = false;
+			activePlayerIndex++;
+			if (activePlayerIndex >= players->size())
+			{
+				activePlayerIndex = 0;
+			}
+			(*players)[activePlayerIndex].isActive = true;
 		}
 	}
 
 	if (isMoving && this == &(*players)[activePlayerIndex])
 	{
-		if (GetAsyncKeyState(VK_DOWN))
-		{
-			float y = Y() - 4.0f;
-			Y(y);
-		}
 		if (GetAsyncKeyState(VK_UP))
 		{
 			float y = Y() + 4.0f;
+			Y(y);
+		}
+		if (GetAsyncKeyState(VK_DOWN))
+		{
+			float y = Y() - 4.0f;
 			Y(y);
 		}
 
@@ -107,6 +114,8 @@ void CPlayer::Update()
 
 void CPlayer::HandleInput()
 {
+	if (players == nullptr)return;
+
 	POINT mousePos;
 	if (GetCursorPos(&mousePos))
 	{
@@ -122,3 +131,10 @@ void CPlayer::HandleInput()
 		}
 	}
 }
+
+/*
+	moveUp = GetAsyncKeyState(VK_UP);
+	moveDown = GetAsyncKeyState(VK_DOWN);
+	moveLeft = GetAsyncKeyState(VK_LEFT);
+	moveRight = GetAsyncKeyState(VK_RIGHT);
+	*/

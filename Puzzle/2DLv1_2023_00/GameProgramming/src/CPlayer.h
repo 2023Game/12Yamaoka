@@ -5,11 +5,21 @@
 #include "CRectangle.h"
 
 class CPlayer :public CCharacter
-//	, public CRectangle
 {
 public:
+	bool isActive = false;
+	CPlayer():players(nullptr){}
+
+	bool moveUp = false;
+	bool moveDown = false;
+	bool moveLeft = false;
+	bool moveRight = false;
+
 	void Update();
 	void HandleInput();
+
+	float width;
+	float height;
 
 	void SetSize(float width, float height)
 	{
@@ -17,20 +27,11 @@ public:
 		this->height = height;
 	}
 
-	/*
-	bool CPlayer::IsPointInside(float x, float y) const
-	{
-		return x >= X() && x <= X() + width && y >= Y() && y <= Y() + height;
-	}
-	*/
-
 	void SetPlayers(std::vector<CPlayer>& players)
 	{
 		this->players = &players;
 	}
 private:
 	CInput mInput;
-	float width;
-	float height;
 	std::vector<CPlayer>* players;
 };

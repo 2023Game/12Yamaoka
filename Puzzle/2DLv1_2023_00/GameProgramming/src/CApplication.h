@@ -14,6 +14,7 @@ public:
 	//ŒJ‚è•Ô‚µÀs‚·‚éƒvƒƒOƒ‰ƒ€
 	void Update();
 	void OnMouseClick(float x, float y);
+	int activePlayerIndex = 0;
 private:
 	CRectangle mRectangle;
 	CTexture mTexture;
