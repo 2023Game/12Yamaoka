@@ -29,18 +29,22 @@ void CPlayer::Update()
 
 #include "CPlayer.h"
 #include <windows.h>
-#include <vector>
 
 bool isMoving = true;
+int activePlayerIndex = 0;
 
 void CPlayer::Update()
 {
 	if (GetAsyncKeyState(VK_RETURN))
 	{
-		isMoving = false;
+		activePlayerIndex++;
+		if (activePlayerIndex >= players->size())
+		{
+			activePlayerIndex = 0;
+		}
 	}
 
-	if (isMoving)
+	if (isMoving && this == &(*players)[activePlayerIndex])
 	{
 		if (GetAsyncKeyState(VK_DOWN))
 		{

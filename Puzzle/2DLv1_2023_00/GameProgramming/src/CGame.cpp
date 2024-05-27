@@ -1,4 +1,5 @@
 #include "CGame.h"
+#include "CApplication.h"
 
 CGame::CGame()
 	:mpUi(nullptr)

@@ -24,8 +24,13 @@ public:
 	}
 	*/
 
+	void SetPlayers(std::vector<CPlayer>& players)
+	{
+		this->players = &players;
+	}
 private:
 	CInput mInput;
 	float width;
 	float height;
+	std::vector<CPlayer>* players;
 };
