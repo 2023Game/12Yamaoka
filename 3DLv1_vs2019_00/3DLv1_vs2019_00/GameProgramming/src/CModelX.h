@@ -8,6 +8,7 @@ class CModelXFrame; //CModelXFrameクラスの宣言
 class CMesh; //CMeshクラスの宣言
 class CMaterial; //マテリアルの宣言
 class CSkinWeights; //スキンウェイトクラス
+class CAnimationSet; //アニメーションセットクラス
 
 //領域開放をマクロ化
 #define SAFE_DELETE_ARRAY(a) { if(a) delete[] a; a = nullptr;}
@@ -18,6 +19,7 @@ Xファイル形式の3Dモデルデータをプログラムで認識する
 class CModelX
 {
 	friend CModelXFrame;
+	friend CAnimationSet;
 public:
 	~CModelX();
 	//ノードの読み飛ばし
@@ -36,6 +38,7 @@ private:
 	char mToken[1024]; //取り出した単語の領域
 	//cが区切り文字ならtrueを返す
 	bool IsDelimiter(char c);
+	std::vector<CAnimationSet*> mAnimationSet; //アニメーションセットの配列
 };
 
 //CModelXFrameクラスの定義
@@ -97,6 +100,16 @@ private:
 	int* mpIndex;      //頂点番号配列
 	float* mpWeight;   //頂点ウェイト配列
 	CMatrix mOffset;   //オフセットマトリックス
+};
+
+//アニメーションセット
+class CAnimationSet
+{
+public:
+	CAnimationSet(CModelX* model);
+	~CAnimationSet();
+private:
+	char* mpName; //アニメーションセット名
 };
 
 #endif
