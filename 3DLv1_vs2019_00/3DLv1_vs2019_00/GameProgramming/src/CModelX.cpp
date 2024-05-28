@@ -170,6 +170,52 @@ void CModelX::SkipNode()
 	}
 }
 
+//スキンウェイトの読み込み
+CSkinWeights::CSkinWeights(CModelX* model)
+	:mpFrameName(nullptr)
+	, mFrameIndex(0)
+	, mIndexNum(0)
+	, mpIndex(nullptr)
+	, mpWeight(nullptr)
+{
+	model->GetToken();  // {
+	model->GetToken();  // FrameName
+	//フレーム名エリア確保、設定
+	mpFrameName = new char[strlen(model->Token()) + 1];
+	strcpy(mpFrameName, model->Token());
+
+	//頂点番号数取得
+	mIndexNum = atoi(model->GetToken());
+	//頂点番号数が0を超える
+	if (mIndexNum > 0)
+	{
+		//頂点番号と頂点ウェイトのエリア確保
+		mpIndex = new int[mIndexNum];
+		mpWeight = new float[mIndexNum];
+		//頂点番号取得
+		for (int i = 0; i < mIndexNum; i++)
+			mpIndex[i] = atoi(model->GetToken());
+		//頂点ウェイト取得
+		for (int i = 0; i < mIndexNum; i++)
+			mpWeight[i] = atof(model->GetToken());
+	}
+	//オフセット行列取得
+	for (int i = 0; i < 16; i++)
+	{
+		mOffset.M()[i] = atof(model->GetToken());
+	}
+	model->GetToken(); // }
+
+#ifdef _DEBUG
+	printf("SkinWeights%s\n", mpFrameName);
+	for (int i = 0; i < mIndexNum; i++)
+	{
+		printf("%3d %10f\n", mpIndex[i], mpWeight[i]);
+	}
+	mOffset.Print();
+#endif
+}
+
 /*
 CModelXFrame
 model:CModelXインスタンスへのポインタ
@@ -273,6 +319,18 @@ CMesh::~CMesh()
 	SAFE_DELETE_ARRAY(mpVertexIndex);
 	SAFE_DELETE_ARRAY(mpNormal);
 	SAFE_DELETE_ARRAY(mpMaterialIndex);
+	//スキンウェイトの削除
+	for (size_t i = 0; i < mSkinWeights.size(); i++)
+	{
+		delete mSkinWeights[i];
+	}
+}
+
+CSkinWeights::~CSkinWeights()
+{
+	SAFE_DELETE_ARRAY(mpFrameName);
+	SAFE_DELETE_ARRAY(mpIndex);
+	SAFE_DELETE_ARRAY(mpWeight);
 }
 
 /*
@@ -281,7 +339,6 @@ Meshのデータを取り込む
 */
 void CMesh::Init(CModelX* model)
 {
-
 	if (!strchr(model->Token(), '{'))
 	{
 		model->GetToken();
@@ -299,7 +356,6 @@ void CMesh::Init(CModelX* model)
 		mpVertex[i].Z(atof(model->GetToken()));
 	}
 
-
 	//面数読み込み
 	mFaceNum = atoi(model->GetToken());
 	//頂点数は１面に３頂点
@@ -311,8 +367,6 @@ void CMesh::Init(CModelX* model)
 		mpVertexIndex[i + 1] = atoi(model->GetToken());
 		mpVertexIndex[i + 2] = atoi(model->GetToken());
 	}
-
-
 
 	//単語がある間繰り返し
 	while (!model->EOT())
@@ -381,8 +435,20 @@ void CMesh::Init(CModelX* model)
 			}
 			model->GetToken();	// } //End of MeshMaterialList
 		} //End of MeshMaterialList
+		//SkinWeightのとき
+		else if (strcmp(model->Token(), "SkinWeights") == 0)
+		{
+			//CSkinWeightsクラスのインスタンスを作成し、配列に追加
+			mSkinWeights.push_back(new CSkinWeights(model));
+		}
+		else
+		{
+			//以外のノードは読み飛ばし
+			model->SkipNode();
+		}
 	}
 #ifdef _DEBUG
+	/*
 	//デバッグ時に、読み込んだ頂点数と頂点座用をコンソール出力する
 	printf("VertexNum:%d\n", mVertexNum);
 	for (int i = 0; i < mVertexNum; i++)
@@ -402,6 +468,8 @@ void CMesh::Init(CModelX* model)
 	{
 		printf("%10f %10f %10f\n", mpNormal[i].X(), mpNormal[i].Y(), mpNormal[i].Z());
 	}
+	*/
+	//デバッグ時に、スキンウェイトごとに表示する
 #endif
 
 }

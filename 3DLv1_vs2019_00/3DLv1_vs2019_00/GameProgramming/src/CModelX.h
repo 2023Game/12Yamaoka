@@ -7,6 +7,7 @@ class CModelX; //CModelクラスの宣言
 class CModelXFrame; //CModelXFrameクラスの宣言
 class CMesh; //CMeshクラスの宣言
 class CMaterial; //マテリアルの宣言
+class CSkinWeights; //スキンウェイトクラス
 
 //領域開放をマクロ化
 #define SAFE_DELETE_ARRAY(a) { if(a) delete[] a; a = nullptr;}
@@ -50,8 +51,8 @@ public:
 private:
 	std::vector<CModelXFrame*> mChild; //子フレームの配列
 	CMatrix mTransformMatrix; //変換行列
-	char* mpName; //フレーム名前
-	int mIndex; //フレーム番号
+	char* mpName;  //フレーム名前
+	int mIndex;    //フレーム番号
 	CMesh* mpMesh; //Meshデータ
 };
 
@@ -66,16 +67,36 @@ public:
 	void Init(CModelX* model);
 	void Render();
 private:
-	int mVertexNum; //頂点座標
-	CVector* mpVertex; //頂点データ
-	int mFaceNum; //面積
+	int mVertexNum;     //頂点座標
+	CVector* mpVertex;  //頂点データ
+	int mFaceNum;       //面積
 	int* mpVertexIndex; //面を構成する頂点インデックス
-	int mNormalNum; //法線数
-	CVector* mpNormal; //法線ベクトル
+	int mNormalNum;     //法線数
+	CVector* mpNormal;  //法線ベクトル
 	int mMaterialNum;	//マテリアル数
-	int mMaterialIndexNum;//マテリアル番号数（面数）
-	int* mpMaterialIndex;	  //マテリアル番号
-	std::vector<CMaterial*> mMaterial;//マテリアルデータ
+	int mMaterialIndexNum; //マテリアル番号数（面数）
+	int* mpMaterialIndex;  //マテリアル番号
+	std::vector<CMaterial*> mMaterial;      //マテリアルデータ
+	std::vector<CSkinWeights*>mSkinWeights; //スキンウェイト
+};
+
+//スキンウェイトクラス
+class CSkinWeights 
+{
+	friend CModelX;
+	friend CMesh;
+public:
+	CSkinWeights(CModelX* model);
+	~CSkinWeights();
+	const int& FrameIndex();
+	const CMatrix& Offiset();
+private:
+	char* mpFrameName; //フレーム名
+	int mFrameIndex;   //フレーム番号
+	int mIndexNum;     //頂点番号数
+	int* mpIndex;      //頂点番号配列
+	float* mpWeight;   //頂点ウェイト配列
+	CMatrix mOffset;   //オフセットマトリックス
 };
 
 #endif
