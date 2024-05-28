@@ -1,3 +1,3 @@
-﻿  CPlayer.cpp
-C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CPlayer.cpp(41,25): warning C4018: '>=': signed と unsigned の数値を比較しようとしました。
+﻿  CApplication.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CApplication.cpp(59,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
   GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\Debug\GameProgramming.exe

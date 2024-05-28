@@ -1,6 +1,7 @@
 #pragma once
 #include "CFont.h"
 
+//ユーザーインターフェースクラス
 class CUi
 {
 public:
@@ -8,6 +9,6 @@ public:
 	void Time(int time);
 	void Render();
 private:
-	int mTime;
+	int mTime; //経過時間
 	CFont mFont;
 };

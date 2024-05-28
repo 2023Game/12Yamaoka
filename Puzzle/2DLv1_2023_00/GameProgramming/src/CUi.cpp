@@ -16,16 +16,5 @@ void CUi::Render()
 {
 	char str[16];
 	sprintf(str, "TIME:%03d", mTime);
-
-	float x = 400;
-	float y = 300;
-	float w = 10;
-	float h = 20;
-
-	for (int i = 0; str[i] != '\0'; i++)
-	{
-		mFont.Draw(x, y, w, h, str[i]);
-		x += w;
-	}
-	//mFont.Draw(620, 580, 10, 20, str);
+	mFont.Draw(620, 580, 10, 20, str);
 }

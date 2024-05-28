@@ -20,6 +20,8 @@ private:
 	CTexture mTexture;
 	CTexture texture1;
 	CTexture texture2;
+	CTexture texture3;
+	CTexture texture4;
 	CCharacter mCharacter;
 	CPlayer mPlayer;
 	CPlayer* activePlayer;
