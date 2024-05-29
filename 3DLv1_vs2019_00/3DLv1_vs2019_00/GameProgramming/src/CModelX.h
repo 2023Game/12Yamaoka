@@ -9,6 +9,7 @@ class CMesh; //CMeshクラスの宣言
 class CMaterial; //マテリアルの宣言
 class CSkinWeights; //スキンウェイトクラス
 class CAnimationSet; //アニメーションセットクラス
+class CAnimation; //アニメーションクラス
 
 //領域開放をマクロ化
 #define SAFE_DELETE_ARRAY(a) { if(a) delete[] a; a = nullptr;}
@@ -20,6 +21,7 @@ class CModelX
 {
 	friend CModelXFrame;
 	friend CAnimationSet;
+	friend CAnimation;
 public:
 	~CModelX();
 	//ノードの読み飛ばし
@@ -32,6 +34,7 @@ public:
 	char* Token();
 	void Render();
 	bool EOT(); // トークンが無くなったらtrue
+	CModelXFrame* FindFrame(char* name); //フレーム名に該当するフレームのアドレスを返す
 private:
 	std::vector<CModelXFrame*> mFrame; //フレームの配列
 	char* mpPointer; //読み込み位置
@@ -45,12 +48,17 @@ private:
 class CModelXFrame
 {
 	friend CModelX;
+	friend CAnimation;
 public:
 	//コンストラクタ
 	CModelXFrame(CModelX* model);
 	//デストラクタ
 	~CModelXFrame();
 	void Render();
+	int Index()
+	{
+		return mIndex;
+	}
 private:
 	std::vector<CModelXFrame*> mChild; //子フレームの配列
 	CMatrix mTransformMatrix; //変換行列
@@ -110,6 +118,19 @@ public:
 	~CAnimationSet();
 private:
 	char* mpName; //アニメーションセット名
+	std::vector<CAnimation*> mAnimation; //アニメーション
+};
+
+//アニメーションクラス
+class CAnimation
+{
+	friend CAnimationSet;
+public:
+	CAnimation(CModelX* model);
+	~CAnimation();
+private:
+	char* mpFrameName; //フレーム名
+	int mFrameIndex;   //フレーム番号
 };
 
 #endif
