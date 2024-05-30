@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CPLAYER_H
+#define CPLAYER_H
 #include "CCharacter.h"
 #include "CInput.h"
 #include <vector>
@@ -31,7 +32,11 @@ public:
 	{
 		this->players = &players;
 	}
+
+	void SetActivePlayer(int index);
 private:
 	CInput mInput;
 	std::vector<CPlayer>* players;
 };
+
+#endif

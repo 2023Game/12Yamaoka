@@ -15,6 +15,8 @@ public:
 	void Update();
 	void OnMouseClick(float x, float y);
 	int activePlayerIndex = 0;
+	std::vector<CPlayer> players;
+	void SetActivePlayer(int index);
 private:
 	CRectangle mRectangle;
 	CTexture mTexture;

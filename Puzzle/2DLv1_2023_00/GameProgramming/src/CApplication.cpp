@@ -2,8 +2,6 @@
 #include <vector>
 #include "CUi.h"
 
-std::vector<CPlayer> players;
-
 void CApplication::Start()
 {	
 	texture1.Load("apple.psd");
@@ -45,13 +43,12 @@ void CApplication::Start()
 void CApplication::Update()
 {
 	mRectangle.Render();
+	mpGame->Update();
 	for (auto& player : players)
 	{
 		player.Render();
 		player.Update();
 	}
-
-	mpGame->Update();
 }
 
 void CApplication::OnMouseClick(float x, float y)
@@ -68,3 +65,15 @@ void CApplication::OnMouseClick(float x, float y)
 		}
 	}
 }
+
+/*
+void CApplication::SetActivePlayer(int index)
+{
+	if (index>=0&&index<players.size())
+	{
+		players[activePlayerIndex].isActive = false;
+		activePlayerIndex = index;
+		players[activePlayerIndex].isActive = true;
+	}
+}
+*/
