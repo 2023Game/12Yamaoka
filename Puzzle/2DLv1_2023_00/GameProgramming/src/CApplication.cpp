@@ -42,6 +42,21 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
+	if (GetAsyncKeyState(VK_RETURN) & 0x8000)
+	{
+		//現在のplayerを非アクティブに設定
+		players[activePlayerIndex].isActive = false;
+		//次のplayerのインデックスに移動
+		activePlayerIndex++;
+		//プレイヤーリストの最後に達したら最初に戻る
+		if (activePlayerIndex >= players.size())
+		{
+			activePlayerIndex = 0;
+		}
+		//新しいアクティブプレイヤーを設定
+		SetActivePlayer(activePlayerIndex);
+	}
+
 	mRectangle.Render();
 	mpGame->Update();
 	for (auto& player : players)
@@ -66,14 +81,13 @@ void CApplication::OnMouseClick(float x, float y)
 	}
 }
 
-/*
 void CApplication::SetActivePlayer(int index)
 {
-	if (index>=0&&index<players.size())
+	if (index >= 0 && index < players.size())
 	{
 		players[activePlayerIndex].isActive = false;
 		activePlayerIndex = index;
 		players[activePlayerIndex].isActive = true;
 	}
 }
-*/
+

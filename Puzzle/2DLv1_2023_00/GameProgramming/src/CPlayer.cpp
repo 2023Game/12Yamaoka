@@ -11,64 +11,7 @@ int activePlayerIndex = 0;
 
 void CPlayer::Update()
 {
-    int mx, my; //マウスカーソル座標取得用
-    CInput::GetMousePos(&mx, &my); //マウスカーソルの取得
-    
-    //マウスクリック検出
-    if (CKey::Push(VK_LBUTTON))
-    {
-        printf("%d,%d\n", mx, my);
-    }
-
-    //ゲーム画面中心からの座標へ変換する
-    mx -= MOS_POS_X;
-    my = MOS_POS_Y - my;
-
-    //プレイヤーとマウス座標との差を求める
-    mx -= x;
-    my -= y;
-
-    //距離が遠い方へ移動させる
-    if (abs(mx) > abs(my))
-    {
-        if (mx < 0)
-        {
-            x -= 3;
-            mFx = -1;
-            mFy = 0;
-        }
-        else
-        {
-            x += 3;
-            mFx = 1;
-            mFy = 0;
-        }
-    }
-
     if (players == nullptr) return;
-
-    if (isActive)
-    {
-        if (GetAsyncKeyState(VK_RETURN)& 0x8000)
-        {
-            isActive = false;
-            activePlayerIndex++;
-            if (activePlayerIndex >= players->size())
-            {
-                activePlayerIndex = 0;
-            }
-            (*players)[activePlayerIndex].isActive = true;
-        }
-
-        if (GetAsyncKeyState('1') & 0x8000)
-        {
-            SetActivePlayer(0);
-        }
-        else if (GetAsyncKeyState('2') & 0x8000)
-        {
-            SetActivePlayer(1);
-        }
-    }
 
     if (isMoving && isActive)
     {
@@ -130,26 +73,26 @@ void CPlayer::Update()
         }
     }
 }
+
 void CPlayer::HandleInput()
 {
-	if (players == nullptr)return;
+    if (players == nullptr)return;
 
-	POINT mousePos;
-	if (GetCursorPos(&mousePos))
-	{
-		ScreenToClient(HWND_BOTTOM, &mousePos);
-		if (GetAsyncKeyState(VK_LBUTTON))
-		{
-			if (mousePos.x >= X() && mousePos.x <= X() + width &&
-				mousePos.y >= Y() && mousePos.y <= Y() + height)
-			{
-				float y = Y() + 4.0f;
-				Y(y);
-			}
-		}
-	}
+    POINT mousePos;
+    if (GetCursorPos(&mousePos))
+    {
+        ScreenToClient(HWND_BOTTOM, &mousePos);
+        if (GetAsyncKeyState(VK_LBUTTON))
+        {
+            if (mousePos.x >= X() && mousePos.x <= X() + width &&
+                mousePos.y >= Y() && mousePos.y <= Y() + height)
+            {
+                float y = Y() + 4.0f;
+                Y(y);
+            }
+        }
+    }
 }
-
 
 void CPlayer::SetActivePlayer(int index)
 {
@@ -161,9 +104,21 @@ void CPlayer::SetActivePlayer(int index)
     }
 }
 
-/*
-	moveUp = GetAsyncKeyState(VK_UP);
-	moveDown = GetAsyncKeyState(VK_DOWN);
-	moveLeft = GetAsyncKeyState(VK_LEFT);
-	moveRight = GetAsyncKeyState(VK_RIGHT);
-*/
+void CPlayer::Render()
+{
+    CCharacter::Render();
+
+    if (isActive)
+    {
+        //枠の色と太さ
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glLineWidth(3.0f);
+        //枠
+        glBegin(GL_LINE_LOOP);
+        glVertex2f(X() - width / 2, Y() - height / 2);
+        glVertex2f(X() + width / 2, Y() - height / 2);
+        glVertex2f(X() + width / 2, Y() + height / 2);
+        glVertex2f(X() - width / 2, Y() + height / 2);
+        glEnd();
+    }
+}

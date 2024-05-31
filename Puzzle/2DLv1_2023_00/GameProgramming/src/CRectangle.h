@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CRECTANGLE_H
+#define CRECTANGLE_H
 
 class CRectangle
 {
@@ -20,3 +21,5 @@ private:
 	float mW;
 	float mH;
 };
+
+#endif

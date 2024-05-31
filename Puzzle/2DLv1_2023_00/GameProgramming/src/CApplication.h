@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CAPPLICARION_H
+#define CAPPLICARION_H
 #include "CRectangle.h"
 #include "CTexture.h"
 #include "CPlayer.h"
@@ -30,3 +31,5 @@ private:
 	CFont mFont;
 	CGame* mpGame;
 };
+
+#endif

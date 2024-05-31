@@ -87,7 +87,7 @@ int main(void)
 		return -1;
 	}
 	//ウィンドウポインタ変数の設定
-	CInput::Init(window);
+	//CInput::Init(window);
 
 	// Make the window's context current
 	glfwMakeContextCurrent(window);

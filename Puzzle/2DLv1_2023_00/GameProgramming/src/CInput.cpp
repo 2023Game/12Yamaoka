@@ -20,3 +20,8 @@ void CInput::GetMousePos(int* px, int* py)
 	*py = ypos;
 	return;
 }
+
+void CInput::Init(GLFWwindow* w)
+{
+	mpWindow = w;
+}

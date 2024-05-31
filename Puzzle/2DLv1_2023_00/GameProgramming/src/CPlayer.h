@@ -34,6 +34,7 @@ public:
 	}
 
 	void SetActivePlayer(int index);
+	void Render();
 private:
 	CInput mInput;
 	std::vector<CPlayer>* players;

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CCHARACTER_H
+#define CCHARACTER_H
 #include "CRectangle.h"
 #include "CTexture.h"
 
@@ -11,3 +12,5 @@ private:
 	CTexture* mpTexture;
 	int mLeft, mRight, mBottom, mTop;
 };
+
+#endif
