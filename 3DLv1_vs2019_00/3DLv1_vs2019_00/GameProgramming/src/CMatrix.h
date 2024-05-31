@@ -55,6 +55,7 @@ public:
 	CVector VectorY() const; //Y軸ベクトルの取得
 	//要素数の取得
 	int Size();
+	CMatrix Quaternion(float x, float y, float z, float w);
 private:
 	//４×４の行列データを設定
 	float mM[4][4];
