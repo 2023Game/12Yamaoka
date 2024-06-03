@@ -105,3 +105,11 @@ void CApplication::ChangeState(GameState newState)
 {
 	mCurrentState = newState;
 }
+
+void CApplication::OnMouseClick(float x, float y)
+{
+	if (mText.IsClicked(x, y))
+	{
+
+	}
+}

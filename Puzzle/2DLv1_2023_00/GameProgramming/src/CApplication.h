@@ -6,6 +6,7 @@
 #include "CCharacter.h"
 #include "CFont.h"
 #include "CGame.h"
+#include "CText.h"
 
 enum class GameState
 {
@@ -27,6 +28,7 @@ public:
 	std::vector<CPlayer> players;
 	void SetActivePlayer(int index);
 	void ChangeState(GameState newState);
+	void OnMouseClick(float x, float y);
 private:
 	CRectangle mRectangle;
 	CTexture mTexture;
@@ -40,6 +42,7 @@ private:
 	CFont mFont;
 	CGame* mpGame;
 	GameState mCurrentState;
+	CText mText;
 };
 
 #endif
