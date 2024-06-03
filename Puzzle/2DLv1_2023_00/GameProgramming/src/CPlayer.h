@@ -8,19 +8,24 @@
 class CPlayer :public CCharacter
 {
 public:
-	bool isActive = false;
 	CPlayer():players(nullptr){}
 
+	bool isActive = false;
 	bool moveUp = false;
 	bool moveDown = false;
 	bool moveLeft = false;
 	bool moveRight = false;
+	bool isMoving = true;
 
-	void Update();
-	void HandleInput();
+	int activePlayerIndex = 0;
 
 	float width;
 	float height;
+
+	void Update();
+	void HandleInput();
+	void SetActivePlayer(int index);
+	void Render();
 
 	void SetSize(float width, float height)
 	{
@@ -32,9 +37,6 @@ public:
 	{
 		this->players = &players;
 	}
-
-	void SetActivePlayer(int index);
-	void Render();
 private:
 	CInput mInput;
 	std::vector<CPlayer>* players;

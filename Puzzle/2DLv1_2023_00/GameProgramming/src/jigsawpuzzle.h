@@ -5,6 +5,7 @@ class jigsawpuzzle
 public:
 
 private:
+	
 };
 /*
 #include<stdio.h>

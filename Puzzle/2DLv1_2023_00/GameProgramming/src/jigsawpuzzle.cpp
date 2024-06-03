@@ -1,4 +1,66 @@
+
 /*
+#include "jigsawpuzzle.h"
+#include <vector>
+#include <map>
+
+JigsawPiece piece;
+DefineJigsawPieceEdges(piece);
+
+struct JigsawPiece
+{
+	std::vector<POINT> shape; //ピースの形状
+	std::map<int, JigsawPiece> connections; //ピースの接続情報
+	float x, y; //ピースの位置
+	bool isInCorrectPosition; //正しい位置にあるか
+
+	//コンストラクタ
+	JigsawPiece() :x(0), y(0), isInCorrectPosition(false) {}
+
+	//ピースの形状を設定するメソッド
+	void SetShape(const std::vector<POINT>& newShape)
+	{
+		shape = newShape;
+	}
+
+	//ピースの接続情報を追加するメソッド
+	void AddConnection(int edgeIndex, JigsawPiece* otherPiece)
+	{
+		connections[edgeIndex] = otherPiece;
+	}
+
+	//ピースの位置を更新するメソッド
+	void SetPointion(float newX, float newY)
+	{
+		x = newX;
+		y = newY;
+	}
+
+	//ピースが正しい位置にあるかをチェックするメソッド
+	void ChackPosition()
+	{
+
+	}
+};
+
+void DefineJigsawPieceEdges(JigsawPiece& piece)
+{
+	std::vector<POINT> edges;
+
+	edges.push_back({ 0,0 });    //左上の頂点
+	edges.push_back({ 25,-10 }); //上エッジのへこみ
+	edges.push_back({ 50,0 });   //右上の頂点
+	edges.push_back({ 60,25 });  //右エッジのへこみ
+	edges.push_back({ 50,50 });  //右下の頂点
+	edges.push_back({ 25,60 });  //下エッジのへこみ
+	edges.push_back({ 0,50 });   //左下の頂点
+	edges.push_back({ -10,25 }); //左エッジのへこみ
+
+	piece.SetShape(edges);
+}
+
+
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<conio.h>

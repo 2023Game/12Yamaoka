@@ -12,6 +12,11 @@ bool CInput::Key(char key)
 
 GLFWwindow* CInput::mpWindow = nullptr;
 
+void CInput::Init(GLFWwindow* w)
+{
+	mpWindow = w;
+}
+
 void CInput::GetMousePos(int* px, int* py)
 {
 	double xpos, ypos;
@@ -19,9 +24,4 @@ void CInput::GetMousePos(int* px, int* py)
 	*px = xpos;
 	*py = ypos;
 	return;
-}
-
-void CInput::Init(GLFWwindow* w)
-{
-	mpWindow = w;
 }
