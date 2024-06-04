@@ -43,8 +43,7 @@ public:
 	//行列値の代入
 	//M(行数,列数,値)
 	void M(int row, int col, float value);
-	//*演算子のオーバーロード
-	//CMatrix * CMatrix の演算結果を返す
+	//*演算子のオーバーロード CMatrix * CMatrix の演算結果を返す
 	const CMatrix operator*(const CMatrix &m) const;
 	//行列の取得
 	float* M() const;
@@ -56,6 +55,12 @@ public:
 	//要素数の取得
 	int Size();
 	CMatrix Quaternion(float x, float y, float z, float w);
+	//*演算子のオーバーロード CMatrix * froat の演算結果を返す
+	CMatrix operator*(const float& x) const;
+	//+演算子のオーバーロード CMatrix1 + CMatrix2 の演算結果を返す
+	CMatrix operator+(const CMatrix& m)const;
+	//+=演算子のオーバーロード CMatrix1 += CMatrix2 の演算を行う
+	void operator += (const CMatrix& m);
 private:
 	//４×４の行列データを設定
 	float mM[4][4];
