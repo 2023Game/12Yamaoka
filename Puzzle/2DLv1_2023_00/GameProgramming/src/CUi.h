@@ -8,7 +8,7 @@ public:
 	CUi();
 	void Time(int time);
 	void Render();
-	void Start(); //スタート画面
+	void Title(); //タイトル画面
 private:
 	int mTime; //経過時間
 	CFont mFont;

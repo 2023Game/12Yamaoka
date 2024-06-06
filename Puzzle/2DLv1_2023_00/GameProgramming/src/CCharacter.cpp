@@ -1,3 +1,4 @@
+
 #include "CCharacter.h"
 
 void CCharacter::Texture(CTexture* pTexture, int left, int right, int bottom, int top)

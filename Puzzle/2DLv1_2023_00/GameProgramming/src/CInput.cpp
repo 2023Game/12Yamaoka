@@ -1,10 +1,5 @@
 #include "CInput.h"
 
-CInput::CInput()
-{
-	
-}
-
 bool CInput::Key(char key)
 {
 	return GetAsyncKeyState(key) < 0;
@@ -24,4 +19,9 @@ void CInput::GetMousePos(int* px, int* py)
 	*px = xpos;
 	*py = ypos;
 	return;
+}
+
+CInput::CInput()
+{
+
 }

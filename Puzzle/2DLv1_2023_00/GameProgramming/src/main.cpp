@@ -4,13 +4,11 @@
 #include "GLFW/glfw3.h"
 #include "main.h"
 #include "CApplication.h"
-#include "CInput.h"
+//#include "CInput.h"
 
 CApplication gApplication;
 
-/* display関数
-1秒間に60回実行される
-*/
+//display関数　1秒間に60回実行される
 void display() {
 	//各バッファーをクリア
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -87,7 +85,7 @@ int main(void)
 		return -1;
 	}
 	//ウィンドウポインタ変数の設定
-	CInput::Init(window);
+//	CInput::Init(window);
 
 	// Make the window's context current
 	glfwMakeContextCurrent(window);

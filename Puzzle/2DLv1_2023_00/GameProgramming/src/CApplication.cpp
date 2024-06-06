@@ -2,12 +2,6 @@
 #include <vector>
 #include "CUi.h"
 
-CApplication::CApplication()
-	:mCurrentState(GameState::START_SCREEN)
-{
-
-}
-
 void CApplication::Start()
 {	
 	texture1.Load("apple.psd");
@@ -44,11 +38,12 @@ void CApplication::Start()
 	players[0].isActive = true;
 
 	mpGame = new CGame();
+	mpTitle = new CTitle();
 }
 
 void CApplication::Update()
 {
-	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
+	if (GetAsyncKeyState(VK_RETURN) & 0x8000)
 	{
 		//現在のplayerを非アクティブに設定
 		players[activePlayerIndex].isActive = false;
@@ -62,7 +57,7 @@ void CApplication::Update()
 		//新しいアクティブプレイヤーを設定
 		SetActivePlayer(activePlayerIndex);
 	}
-
+	
 	if (GetAsyncKeyState(VK_RETURN) & 0x8000)
 	{
 		if (mCurrentState == GameState::START_SCREEN)
@@ -70,14 +65,15 @@ void CApplication::Update()
 			ChangeState(GameState::GAMEPLAY);
 		}
 	}
-
+	
 	switch (mCurrentState)
 	{
 	case GameState::START_SCREEN:
+		mRectangle.Render();
+		//mpTitle->Update();
 		break;
 
 	case GameState::GAMEPLAY:
-		mRectangle.Render();
 		mpGame->Update();
 		for (auto& player : players)
 		{
@@ -106,6 +102,15 @@ void CApplication::ChangeState(GameState newState)
 	mCurrentState = newState;
 }
 
+/*
+CApplication::CApplication()
+	:mCurrentState(GameState::START_SCREEN)
+{
+
+}
+*/
+
+/*
 void CApplication::OnMouseClick(float x, float y)
 {
 	if (mText.IsClicked(x, y))
@@ -113,3 +118,4 @@ void CApplication::OnMouseClick(float x, float y)
 
 	}
 }
+*/

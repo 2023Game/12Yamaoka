@@ -6,7 +6,7 @@
 #include "CCharacter.h"
 #include "CFont.h"
 #include "CGame.h"
-#include "CText.h"
+#include "CTitle.h"
 
 enum class GameState
 {
@@ -18,7 +18,7 @@ enum class GameState
 class CApplication
 {
 public:
-	CApplication();
+//	CApplication();
 	//最初に一度だけ実行するプログラム
 	void Start();
 	//繰り返し実行するプログラム
@@ -28,7 +28,6 @@ public:
 	std::vector<CPlayer> players;
 	void SetActivePlayer(int index);
 	void ChangeState(GameState newState);
-	void OnMouseClick(float x, float y);
 private:
 	CRectangle mRectangle;
 	CTexture mTexture;
@@ -42,7 +41,8 @@ private:
 	CFont mFont;
 	CGame* mpGame;
 	GameState mCurrentState;
-	CText mText;
+	CTitle* mpTitle;
+//	CText mText;
 };
 
 #endif

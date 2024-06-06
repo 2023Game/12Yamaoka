@@ -1,9 +1,4 @@
-﻿  CApplication.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': マクロが再定義されました。
-  (ソース ファイル 'src/CApplication.cpp' をコンパイルしています)
-  C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\include\GLFW\glfw3.h(98,1):
-  'APIENTRY' の以前の定義を確認してください
-  
-C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CApplication.cpp(58,25): warning C4018: '>=': signed と unsigned の数値を比較しようとしました。
-C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\GameProgramming\src\CApplication.cpp(96,26): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+﻿  main.cpp
+LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
+LINK : warning LNK4098: defaultlib 'LIBCMT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
   GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\Puzzle\2DLv1_2023_00\Debug\GameProgramming.exe

@@ -1,5 +1,6 @@
 #ifndef CTEXT_H
 #define CTEXT_H
+/*
 #include <string>
 
 class CText
@@ -13,6 +14,6 @@ private:
 	std::string mText;
 	float mX, mY;
 };
-
+*/
 
 #endif
