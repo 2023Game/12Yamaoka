@@ -1,15 +1,15 @@
-#ifndef CMODELX_H // インクルードガード
+#ifndef CMODELX_H    // インクルードガード
 #define CMODELX_H
 #define MODEL_FILE "res\\sample.blend.x" //ファイル名
-#include <vector> //vectorクラスのインクルード(動的配置)
+#include <vector>    //vectorクラスのインクルード(動的配置)
 #include "CMatrix.h" //マトリクスクラスのインクルード
-class CModelX; //CModelクラスの宣言
-class CModelXFrame; //CModelXFrameクラスの宣言
-class CMesh; //CMeshクラスの宣言
-class CMaterial; //マテリアルの宣言
-class CSkinWeights; //スキンウェイトクラス
+class CModelX;       //CModelクラスの宣言
+class CModelXFrame;  //CModelXFrameクラスの宣言
+class CMesh;         //CMeshクラスの宣言
+class CMaterial;     //マテリアルの宣言
+class CSkinWeights;  //スキンウェイトクラス
 class CAnimationSet; //アニメーションセットクラス
-class CAnimation; //アニメーションクラス
+class CAnimation;    //アニメーションクラス
 class CAnimationKey; //アニメーションキークラス
 
 //領域開放をマクロ化
@@ -131,12 +131,12 @@ public:
 	void Weight(float Weight);  //重みの設定
 	void AnimateMatrix(CModelX* model);
 	std::vector<CAnimation*>& Animation();
-	private:
+private:
 	char* mpName; //アニメーションセット名
 	std::vector<CAnimation*> mAnimation; //アニメーション
-	float mTime;      //現在時間
-	float mWeight;    //重み
-	float  mMaxTime;  //最大時間
+	float mTime;     //現在時間
+	float mWeight;   //重み
+	float  mMaxTime; //最大時間
 };
 
 //アニメーションクラス

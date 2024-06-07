@@ -44,7 +44,7 @@ public:
 	//M(行数,列数,値)
 	void M(int row, int col, float value);
 	//*演算子のオーバーロード CMatrix * CMatrix の演算結果を返す
-	const CMatrix operator*(const CMatrix &m) const;
+	const CMatrix operator*(const CMatrix& m) const;
 	//行列の取得
 	float* M() const;
 	//逆行列取得
@@ -56,11 +56,42 @@ public:
 	int Size();
 	CMatrix Quaternion(float x, float y, float z, float w);
 	//*演算子のオーバーロード CMatrix * froat の演算結果を返す
-	CMatrix operator*(const float& x) const;
+	CMatrix operator*(const float& x) const
+	{
+		CMatrix tmp;
+		for (int i = 0; i < 4; ++i)
+		{
+			for (int j = 0; j < 4; ++j)
+			{
+				tmp.mM[i][j] = mM[i][j] * x;
+			}
+		}
+		return tmp;
+	}
 	//+演算子のオーバーロード CMatrix1 + CMatrix2 の演算結果を返す
-	CMatrix operator+(const CMatrix& m)const;
+	CMatrix operator+(const CMatrix& m)const
+	{
+		CMatrix tmp;
+		for (int i = 0; i < 4; ++i)
+		{
+			for (int j = 0; j < 4; ++j)
+			{
+				tmp.mM[i][j] = mM[i][j] + m.mM[i][j];
+			}
+		}
+		return tmp;
+	}
 	//+=演算子のオーバーロード CMatrix1 += CMatrix2 の演算を行う
-	void operator += (const CMatrix& m);
+	void operator += (const CMatrix& m)
+	{
+		for (int i = 0; i < 4; ++i)
+		{
+			for (int j = 0; j < 4; ++j)
+			{
+				mM[i][j] += m.mM[i][j];
+			}
+		}
+	}
 private:
 	//４×４の行列データを設定
 	float mM[4][4];
