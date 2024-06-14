@@ -6,7 +6,6 @@
 #include "CCharacter.h"
 #include "CFont.h"
 #include "CGame.h"
-#include "CTitle.h"
 
 enum class GameState
 {
@@ -42,7 +41,6 @@ private:
 	CGame* mpGame;
 	GameState mCurrentState;
 	CTitle* mpTitle;
-//	CText mText;
 };
 
 #endif

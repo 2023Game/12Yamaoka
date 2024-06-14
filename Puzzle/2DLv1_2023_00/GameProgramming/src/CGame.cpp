@@ -13,3 +13,14 @@ void CGame::Update()
 	mpUi->Time(mTime++);
 	mpUi->Render();
 }
+
+CTitle::CTitle()
+{
+
+}
+
+void CTitle::Update()
+{
+	mFont.Load("FontBlack.png", 1, 64);
+	mFont.Draw(150, 300, 30, 30, "GAME TART");
+}

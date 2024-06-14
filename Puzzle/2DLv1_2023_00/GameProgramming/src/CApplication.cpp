@@ -43,7 +43,7 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
-	if (GetAsyncKeyState(VK_RETURN) & 0x8000)
+	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
 	{
 		//現在のplayerを非アクティブに設定
 		players[activePlayerIndex].isActive = false;
@@ -70,7 +70,7 @@ void CApplication::Update()
 	{
 	case GameState::START_SCREEN:
 		mRectangle.Render();
-		//mpTitle->Update();
+		mpTitle->Update();
 		break;
 
 	case GameState::GAMEPLAY:
