@@ -832,12 +832,10 @@ void CModelX::AnimateFrame()
 
 	//全フレームのフレーム名とmTransformMatrixの設定を表示するデバッグコード
 #ifdef _DEBUG
-	for (size_t i = 0; i < mAnimationSet.size(); i++)
+	for (size_t i = 0; i < mFrame.size(); i++)
 	{
-		printf("Frame:%s\n", mFrame[i]);
+		printf("Frame:%s\n", mFrame[i]->mpName);
 		mFrame[i]->mTransformMatrix.Print();
-
-		mAnimationSet[i]->mTime = 45;
 	}
 #endif
 }

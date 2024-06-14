@@ -1,7 +1,16 @@
-﻿  CModelX.cpp
-C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.cpp(837,10): warning C4477: 'printf' : 書式文字列 '%s' には、型 'char *' の引数が必要ですが、可変個引数 1 は型 '_Ty' です
-          with
-          [
-              _Ty=CModelXFrame *
-          ]
+﻿  CApplication.cpp
+  CBillBoard.cpp
+  CBullet.cpp
+  CCamera.cpp
+  CCharacter3.cpp
+  CCollider.cpp
+  CColliderLine.cpp
+  CColliderMesh.cpp
+  CInput.cpp
+  CTransform.cpp
+  CTriangle.cpp
+  CUi.cpp
+  CVector.cpp
+  main.cpp
+  コードを生成中...
   GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\Debug\GameProgramming.exe

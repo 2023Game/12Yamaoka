@@ -56,42 +56,11 @@ public:
 	int Size();
 	CMatrix Quaternion(float x, float y, float z, float w);
 	//*演算子のオーバーロード CMatrix * froat の演算結果を返す
-	CMatrix operator*(const float& x) const
-	{
-		CMatrix tmp;
-		for (int i = 0; i < 4; ++i)
-		{
-			for (int j = 0; j < 4; ++j)
-			{
-				tmp.mM[i][j] = mM[i][j] * x;
-			}
-		}
-		return tmp;
-	}
+	CMatrix operator*(const float& x) const;
 	//+演算子のオーバーロード CMatrix1 + CMatrix2 の演算結果を返す
-	CMatrix operator+(const CMatrix& m)const
-	{
-		CMatrix tmp;
-		for (int i = 0; i < 4; ++i)
-		{
-			for (int j = 0; j < 4; ++j)
-			{
-				tmp.mM[i][j] = mM[i][j] + m.mM[i][j];
-			}
-		}
-		return tmp;
-	}
+	CMatrix operator+(const CMatrix& m)const;
 	//+=演算子のオーバーロード CMatrix1 += CMatrix2 の演算を行う
-	void operator += (const CMatrix& m)
-	{
-		for (int i = 0; i < 4; ++i)
-		{
-			for (int j = 0; j < 4; ++j)
-			{
-				mM[i][j] += m.mM[i][j];
-			}
-		}
-	}
+	void operator += (const CMatrix& m);
 private:
 	//４×４の行列データを設定
 	float mM[4][4];
