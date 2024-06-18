@@ -829,7 +829,7 @@ void CModelX::AnimateFrame()
 		if (animSet->mWeight == 0)continue;
 		animSet->AnimateMatrix(this);
 	}
-
+/*
 	//全フレームのフレーム名とmTransformMatrixの設定を表示するデバッグコード
 #ifdef _DEBUG
 	for (size_t i = 0; i < mFrame.size(); i++)
@@ -838,4 +838,26 @@ void CModelX::AnimateFrame()
 		mFrame[i]->mTransformMatrix.Print();
 	}
 #endif
+*/
+}
+
+//AnimateCombined 合成行列の作成
+void CModelXFrame::AnimateCombined(CMatrix* parent)
+{
+	//自分の変換行列に、親からの変換行列を掛ける
+	mCombinedMatrix = mTransformMatrix * (*parent);
+	//子フレームの合成行列を作成する
+	for (size_t i = 0; i < mChild.size(); i++)
+	{
+		mChild[i]->AnimateCombined(&mCombinedMatrix);
+	}
+#ifdef _DEBUG
+	printf("Frame::%s\n", mpName);
+	mCombinedMatrix.Print();
+#endif
+}
+
+std::vector<CModelXFrame*>& CModelX::Frames()
+{
+	return mFrame;
 }

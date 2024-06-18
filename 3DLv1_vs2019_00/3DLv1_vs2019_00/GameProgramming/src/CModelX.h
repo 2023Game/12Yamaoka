@@ -28,22 +28,23 @@ class CModelX
 	friend CAnimation;
 public:
 	~CModelX();
+	CModelX();
 	//ノードの読み飛ばし
 	void SkipNode();
-	CModelX();
 	//ファイル読み込み
 	void Load(char* file);
+	void Render();
+	void AnimateFrame();
 	//単語の取り出し
 	char* GetToken();
 	char* Token();
-	void Render();
 	bool EOT(); // トークンが無くなったらtrue
 	CModelXFrame* FindFrame(char* name); //フレーム名に該当するフレームのアドレスを返す
 	std::vector<CAnimationSet*>& CModelX::AnimationSet()
 	{
 		return mAnimationSet;
 	}
-	void AnimateFrame();
+	std::vector<CModelXFrame*>& Frames();
 private:
 	std::vector<CModelXFrame*> mFrame; //フレームの配列
 	char* mpPointer; //読み込み位置
@@ -69,12 +70,15 @@ public:
 	{
 		return mIndex;
 	}
+	//合成行列の作成
+	void AnimateCombined(CMatrix* parent);
 private:
 	std::vector<CModelXFrame*> mChild; //子フレームの配列
 	CMatrix mTransformMatrix; //変換行列
 	char* mpName;  //フレーム名前
 	int mIndex;    //フレーム番号
 	CMesh* mpMesh; //Meshデータ
+	CMatrix mCombinedMatrix; //合成行列
 };
 
 class CMesh
