@@ -35,6 +35,8 @@ public:
 	void Load(char* file);
 	void Render();
 	void AnimateFrame();
+	void SetSkinWeightFrameIndex(); //スキンウェイトのフレーム番号設定
+	void AnimateVertex(); //頂点にアニメーションを適用
 	//単語の取り出し
 	char* GetToken();
 	char* Token();
@@ -72,6 +74,7 @@ public:
 	}
 	//合成行列の作成
 	void AnimateCombined(CMatrix* parent);
+	const CMatrix& CombinedMatrix();
 private:
 	std::vector<CModelXFrame*> mChild; //子フレームの配列
 	CMatrix mTransformMatrix; //変換行列
@@ -91,6 +94,10 @@ public:
 	//読み込み処理
 	void Init(CModelX* model);
 	void Render();
+	//スキンウェイトにフレーム番号を設定する
+	void SetSkinWeightFrameIndex(CModelX* model);
+	//頂点にアニメーション適用
+	void AnimateVertex(CModelX* model);
 private:
 	int mVertexNum;     //頂点座標
 	CVector* mpVertex;  //頂点データ
@@ -103,6 +110,8 @@ private:
 	int* mpMaterialIndex;  //マテリアル番号
 	std::vector<CMaterial*> mMaterial;      //マテリアルデータ
 	std::vector<CSkinWeights*>mSkinWeights; //スキンウェイト
+	CVector* mpAnimateVertex; //アニメーション用頂点
+	CVector* mpAnimateNormal; //アニメーション用法線
 };
 
 //スキンウェイトクラス
@@ -135,6 +144,8 @@ public:
 	void Weight(float Weight);  //重みの設定
 	void AnimateMatrix(CModelX* model);
 	std::vector<CAnimation*>& Animation();
+	float Time();
+	float MaxTime();
 private:
 	char* mpName; //アニメーションセット名
 	std::vector<CAnimation*> mAnimation; //アニメーション

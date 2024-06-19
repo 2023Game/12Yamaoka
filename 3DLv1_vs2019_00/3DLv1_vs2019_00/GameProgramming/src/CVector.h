@@ -48,6 +48,9 @@ public:
 	void X(float f);
 	void Y(float f);
 	void Z(float f);
+	//+-演算子のオーバーロード
+	//CVector1 += CVector2 の演算を行う
+	void operator+=(const CVector& v);
 private:
 	//3D各種での値を設定
 	float mX, mY, mZ;

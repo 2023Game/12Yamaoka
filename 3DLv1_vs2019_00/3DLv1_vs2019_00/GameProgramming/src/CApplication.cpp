@@ -39,13 +39,20 @@ void CApplication::Start()
 void CApplication::Update()
 {
 	//最初のアニメーションの現在時間を0にする
-	mModelX.AnimationSet()[0]->Time(0);
+//	mModelX.AnimationSet()[0]->Time(0);
 	//最初のアニメーションの重みを1.0(100%)にする
 	mModelX.AnimationSet()[0]->Weight(1.0f);
 	//フレームの変換行列をアニメーションで更新する
 	mModelX.AnimateFrame();
 	//フレームの合成行列を計算する
 	mModelX.Frames()[0]->AnimateCombined(&mMatrix);
+
+	//アニメーションの時間を加算
+	mModelX.AnimationSet()[0]->Time(
+		mModelX.AnimationSet()[0]->Time() + 1.0f);
+	mModelX.AnimationSet()[0]->Time(
+		(int)mModelX.AnimationSet()[0]->Time() %
+		(int)(mModelX.AnimationSet()[0]->MaxTime() + 1));
 
 	//カメラのパラメータを作成する
 	CVector e, c, u; //視点,注視点,上方向
@@ -85,15 +92,13 @@ void CApplication::Update()
 	}
 	//行列設定
 	glMultMatrixf(mMatrix.M());
-
+	//頂点にアニメーションを適用する
+	mModelX.AnimateVertex();
 	//モデル描画
 	mModelX.Render();
-
 	//2D描画開始
 	CCamera::Start(0, 800, 0, 600);
-
 	mFont.Draw(20, 20, 10, 12, "3D PROGRAMMING");
-
 	//2Dの描画終了
 	CCamera::End();
 }
