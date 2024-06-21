@@ -1,6 +1,7 @@
 #ifndef CMODELX_H    // インクルードガード
 #define CMODELX_H
-#define MODEL_FILE "res\\sample.blend.x" //ファイル名
+//#define MODEL_FILE "res\\sample.blend.x" //ファイル名
+#define MODEL_FILE "res\\ラグナ.x" //入力ファイル名
 #include <vector>    //vectorクラスのインクルード(動的配置)
 #include "CMatrix.h" //マトリクスクラスのインクルード
 class CModelX;       //CModelクラスの宣言
@@ -17,10 +18,7 @@ class CAnimationKey; //アニメーションキークラス
 //配列のサイズ取得をマクロ化
 #define ARRAY_SIZE(a)(sizeof(a)/sizeof(a[0]))
 
-/*
-CModelX
-Xファイル形式の3Dモデルデータをプログラムで認識する
-*/
+//CModelX Xファイル形式の3Dモデルデータをプログラムで認識する
 class CModelX
 {
 	friend CModelXFrame;
@@ -47,6 +45,8 @@ public:
 		return mAnimationSet;
 	}
 	std::vector<CModelXFrame*>& Frames();
+	CMaterial* FindMaterial(char* name); //マテリアルの検索
+	std::vector<CMaterial*>& Material(); //マテリアル配列の取得
 private:
 	std::vector<CModelXFrame*> mFrame; //フレームの配列
 	char* mpPointer; //読み込み位置
@@ -54,6 +54,7 @@ private:
 	//cが区切り文字ならtrueを返す
 	bool IsDelimiter(char c);
 	std::vector<CAnimationSet*> mAnimationSet; //アニメーションセットの配列
+	std::vector<CMaterial*>mMaterial; //マテリアル配列
 };
 
 //CModelXFrameクラスの定義

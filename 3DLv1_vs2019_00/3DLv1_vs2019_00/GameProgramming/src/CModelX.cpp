@@ -13,6 +13,23 @@ CModelX::CModelX()
 	memset(mToken, 0, sizeof(mToken));
 }
 
+CModelX::~CModelX()
+{
+	if (mFrame.size() > 0)
+	{
+		delete mFrame[0];
+	}
+	for (size_t i = 0; i < mAnimationSet.size(); i++)
+	{
+		delete mAnimationSet[i];
+	}
+	//マテリアルの解放
+	for (size_t i = 0; i < mMaterial.size(); i++)
+	{
+		delete mMaterial[i];
+	}
+}
+
 void CModelX::Load(char* file)
 {
 	//ファイルサイズを取得する
@@ -41,8 +58,18 @@ void CModelX::Load(char* file)
 	while (*mpPointer != '\0')
 	{
 		GetToken(); //単語の取得
+		//template 読み飛ばし
+		if (strcmp(mToken, "template") == 0)
+		{
+			SkipNode();
+		}
+		//Material の時
+		else if (strcmp(mToken, "Material") == 0)
+		{
+			new CMaterial(this);
+		}
 		//単語がFrameの場合
-		if (strcmp(mToken, "Frame") == 0)
+		else if (strcmp(mToken, "Frame") == 0)
 		{
 			//フレームを作成する
 			new CModelXFrame(this);
@@ -107,10 +134,15 @@ cが\t \r \n スペースなどの空白文字
 */
 bool CModelX::IsDelimiter(char c)
 {
+	//cが0より小さいとき、falseを返す
+	if (c < 0)
+		return false;
+
 	//isspace(c)
 	//cが空白文字なら0以外を返す
 	if (isspace(c) != 0)
 		return true;
+
 	/*
 	strchr(文字列,文字)
 	文字列に文字が含まれていれば、
@@ -119,6 +151,7 @@ bool CModelX::IsDelimiter(char c)
 	*/
 	if (strchr(",;\"", c) != NULL)
 		return true;
+
 	//区切り文字ではない
 	return false;
 }
@@ -137,18 +170,6 @@ CModelXFrame::~CModelXFrame()
 	if (mpMesh != nullptr)
 	{
 		delete mpMesh;
-	}
-}
-
-CModelX::~CModelX()
-{
-	if (mFrame.size() > 0)
-	{
-		delete mFrame[0];
-	}
-	for (size_t i = 0; i < mAnimationSet.size(); i++)
-	{
-		delete mAnimationSet[i];
 	}
 }
 
@@ -441,6 +462,13 @@ void CMesh::Init(CModelX* model)
 				{
 					mMaterial.push_back(new CMaterial(model));
 				}
+				else
+				{
+					// { 既出
+					model->GetToken(); //MaterialName
+					mMaterial.push_back(model->FindMaterial(model->Token()));
+					model->GetToken(); // }
+				}
 			}
 			model->GetToken();	// } //End of MeshMaterialList
 		} //End of MeshMaterialList
@@ -456,8 +484,8 @@ void CMesh::Init(CModelX* model)
 			model->SkipNode();
 		}
 	}
+/*
 #ifdef _DEBUG
-	/*
 	//デバッグ時に、読み込んだ頂点数と頂点座用をコンソール出力する
 	printf("VertexNum:%d\n", mVertexNum);
 	for (int i = 0; i < mVertexNum; i++)
@@ -478,8 +506,8 @@ void CMesh::Init(CModelX* model)
 		printf("%10f %10f %10f\n", mpNormal[i].X(), mpNormal[i].Y(), mpNormal[i].Z());
 	}
 	//デバッグ時に、スキンウェイトごとに表示する
-	*/
 #endif
+*/
 }
 
 //Render 画面に描画する
@@ -938,4 +966,26 @@ float CAnimationSet::Time()
 float CAnimationSet::MaxTime()
 {
 	return mMaxTime;
+}
+
+CMaterial* CModelX::FindMaterial(char* name)
+{
+	//マテリアル配列のイテレータ作成
+	std::vector<CMaterial*>::iterator itr;
+	//マテリアル配列を先頭から順に検索
+	for (itr = mMaterial.begin(); itr != mMaterial.end(); itr++)
+	{
+		//名前が一致すればマテリアルのポインタを返却
+		if (strcmp(name, (*itr)->Name()) == 0)
+		{
+			return *itr;
+		}
+	}
+	//無い時はnullptrを返却
+	return nullptr;
+}
+
+std::vector<CMaterial*>& CModelX::Material()
+{
+	return mMaterial;
 }
