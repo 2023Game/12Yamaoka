@@ -138,9 +138,12 @@ CMaterial::CMaterial(CModelX* model)
 		//テクスチャありの場合、テクスチャファイル名取得
 		model->GetToken(); // {
 		model->GetToken(); // filename
-		mpTextureFilename =
-			new char[strlen(model->Token()) + 1];
+		mpTextureFilename = new char[strlen(model->Token()) + 1];
 		strcpy(mpTextureFilename, model->Token());
+
+		//テクスチャファイルの読みm込み
+		mTexture.Load(mpTextureFilename);
+
 		model->GetToken(); // }
 		model->GetToken(); // }
 	}

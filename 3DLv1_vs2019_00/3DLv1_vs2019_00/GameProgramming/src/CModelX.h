@@ -101,18 +101,19 @@ public:
 	void AnimateVertex(CModelX* model);
 private:
 	int mVertexNum;     //頂点座標
-	CVector* mpVertex;  //頂点データ
 	int mFaceNum;       //面積
 	int* mpVertexIndex; //面を構成する頂点インデックス
 	int mNormalNum;     //法線数
-	CVector* mpNormal;  //法線ベクトル
 	int mMaterialNum;	//マテリアル数
 	int mMaterialIndexNum; //マテリアル番号数（面数）
 	int* mpMaterialIndex;  //マテリアル番号
-	std::vector<CMaterial*> mMaterial;      //マテリアルデータ
-	std::vector<CSkinWeights*>mSkinWeights; //スキンウェイト
+	float* mpTextureCoords; //テクスチャ座標データ
+	CVector* mpVertex;  //頂点データ
+	CVector* mpNormal;  //法線ベクトル
 	CVector* mpAnimateVertex; //アニメーション用頂点
 	CVector* mpAnimateNormal; //アニメーション用法線
+	std::vector<CMaterial*> mMaterial;      //マテリアルデータ
+	std::vector<CSkinWeights*>mSkinWeights; //スキンウェイト
 };
 
 //スキンウェイトクラス
