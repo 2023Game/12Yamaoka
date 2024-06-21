@@ -23,10 +23,12 @@ public:
 	//ŒJ‚è•Ô‚µÀs‚·‚éƒvƒƒOƒ‰ƒ€
 	void Update();
 	void OnMouseClick(float x, float y);
-	int activePlayerIndex = 0;
-	std::vector<CPlayer> players;
 	void SetActivePlayer(int index);
 	void ChangeState(GameState newState);
+	int activePlayerIndex = 0;
+	std::vector<CPlayer> players;
+	bool isActive;
+	bool CheckIfPuzzleIsComplete() const;
 private:
 	CRectangle mRectangle;
 	CTexture mTexture;

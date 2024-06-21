@@ -2,22 +2,17 @@
 #include <windows.h>
 #include "CApplication.h"
 #include <math.h>
+#include "glut.h"
 
 #define MOS_POS_X 400 //マウス座標のX補正
 #define MOS_POS_Y 300 //マウス座標のY補正
+#define SNAP_DISTANCE 10.0f //スナップする距離
 
 void CPlayer::Update()
 {
     if (players == nullptr) return;
-    
-    /*
-    if (GetAsyncKeyState(VK_RETURN) & 0x8000)
-    {
-        isMoving = !isMoving;
-    }
-    */
 
-    if (isMoving && isActive)
+    if (isMoving && isActive && !isSnapped)
     {
         if (GetAsyncKeyState(VK_UP))
         {
@@ -45,11 +40,20 @@ void CPlayer::Update()
         static int lastMouseX = 0;
 
         POINT mousePos;
+        HWND hWnd = GetActiveWindow();
         if (GetCursorPos(&mousePos))
         {
-            ScreenToClient(HWND_BOTTOM, &mousePos);
+            ScreenToClient(hWnd, &mousePos);
             if (GetAsyncKeyState(VK_LBUTTON))
             {
+                //マウスがクリックされた位置がパズルピースの内部にあるかどうかをチェック
+                if (mousePos.x >= X() && mousePos.x <= X() + width &&
+                    mousePos.y >= Y() && mousePos.y <= Y() + height)
+                {
+                    //パズルピースをマウスの位置に移動
+                    X(mousePos.x - width / 2);
+                    Y(mousePos.y - height / 2);
+                }
                 if (mousePos.y < lastMouseY)
                 {
                     float y = Y() + 4.0f;
@@ -75,6 +79,19 @@ void CPlayer::Update()
                 lastMouseX = mousePos.x;
             }
         }
+
+        //パズルピースがターゲット位置に十分近づいているかチェック
+        if (!isSnapped && abs(X() - targetX) < SNAP_DISTANCE && abs(Y() - targetY) < SNAP_DISTANCE)
+        {
+            X(targetX);
+            Y(targetY);
+            isSnapped = true;
+        }
+
+        if (isSnapped)
+        {
+            return;
+        }
     }
 }
 
@@ -83,9 +100,11 @@ void CPlayer::HandleInput()
     if (players == nullptr)return;
 
     POINT mousePos;
+    HWND hWnd = GetActiveWindow();  // アクティブなウィンドウのハンドルを取得
     if (GetCursorPos(&mousePos))
     {
-        ScreenToClient(HWND_BOTTOM, &mousePos);
+        ScreenToClient(hWnd, &mousePos);
+        // mousePos.y = ScreenHeight - mousePos.y;
         if (GetAsyncKeyState(VK_LBUTTON))
         {
             if (mousePos.x >= X() && mousePos.x <= X() + width &&
@@ -102,10 +121,22 @@ void CPlayer::Render()
 {
     CCharacter::Render();
 
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_LINE_LOOP);
+    for (int i = 0; i < 360; i++)
+    {
+        float degInRad = i * 3.14159f / 180;
+        glVertex2f(targetX + cos(degInRad) * 10, targetY + sin(degInRad) * 10);
+    }
+    glEnd();
+
     if (isActive)
     {
-        //枠の色と太さ
-        glColor3f(0.0f, 1.0f, 0.0f);
+        //スナップした場合は緑色、そうでない場合は赤色で枠を描画
+        if (isSnapped)
+            glColor3f(0.0f, 1.0f, 0.0f);
+        else
+            glColor3f(0.0f, 0.0f, 0.0f);
         glLineWidth(3.0f);
         //枠
         glBegin(GL_LINE_LOOP);
@@ -121,61 +152,8 @@ void CPlayer::SetActivePlayer(int index)
 {
     activePlayerIndex = index; //アクティブなプレイヤーを設定
     //アクティブなプレイヤーのisActiveをtrueに、他をfalseに設定
-    for (int i = 0; i < players->size(); ++i) 
+    for (int i = 0; i < players->size(); ++i)
     {
         (*players)[i].isActive = (i == index);
     }
 }
-
-/*
-int mx, my; //マウスカーソル座標取得用
-    CInput::GetMousePos(&mx, &my); //マウスカーソル座標の取得
-    if (CKey::Push(VK_LBUTTON)) //マウスクリック検出
-    {
-        printf("%d,%d\n", mx, my); //マウス座標コンソール出力
-    }
-
-    //ゲーム画面中心からの座標へ変換
-    mx -= MOS_POS_X;
-    my = MOS_POS_Y - my;
-    //プレイヤーとマウス座標との差
-    mx -= X();
-    my -= Y();
-    //距離が遠い方へ移動さえる
-    if (abs(mx) > abs(my))
-    {
-        //X軸で移動
-        if (mx < 0)
-        {
-            //左へ移動
-            X() -= 3;
-            mFx = -1;
-            mFy = 0;
-        }
-        else
-        {
-            //右へ移動
-            X() += 3;
-            mFx = 1;
-            mFy = 0;
-        }
-    }
-    else
-    {
-        //Y軸で移動
-        if (my < 0)
-        {
-            //下へ移動
-            Y() -= 3;
-            mFx = 0;
-            mFy = -1;
-        }
-        else
-        {
-            //上へ移動
-            Y() += 3;
-            mFx = 0;
-            mFy = 1;
-        }
-    }
-*/

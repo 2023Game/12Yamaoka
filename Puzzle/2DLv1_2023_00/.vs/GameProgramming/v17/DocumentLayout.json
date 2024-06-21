@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|solutionrelative:GameProgramming\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CApplication.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|solutionrelative:GameProgramming\\src\\CApplication.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\jigsawpuzzle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|solutionrelative:GameProgramming\\src\\jigsawpuzzle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CPlayer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|solutionrelative:GameProgramming\\src\\CPlayer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CPlayer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|solutionrelative:GameProgramming\\src\\CPlayer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CApplication.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|solutionrelative:GameProgramming\\src\\CApplication.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|solutionrelative:GameProgramming\\src\\CGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CGame.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8802AF2F-2920-4700-89F2-CA6778727283}|GameProgramming\\GameProgramming.vcxproj|solutionrelative:GameProgramming\\src\\CGame.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,48 +33,98 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
+          "DockedWidth": 273,
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "jigsawpuzzle.cpp",
-              "DocumentMoniker": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\jigsawpuzzle.cpp",
-              "RelativeDocumentMoniker": "GameProgramming\\src\\jigsawpuzzle.cpp",
-              "ToolTip": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\jigsawpuzzle.cpp",
-              "RelativeToolTip": "GameProgramming\\src\\jigsawpuzzle.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-06T04:51:57.284Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\main.cpp",
-              "RelativeDocumentMoniker": "GameProgramming\\src\\main.cpp",
-              "ToolTip": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\main.cpp",
-              "RelativeToolTip": "GameProgramming\\src\\main.cpp",
-              "ViewState": "AQIAAIUAAAAAAAAAAAAAwJMAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-06T05:01:49.628Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "CApplication.cpp",
               "DocumentMoniker": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CApplication.cpp",
               "RelativeDocumentMoniker": "GameProgramming\\src\\CApplication.cpp",
               "ToolTip": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CApplication.cpp",
               "RelativeToolTip": "GameProgramming\\src\\CApplication.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAKUAAAAAAAAAAAAAALcAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-06-06T05:01:18.153Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CApplication.h",
+              "DocumentMoniker": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CApplication.h",
+              "RelativeDocumentMoniker": "GameProgramming\\src\\CApplication.h",
+              "ToolTip": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CApplication.h",
+              "RelativeToolTip": "GameProgramming\\src\\CApplication.h",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAB4AAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-14T01:21:37.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CPlayer.cpp",
+              "DocumentMoniker": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CPlayer.cpp",
+              "RelativeDocumentMoniker": "GameProgramming\\src\\CPlayer.cpp",
+              "ToolTip": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CPlayer.cpp",
+              "RelativeToolTip": "GameProgramming\\src\\CPlayer.cpp",
+              "ViewState": "AQIAAH4AAAAAAAAAAAAowIUAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-14T06:05:23.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CPlayer.h",
+              "DocumentMoniker": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CPlayer.h",
+              "RelativeDocumentMoniker": "GameProgramming\\src\\CPlayer.h",
+              "ToolTip": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CPlayer.h",
+              "RelativeToolTip": "GameProgramming\\src\\CPlayer.h",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAowC8AAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-19T07:39:25.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CGame.cpp",
+              "DocumentMoniker": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CGame.cpp",
+              "RelativeDocumentMoniker": "GameProgramming\\src\\CGame.cpp",
+              "ToolTip": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CGame.cpp",
+              "RelativeToolTip": "GameProgramming\\src\\CGame.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-14T01:22:23.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CGame.h",
+              "DocumentMoniker": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CGame.h",
+              "RelativeDocumentMoniker": "GameProgramming\\src\\CGame.h",
+              "ToolTip": "C:\\Users\\yama877\\Downloads\\git\\12Yamaoka\\Puzzle\\2DLv1_2023_00\\GameProgramming\\src\\CGame.h",
+              "RelativeToolTip": "GameProgramming\\src\\CGame.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-14T01:22:25.808Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 127,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }

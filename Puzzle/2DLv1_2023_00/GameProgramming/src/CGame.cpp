@@ -22,5 +22,5 @@ CTitle::CTitle()
 void CTitle::Update()
 {
 	mFont.Load("FontBlack.png", 1, 64);
-	mFont.Draw(150, 300, 30, 30, "GAME TART");
+	mFont.Draw(130, 300, 30, 30, "GAME START");
 }
