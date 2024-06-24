@@ -39,44 +39,48 @@ void CPlayer::Update()
         static int lastMouseY = 0;
         static int lastMouseX = 0;
 
-        POINT mousePos;
-        HWND hWnd = GetActiveWindow();
-        if (GetCursorPos(&mousePos))
+        //プレイヤーがアクティブである場合のみ位置を更新
+        if (isActive)
         {
-            ScreenToClient(hWnd, &mousePos);
-            if (GetAsyncKeyState(VK_LBUTTON))
+            POINT mousePos;
+            HWND hWnd = GetActiveWindow();
+            if (GetCursorPos(&mousePos))
             {
-                //マウスがクリックされた位置がパズルピースの内部にあるかどうかをチェック
-                if (mousePos.x >= X() && mousePos.x <= X() + width &&
-                    mousePos.y >= Y() && mousePos.y <= Y() + height)
+                ScreenToClient(hWnd, &mousePos);
+                if (GetAsyncKeyState(VK_LBUTTON))
                 {
-                    //パズルピースをマウスの位置に移動
-                    X(mousePos.x - width / 2);
-                    Y(mousePos.y - height / 2);
-                }
-                if (mousePos.y < lastMouseY)
-                {
-                    float y = Y() + 4.0f;
-                    Y(y);
-                }
-                else if (mousePos.y > lastMouseY)
-                {
-                    float y = Y() - 4.0f;
-                    Y(y);
-                }
-                lastMouseY = mousePos.y;
+                    //マウスがクリックされた位置がパズルピースの内部にあるかどうかをチェック
+                    if (mousePos.x >= X() && mousePos.x <= X() + width &&
+                        mousePos.y >= Y() && mousePos.y <= Y() + height)
+                    {
+                        //パズルピースをマウスの位置に移動
+                        X(mousePos.x - width / 2);
+                        Y(mousePos.y - height / 2);
+                    }
+                    if (mousePos.y < lastMouseY)
+                    {
+                        float y = Y() + 4.0f;
+                        Y(y);
+                    }
+                    else if (mousePos.y > lastMouseY)
+                    {
+                        float y = Y() - 4.0f;
+                        Y(y);
+                    }
+                    lastMouseY = mousePos.y;
 
-                if (mousePos.x < lastMouseX)
-                {
-                    float x = X() - 4.0f;
-                    X(x);
+                    if (mousePos.x < lastMouseX)
+                    {
+                        float x = X() - 4.0f;
+                        X(x);
+                    }
+                    else if (mousePos.x > lastMouseX)
+                    {
+                        float x = X() + 4.0f;
+                        X(x);
+                    }
+                    lastMouseX = mousePos.x;
                 }
-                else if (mousePos.x > lastMouseX)
-                {
-                    float x = X() + 4.0f;
-                    X(x);
-                }
-                lastMouseX = mousePos.x;
             }
         }
 

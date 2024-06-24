@@ -3,6 +3,7 @@
 #include "CFont.h"
 class CGame;
 class CTitle;
+class CClear;
 
 class CGame
 {
@@ -20,7 +21,14 @@ public:
 	CTitle();
 	void Update();
 private:
-	CUi* mpUi;
-	int mTime;
+	CFont mFont;
+};
+
+class CClear
+{
+public:
+	CClear();
+	void Update();
+private:
 	CFont mFont;
 };

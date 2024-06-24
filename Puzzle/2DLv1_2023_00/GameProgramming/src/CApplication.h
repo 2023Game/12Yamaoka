@@ -11,7 +11,7 @@ enum class GameState
 {
 	START_SCREEN,
 	GAMEPLAY,
-	PAUSE,
+	GAMECLEAR,
 };
 
 class CApplication
@@ -40,9 +40,10 @@ private:
 	CPlayer mPlayer;
 	CPlayer* activePlayer;
 	CFont mFont;
-	CGame* mpGame;
 	GameState mCurrentState;
+	CGame* mpGame;
 	CTitle* mpTitle;
+	CClear* mpClear;
 };
 
 #endif

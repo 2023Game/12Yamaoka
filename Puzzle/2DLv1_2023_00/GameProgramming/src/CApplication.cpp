@@ -2,30 +2,38 @@
 #include <vector>
 #include "CUi.h"
 #include <iostream>
+#include <random>
+#include <chrono>
+#include <thread>
 
 void CApplication::Start()
-{	
-	texture1.Load("apple.psd");
+{
+	//プレイヤーの初期位置をランダムに設定
+	std::random_device rd;
+	std::mt19937 mt(rd());
+	std::uniform_real_distribution<float> dist(10.0f, 400.0f);
+
+	texture1.Load("apple.png");
 	CPlayer player1;
-	player1.Set(100.0f, 100.0f, 50.0f, 50.0f, 350.0f, 350.0f);
+	player1.Set(dist(mt), dist(mt), 50.0f, 50.0f, 350.0f, 350.0f);
 	player1.Texture(&texture1, 0, 300, 200, 0);
 	players.push_back(player1);
 
-	texture2.Load("apple.psd");
+	texture2.Load("apple.png");
 	CPlayer player2;
-	player2.Set(300.0f, 100.0f, 50.0f, 50.0f, 450.0f, 350.0f);
+	player2.Set(dist(mt), dist(mt), 50.0f, 50.0f, 450.0f, 350.0f);
 	player2.Texture(&texture2, 300, 600, 200, 0);
 	players.push_back(player2);
 
-	texture3.Load("apple.psd");
+	texture3.Load("apple.png");
 	CPlayer player3;
-	player3.Set(500.0f, 100.0f, 50.0f, 50.0f, 350.0f, 250.0f);
+	player3.Set(dist(mt), dist(mt), 50.0f, 50.0f, 350.0f, 250.0f);
 	player3.Texture(&texture3, 0, 300, 400, 200);
 	players.push_back(player3);
 
-	texture4.Load("apple.psd");
+	texture4.Load("apple.png");
 	CPlayer player4;
-	player4.Set(700.0f, 100.0f, 50.0f, 50.0f, 450.0f, 250.0f);
+	player4.Set(dist(mt), dist(mt), 50.0f, 50.0f, 450.0f, 250.0f);
 	player4.Texture(&texture4, 300, 600, 400, 200);
 	players.push_back(player4);
 
@@ -40,6 +48,7 @@ void CApplication::Start()
 
 	mpGame = new CGame();
 	mpTitle = new CTitle();
+	mpClear = new CClear();
 }
 
 POINT prevMousePos;
@@ -60,6 +69,8 @@ void CApplication::Update()
 		}
 		//新しいアクティブプレイヤーを設定
 		SetActivePlayer(activePlayerIndex);
+		//()ミリ秒遅延
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
 
 	POINT mousePos;
@@ -68,62 +79,34 @@ void CApplication::Update()
 		HWND hWnd = GetActiveWindow();
 		ScreenToClient(hWnd, &mousePos);
 
-		//マウスの位置が変化した場合にのみ出力
-		if (mousePos.x != prevMousePos.x || mousePos.y != prevMousePos.y)
-		{
-			std::cout << "Mouse poaition: (" << mousePos.x << "," << mousePos.y << ")" << std::endl;
-			prevMousePos = mousePos; //現在のマウスの位置を保存
-		}
-
 		bool leftClickState = (GetAsyncKeyState(VK_LBUTTON) != 0);
-
-		//マウスのクリック状況が変化した場合にのみ出力
-		if (leftClickState!=prevLeftClickState)
+		
+		//マウスのクリック状況が変化した場合
+		if (leftClickState != prevLeftClickState)
 		{
+			//マウスがクリックされた場合
 			if (leftClickState)
 			{
-				std::cout << "Left mouse button clicked." << std::endl;
-			}
-			else
-			{
-				std::cout << "Left mouse button released." << std::endl;
-			}
-			std::cout << "Left mouse buttonstate: " << (leftClickState ? "Down" : "Up") << std::endl;
-			prevLeftClickState = leftClickState; //現在のクリック状態を保存
-
-			bool isPlayerActive = false;
-			for (int i = 0; i < players.size(); i++)
-			{
-				//マウスがクリックされた位置が画像の内部にあるかどうかをチェック
-				if (mousePos.x >= players[i].X() && mousePos.x <= players[i].X() + players[i].width &&
-					mousePos.y >= players[i].Y() && mousePos.y <= players[i].Y() + players[i].height)
+				for (int i = 0; i < players.size(); i++)
 				{
-					std::cout << "Image" << i << "cliced." << std::endl;
-					//画像を選択し、isActiveをtrueに設定
-					activePlayerIndex = i;
-					isPlayerActive = true;
-					SetActivePlayer(i);
-
-					std::cout << "Player" << i << "position: (" << players[i].X() << "." << players[i].Y() << std::endl;
-					std::cout << "Player" << i << "size: (" << players[i].width << "," << players[i].height << ")" << std::endl;
-					std::cout << "Player" << i << "isActive" << (players[i].isActive ? "True" : "False") << std::endl;
+					//マウスがクリックされた位置が画像の内部にあるかどうかをチェック
+					if (mousePos.x >= players[i].X() && mousePos.x <= players[i].X() + players[i].width &&
+						mousePos.y >= players[i].Y() && mousePos.y <= players[i].Y() + players[i].height)
+					{
+						//クリックされたplayerのアクティブに設定
+						activePlayerIndex = i;
+						SetActivePlayer(activePlayerIndex);
+						break;
+					}
 				}
-				else
-				{
-					//画像の外側がクリックされた場合isActiveをfalseに設定
-					players[i].isActive = false;
-				}
+				//アクティブなプレイヤーの位置を更新
+				//players[activePlayerIndex].X(mousePos.x - players[activePlayerIndex].width / 2);
+				//players[activePlayerIndex].Y(mousePos.y - players[activePlayerIndex].height / 2);
 			}
-			//選択された画像(isActiveがtrue)を動かす
-			if (isPlayerActive)
-			{
-				//画像をマウスの位置に移動
-				players[activePlayerIndex].X(mousePos.x - players[activePlayerIndex].width / 2);
-				players[activePlayerIndex].Y(mousePos.y - players[activePlayerIndex].height / 2);
-			}
-		}
+		prevLeftClickState = leftClickState; //現在のクリック状態を保存
+		}	
 	}
-	
+
 	if (GetAsyncKeyState(VK_RETURN) & 0x8000)
 	{
 		if (mCurrentState == GameState::START_SCREEN)
@@ -132,11 +115,14 @@ void CApplication::Update()
 		}
 	}
 
-	if (CheckIfPuzzleIsComplete())
+	if (mCurrentState == GameState::GAMEPLAY)
 	{
-
+		if (CheckIfPuzzleIsComplete())
+		{
+		//	ChangeState(GameState::GAMECLEAR);
+		}
 	}
-	
+
 	switch (mCurrentState)
 	{
 	case GameState::START_SCREEN:
@@ -153,7 +139,9 @@ void CApplication::Update()
 		}
 		break;
 
-	case GameState::PAUSE:
+	case GameState::GAMECLEAR:
+		mRectangle.Render();
+		mpClear->Update();
 		break;
 	}
 }
@@ -184,21 +172,3 @@ bool CApplication::CheckIfPuzzleIsComplete() const
 	}
 	return true;
 }
-
-/*
-CApplication::CApplication()
-	:mCurrentState(GameState::START_SCREEN)
-{
-
-}
-*/
-
-/*
-void CApplication::OnMouseClick(float x, float y)
-{
-	if (mText.IsClicked(x, y))
-	{
-
-	}
-}
-*/
