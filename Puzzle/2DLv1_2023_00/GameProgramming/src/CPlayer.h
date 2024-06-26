@@ -38,7 +38,6 @@ public:
 	{
 		isInCorrectPosition = value;
 	}
-
 	void SetSize(float width, float height)
 	{
 		this->width = width;

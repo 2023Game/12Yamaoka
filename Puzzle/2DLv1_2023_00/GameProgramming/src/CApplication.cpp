@@ -53,6 +53,7 @@ void CApplication::Start()
 
 POINT prevMousePos;
 bool prevLeftClickState = false;
+bool prevRightClickState = false;
 
 void CApplication::Update()
 {
@@ -79,13 +80,13 @@ void CApplication::Update()
 		HWND hWnd = GetActiveWindow();
 		ScreenToClient(hWnd, &mousePos);
 
-		bool leftClickState = (GetAsyncKeyState(VK_LBUTTON) != 0);
+		bool rightClickState = (GetAsyncKeyState(VK_RBUTTON) != 0);
 		
 		//マウスのクリック状況が変化した場合
-		if (leftClickState != prevLeftClickState)
+		if (rightClickState != prevRightClickState)
 		{
 			//マウスがクリックされた場合
-			if (leftClickState)
+			if (rightClickState)
 			{
 				for (int i = 0; i < players.size(); i++)
 				{
@@ -99,11 +100,8 @@ void CApplication::Update()
 						break;
 					}
 				}
-				//アクティブなプレイヤーの位置を更新
-				//players[activePlayerIndex].X(mousePos.x - players[activePlayerIndex].width / 2);
-				//players[activePlayerIndex].Y(mousePos.y - players[activePlayerIndex].height / 2);
 			}
-		prevLeftClickState = leftClickState; //現在のクリック状態を保存
+		prevRightClickState = rightClickState; //現在のクリック状態を保存
 		}	
 	}
 
@@ -115,13 +113,40 @@ void CApplication::Update()
 		}
 	}
 
-	if (mCurrentState == GameState::GAMEPLAY)
+	if (GetCursorPos(&mousePos))
 	{
-		if (CheckIfPuzzleIsComplete())
+		HWND hWnd = GetActiveWindow();
+		ScreenToClient(hWnd, &mousePos);
+
+		bool leftClickState = (GetAsyncKeyState(VK_LBUTTON) != 0);
+
+		if (leftClickState != prevLeftClickState)
 		{
-		//	ChangeState(GameState::GAMECLEAR);
+			if (mCurrentState == GameState::START_SCREEN)
+			{
+				ChangeState(GameState::GAMEPLAY);
+			}
+			/*
+			else if (mCurrentState == GameState::GAMEPLAY)
+			{
+				if (CheckIfPuzzleIsComplete())
+				{
+					ChangeState(GameState::GAMECLEAR);
+				}
+				else
+				{
+					for (auto& player : players)
+					{
+						player.Render();
+						player.Update();
+					}
+				}
+			}
+			*/
 		}
+		prevLeftClickState = leftClickState;
 	}
+
 
 	switch (mCurrentState)
 	{
