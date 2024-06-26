@@ -40,10 +40,19 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
-	//歩くアニメーションに切り替える
-	mCharacter.ChangeAnimation(1, true, 60);
 	//キャラクタークラスの更新
 	mCharacter.Update(CMatrix());
+
+	/*
+	キャラクタクラスのアニメーションが終了したら、一つ大きいアニメション番号で
+	キャラクラスのChangeAnimationメソッドを呼び出す
+	ループ再生、アニメーションフレームサイズ60
+	*/
+	if(mCharacter.IsAnimationFinished())
+	{
+		int i = mCharacter.AnimationIndex() + 1;
+		mCharacter.ChangeAnimation(i, true, 60);
+	}
 
 	//カメラのパラメータを作成する
 	CVector e, c, u; //視点,注視点,上方向
@@ -93,7 +102,6 @@ void CApplication::Update()
 	//頂点にアニメーションを適用する
 	mModelX.AnimateVertex();
 	//モデル描画
-//	mModelX.Render();
 	mCharacter.Render();
 	//2D描画開始
 	CCamera::Start(0, 800, 0, 600);
