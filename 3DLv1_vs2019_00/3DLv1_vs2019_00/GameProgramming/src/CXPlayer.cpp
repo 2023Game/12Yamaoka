@@ -3,6 +3,8 @@
 
 void CXPlayer::Update()
 {
+	mCharacter.Update();
+
 	//Aキーを押すと左へ2度回転、Dキーを押すと右へ2度回転、Wキーを押すと向いている方向へ0.1移動
 	//Aキーが押されていれば、Y軸の回転値に2加算
 	if (mInput.Key('A'))
@@ -26,7 +28,11 @@ void CXPlayer::Update()
 	{
 		mCharacter.ChangeAnimation(0, true, 60);
 	}
-
-	mCharacter.Update();
+	
 	mCharacter.Render();
+}
+
+void CXPlayer::Render()
+{
+	mpModel->Render();
 }

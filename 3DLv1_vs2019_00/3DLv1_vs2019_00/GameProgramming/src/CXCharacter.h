@@ -15,7 +15,7 @@ public:
 	//更新処理
 	void Update(CMatrix& m);
 	void Update();
-	//b長が処理
+	//描画処理
 	void Render();
 	//アニメーションの再生終了判定
 	//ture:終了 false:再生中
