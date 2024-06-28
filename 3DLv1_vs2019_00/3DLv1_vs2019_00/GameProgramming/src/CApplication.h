@@ -17,6 +17,7 @@
 #include "CUi.h"
 #include "CModelX.h"
 #include "CXCharacter.h"
+#include "CXPlayer.h"
 
 class CApplication
 {
@@ -61,5 +62,5 @@ private:
 	static CUi* spUi;
 	CModelX mModelX;
 	CMatrix mMatrix;
-	CXCharacter mCharacter; //キャラクタのインスタンス
+	CXPlayer mXPlayer; //キャラクタのインスタンス
 };

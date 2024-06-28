@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CVECTOR_H
 #define CVECTOR_H //CVECROE_H‚Ì’è‹`
 #include "CMatrix.h"

@@ -35,24 +35,13 @@ void CApplication::Start()
 	mModelX.Load(MODEL_FILE);
 	mFont.Load("FontG.png", 1, 4096 / 64);
 	//キャラクターにモデルを設定
-	mCharacter.Init(&mModelX);
+	//mCharacter.Init(&mModelX);
 }
 
 void CApplication::Update()
 {
 	//キャラクタークラスの更新
-	mCharacter.Update(CMatrix());
-
-	/*
-	キャラクタクラスのアニメーションが終了したら、一つ大きいアニメション番号で
-	キャラクラスのChangeAnimationメソッドを呼び出す
-	ループ再生、アニメーションフレームサイズ60
-	*/
-	if(mCharacter.IsAnimationFinished())
-	{
-		int i = mCharacter.AnimationIndex() + 1;
-		mCharacter.ChangeAnimation(i, true, 60);
-	}
+	mPlayer.Update();
 
 	//カメラのパラメータを作成する
 	CVector e, c, u; //視点,注視点,上方向
@@ -78,7 +67,7 @@ void CApplication::Update()
 	mModelX.AnimationSet()[0]->Time(
 		(int)mModelX.AnimationSet()[0]->Time() %
 		(int)(mModelX.AnimationSet()[0]->MaxTime() + 1));
-
+	
 	//X軸＋回転
 	if (mInput.Key('K'))
 	{
@@ -97,12 +86,13 @@ void CApplication::Update()
 	{
 		mMatrix = mMatrix * CMatrix().RotateY(-1); //左
 	}
+
 	//行列設定
 	glMultMatrixf(mMatrix.M());
 	//頂点にアニメーションを適用する
 	mModelX.AnimateVertex();
 	//モデル描画
-	mCharacter.Render();
+	mPlayer.Render();
 	//2D描画開始
 	CCamera::Start(0, 800, 0, 600);
 	mFont.Draw(20, 20, 10, 12, "3D PROGRAMMING");

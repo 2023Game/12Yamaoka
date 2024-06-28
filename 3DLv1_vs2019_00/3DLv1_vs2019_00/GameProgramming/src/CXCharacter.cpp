@@ -82,6 +82,14 @@ void CXCharacter::Update(CMatrix& matrix)
 	mpModel->AnimateVertex();
 }
 
+void CXCharacter::Update()
+{
+	//変換行列の更新
+	CTransform::Update();
+	//アニメーションを更新する
+	Update(mMatrix);
+}
+
 //描画する
 void CXCharacter::Render()
 {
@@ -96,4 +104,10 @@ bool CXCharacter::IsAnimationFinished()
 int CXCharacter::AnimationIndex()
 {
 	return mAnimationIndex;
+}
+
+//デフォルトコンストラクタ
+CXCharacter::CXCharacter()
+{
+	mScale = CVector(1.0f, 1.0f, 1.0f);
 }
