@@ -8,12 +8,8 @@ class CXPlayer : public CXCharacter
 public:
 	//XVˆ—
 	void Update();
-	void Render();
 private:
-	CModelX* mpModel;
-	CModelX mModelX;
 	CInput mInput;
-	CXCharacter mCharacter;
 };
 
 #endif
