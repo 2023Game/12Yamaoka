@@ -35,6 +35,7 @@ public:
 	void AnimateFrame();
 	void SetSkinWeightFrameIndex(); //スキンウェイトのフレーム番号設定
 	void AnimateVertex(); //頂点にアニメーションを適用
+	void AnimateVertex(CMatrix*);
 	//単語の取り出し
 	char* GetToken();
 	char* Token();
@@ -99,6 +100,7 @@ public:
 	void SetSkinWeightFrameIndex(CModelX* model);
 	//頂点にアニメーション適用
 	void AnimateVertex(CModelX* model);
+	void AnimateVertex(CMatrix*);
 private:
 	int mVertexNum;     //頂点座標
 	int mFaceNum;       //面積

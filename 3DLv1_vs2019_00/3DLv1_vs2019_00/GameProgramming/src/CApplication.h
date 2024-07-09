@@ -18,6 +18,7 @@
 #include "CModelX.h"
 #include "CXCharacter.h"
 #include "CXPlayer.h"
+#include "CXEnemy.h"
 
 class CApplication
 {
@@ -63,4 +64,5 @@ private:
 	CModelX mModelX;
 	CMatrix mMatrix;
 	CXPlayer mXPlayer; //キャラクタのインスタンス
+	CXEnemy mXEnemy;   //敵のインスタンス
 };

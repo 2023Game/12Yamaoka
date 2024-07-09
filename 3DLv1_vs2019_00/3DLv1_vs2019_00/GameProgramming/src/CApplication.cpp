@@ -13,14 +13,12 @@
 #define MODEL_OBJ "res\\f14.obj","res\\f14.mtl"
 //背景モデルデータの指定
 #define MODEL_BACKGROUND  "res\\sky.obj", "res\\sky.mtl"
+#define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
+#define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
+#define MODEL_C5 "res\\c5.obj","res\\c5.mtl" //敵輸送機モデル
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
-
-#define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
-#define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
-//敵輸送機モデル
-#define MODEL_C5 "res\\c5.obj","res\\c5.mtl"
 
 CTexture* CApplication::Texture()
 {
@@ -36,12 +34,19 @@ void CApplication::Start()
 	mFont.Load("FontG.png", 1, 4096 / 64);
 	//キャラクターにモデルを設定
 	mXPlayer.Init(&mModelX);
+
+	//敵の初期位置
+	mXEnemy.Init(&mModelX);
+	//敵の配置
+	mXEnemy.Position(CVector(7.0f, 0.0f, 0.0f));
 }
 
 void CApplication::Update()
 {
 	//キャラクタークラスの更新
 	mXPlayer.Update();
+	//敵の行進
+	mXEnemy.Update();
 
 	//カメラのパラメータを作成する
 	CVector e, c, u; //視点,注視点,上方向
@@ -93,6 +98,8 @@ void CApplication::Update()
 	mModelX.AnimateVertex();
 	//モデル描画
 	mXPlayer.Render();
+	//敵描画
+	mXEnemy.Render();
 	//2D描画開始
 	CCamera::Start(0, 800, 0, 600);
 	mFont.Draw(20, 20, 10, 12, "3D PROGRAMMING");

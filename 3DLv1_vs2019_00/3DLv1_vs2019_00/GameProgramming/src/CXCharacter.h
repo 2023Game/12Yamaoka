@@ -21,12 +21,18 @@ public:
 	//ture:終了 false:再生中
 	bool IsAnimationFinished();
 	int AnimationIndex(); //アニメーション番号の取得
+	virtual ~CXCharacter()
+	{
+		SAFE_DELETE_ARRAY(mpCombinedMatrix);
+	}
 private:
 	CModelX* mpModel;          //モデルデータ
 	int mAnimationIndex;       //アニメーション番号
 	bool mAnimationLoopFlg;    //ture:アニメーションを繰り返す
 	float mAnimationFrame;     //アニメーションの再生フレーム
 	float mAnimationFrameSize; //アニメーションの再生フレーム数
+protected:
+	CMatrix* mpCombinedMatrix; //合成行列退避
 };
 
 #endif

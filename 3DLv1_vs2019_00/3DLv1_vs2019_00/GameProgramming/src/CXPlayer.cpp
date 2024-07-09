@@ -22,7 +22,7 @@ void CXPlayer::Update()
 		{
 			if (IsAnimationFinished())
 			{
-				ChangeAnimation(0, true, 30);
+				ChangeAnimation(0, true, 60);
 			}
 		}
 		else
