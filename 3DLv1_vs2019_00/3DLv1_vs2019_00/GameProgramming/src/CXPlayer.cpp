@@ -1,5 +1,13 @@
 #include "CXPlayer.h"
 
+//コライダの初期化
+CXPlayer::CXPlayer()
+	: mColSphereBody(this, nullptr, CVector(), 0.5f)
+	, mColSphereHead(this, nullptr, CVector(0.0f, 5.0f, -3.0f), 0.5f)
+	, mColSphereSword(this, nullptr, CVector(-10.0f, 10.0f, 50.0f), 0.3f)
+{
+}
+
 void CXPlayer::Update()
 {
 	//スペースキーを押すと攻撃、攻撃後は元の姿勢へ戻し、待機する
@@ -53,4 +61,15 @@ void CXPlayer::Update()
 		}
 	}
 	CXCharacter::Update();
+}
+
+void CXPlayer::Init(CModelX* model)
+{
+	CXCharacter::Init(model);
+	//合成行列の設定
+	mColSphereBody.Matrix(&mpCombinedMatrix[8]);
+	//頭
+	mColSphereHead.Matrix(&mpCombinedMatrix[11]);
+	//剣
+	mColSphereSword.Matrix(&mpCombinedMatrix[21]);
 }
