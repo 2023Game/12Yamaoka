@@ -107,6 +107,9 @@ void CApplication::Update()
 	mFont.Draw(20, 20, 10, 12, "3D PROGRAMMING");
 	//2D‚Ì•`‰æI—¹
 	CCamera::End();
+
+	//Õ“Ëˆ—
+	CCollisionManager::Instance()->Collision();
 }
 
 CMatrix CApplication::mModelViewInverse;

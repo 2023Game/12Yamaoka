@@ -8,6 +8,7 @@ class CXEnemy : public CXCharacter
 public:
 	CXEnemy();
 	void Init(CModelX* model);
+	void Collision(CCollider* m, CCollider* o); //Õ“Ëˆ—
 private:
 	CCollider mColSphereBody;
 	CCollider mColSphereHead;

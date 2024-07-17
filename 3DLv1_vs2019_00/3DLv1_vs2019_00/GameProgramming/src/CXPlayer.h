@@ -11,6 +11,7 @@ public:
 	void Update();
 	CXPlayer();
 	void Init(CModelX* model);
+	//void Collision(CCollider* m, CCollider* o);
 private:
 	CInput mInput;
 	CCollider mColSphereBody;  //‘Ì
