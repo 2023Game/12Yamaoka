@@ -54,6 +54,17 @@ void CModelX::Load(char* file)
 	fread(buf, size, 1, fp);
 	//最後に\0を設定する(文字列の終端)
 	buf[size] = '\0';
+
+	fclose(fp); //ファイルをクローズする
+
+	//ダミールートフレームの作成
+	CModelXFrame* p = new CModelXFrame();
+	//名前なし
+	p->mpName = new char[1];
+	p->mpName[0] = '\0';
+	//フレーム配列に追加
+	mFrame.push_back(p);
+
 	//文字列の最後まで繰り返し
 	while (*mpPointer != '\0')
 	{
@@ -71,8 +82,23 @@ void CModelX::Load(char* file)
 		//単語がFrameの場合
 		else if (strcmp(mToken, "Frame") == 0)
 		{
-			//フレームを作成する
-			new CModelXFrame(this);
+			//フレーム名取得
+			GetToken();
+			if (strchr(mToken, '{'))
+			{
+				//フレーム名なし：スキップ
+				SkipNode();
+				GetToken(); //}
+			}
+			else
+			{
+				//フレーム名がなければ
+				if (FindFrame(mToken) == 0)
+				{
+					//フレームを作成する
+					p->mChild.push_back(new CModelXFrame(this));
+				}
+			}
 		}
 		//単語がAnimationSetの場合
 		else if (strcmp(mToken, "AnimationSet") == 0)
@@ -80,7 +106,6 @@ void CModelX::Load(char* file)
 			new CAnimationSet(this);
 		}
 	}
-	fclose(fp); //ファイルをクローズする
 
 	SAFE_DELETE_ARRAY(buf); //確保した領域を開放する
 	SetSkinWeightFrameIndex();	//スキンウェイトのフレーム番号設定
@@ -262,7 +287,7 @@ CModelXFrame::CModelXFrame(CModelX* model)
 	//変換行列を単位行列にする
 	mTransformMatrix.Identity();
 	//次の単語(フレーム名の予定)を取得する
-	model->GetToken(); //frame name
+	//model->GetToken(); //frame name
 	//フレーム名分エリアを確保する
 	mpName = new char[strlen(model->mToken) + 1];
 	//フレーム名をコピーする
@@ -276,11 +301,26 @@ CModelXFrame::CModelXFrame(CModelX* model)
 		model->GetToken(); //Frame
 		//}かっこの場合は終了
 		if (strchr(model->mToken, '}'))break;
-		//新なフレームの場合は子フレームに追加
+		//新たなフレームの場合は子フレームに追加
 		if (strcmp(model->mToken, "Frame") == 0)
 		{
-			//フレームを作成し、、子フレームの配列に追加
-			mChild.push_back(new CModelXFrame(model));
+			//フレーム名取得
+			model->GetToken();
+			if (strchr(model->mToken, '{'))
+			{
+				//フレーム名なし：スキップ
+				model->SkipNode();
+				model->GetToken(); //}
+			}
+			else
+			{
+				//フレーム名がなければ
+				if (model->FindFrame(model->mToken) == 0)
+				{
+					//フレームを作成し、子フレームの配列に追加
+					mChild.push_back(new CModelXFrame(model));
+				}
+			}
 		}
 		//mTokenがFrameTransformMatrixの時、条件を満たす
 		else if (strcmp(model->mToken, "FrameTransformMatrix") == 0)
@@ -303,21 +343,6 @@ CModelXFrame::CModelXFrame(CModelX* model)
 			model->SkipNode();
 		}
 	}
-	/*
-	//デバッグバージョンのみ有効
-#ifdef _DEBUG
-	printf("%s\n", mpName);
-	// デバッグ時に、フレーム名に続いて、mTransformMatrixの内容をコンソール出力する
-	for (int i = 0; i < mTransformMatrix.Size(); i++)
-	{
-		printf("% f ", mTransformMatrix.M()[i]);
-		if ((i + 1) % 4 == 0)
-		{
-			printf("\n");
-		}
-	}
-#endif
-*/
 }
 
 char* CModelX::Token()
@@ -1053,4 +1078,11 @@ void CMesh::AnimateVertex(CMatrix* mat)
 	{
 		mpAnimateNormal[i] = mpAnimateNormal[i].Normalize();
 	}
+}
+
+CModelXFrame::CModelXFrame()
+	: mpMesh(nullptr)
+	, mpName(nullptr)
+	, mIndex(0)
+{
 }

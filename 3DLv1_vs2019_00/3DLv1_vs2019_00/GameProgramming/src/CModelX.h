@@ -77,6 +77,7 @@ public:
 	//合成行列の作成
 	void AnimateCombined(CMatrix* parent);
 	const CMatrix& CombinedMatrix();
+	CModelXFrame();
 private:
 	std::vector<CModelXFrame*> mChild; //子フレームの配列
 	CMatrix mTransformMatrix; //変換行列

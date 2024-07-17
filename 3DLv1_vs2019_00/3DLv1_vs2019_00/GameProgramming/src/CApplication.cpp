@@ -35,8 +35,10 @@ void CApplication::Start()
 	//キャラクターにモデルを設定
 	mXPlayer.Init(&mModelX);
 
+	//mKnightにknight_low.xファイルを読む
+	mKnight.Load("res\\knight\\knight_low.x");
 	//敵の初期位置
-	mXEnemy.Init(&mModelX);
+	mXEnemy.Init(&mKnight);
 	//敵の配置
 	mXEnemy.Position(CVector(7.0f, 0.0f, 0.0f));
 }

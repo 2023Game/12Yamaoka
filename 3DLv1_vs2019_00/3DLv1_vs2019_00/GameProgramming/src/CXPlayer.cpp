@@ -67,24 +67,9 @@ void CXPlayer::Init(CModelX* model)
 {
 	CXCharacter::Init(model);
 	//合成行列の設定
-	mColSphereBody.Matrix(&mpCombinedMatrix[8]);
+	mColSphereBody.Matrix(&mpCombinedMatrix[9]);
 	//頭
-	mColSphereHead.Matrix(&mpCombinedMatrix[11]);
+	mColSphereHead.Matrix(&mpCombinedMatrix[12]);
 	//剣
-	mColSphereSword.Matrix(&mpCombinedMatrix[21]);
+	mColSphereSword.Matrix(&mpCombinedMatrix[22]);
 }
-
-/*
-void CXPlayer::Collision(CCollider* m, CCollider* o)
-{
-	switch (o->Type())
-	{
-	case CCollider::EType::ESPHERE: //相手のコライダタイプが球
-		switch (o->Tag())
-		{
-		case CCollider::ETag::EBODY: //相手のコライダが体
-			break;
-		}
-	}
-}
-*/

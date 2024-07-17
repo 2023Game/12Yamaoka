@@ -65,4 +65,5 @@ private:
 	CMatrix mMatrix;
 	CXPlayer mXPlayer; //キャラクタのインスタンス
 	CXEnemy mXEnemy;   //敵のインスタンス
+	CModelX mKnight;
 };
