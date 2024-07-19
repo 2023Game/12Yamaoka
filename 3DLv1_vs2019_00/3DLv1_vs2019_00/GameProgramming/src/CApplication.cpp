@@ -48,6 +48,7 @@ void CApplication::Start()
 	mKnight.SeparateAnimationSet(0, 10, 80, "walk"); //9:ダミー
 	mKnight.SeparateAnimationSet(0, 10, 80, "walk"); //10:ダミー
 	mKnight.SeparateAnimationSet(0, 1160, 1260, "death1"); //11:ダウン
+
 	//敵の初期位置
 	mXEnemy.Init(&mKnight);
 	//敵の配置

@@ -197,7 +197,6 @@ class CAnimationKey
 public:
 	float mTime; //ŠÔ
 private:
-	//float mTime; //ŠÔ
 	CMatrix mMatrix; //s—ñ
 };
 

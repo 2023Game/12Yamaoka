@@ -24,19 +24,22 @@ void CXEnemy::Init(CModelX* model)
 
 void CXEnemy::Collision(CCollider* m, CCollider* o)
 {
-	switch (o->Tag())
+	if (m->Type() == CCollider::EType::ESPHERE)
 	{
-	case CCollider::ETag::ESWORD: //相手のコライダが剣先
-		switch (o->Type())
+		if (o->Tag() == CCollider::ETag::ESWORD) //相手のコライダが剣先
 		{
-		case CCollider::EType::ESPHERE: //相手のコライダタイプが球
-			//自分のコライダと相手のコライダが衝突している
-			if (CCollider::Collision(m, o))
+			if (o->Type() == CCollider::EType::ESPHERE)//相手のコライダタイプが球
 			{
-				//30フレームかけてダウンし、繰り返さない
-				ChangeAnimation(11, false, 30);
+				if (m->Tag() == CCollider::ETag::EBODY)
+				{
+					//自分のコライダと相手のコライダが衝突している
+					if (CCollider::Collision(m, o))
+					{
+						//30フレームかけてダウンし、繰り返さない
+						ChangeAnimation(11, false, 30);
+					}
+				}
 			}
-			break;
 		}
 	}
 }
