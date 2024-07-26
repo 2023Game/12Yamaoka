@@ -2,7 +2,7 @@
 #include "CXPlayer.h"
 
 CXEnemy::CXEnemy()
-	:mColSphereBody(this, nullptr, CVector(0.5f, -1.0f, 0.0f), 1.0f, CCollider::ETag::EBODY)
+	: mColSphereBody(this, nullptr, CVector(0.5f, -1.0f, 0.0f), 1.0f)
 	, mColSphereHead(this, nullptr, CVector(0.0f, 1.0f, 0.0f), 1.5f)
 	, mColSphereSword0(this, nullptr, CVector(0.7f, 3.5f, -0.2f), 0.5f)
 	, mColSphereSword1(this, nullptr, CVector(0.5f, 2.5f, -0.2f), 0.5f)
@@ -24,13 +24,13 @@ void CXEnemy::Init(CModelX* model)
 
 void CXEnemy::Collision(CCollider* m, CCollider* o)
 {
-	if (m->Type() == CCollider::EType::ESPHERE)
+	if (m->Type() == CCollider::EType::ESPHERE) //自分のコライダタイプが球
 	{
 		if (o->Tag() == CCollider::ETag::ESWORD) //相手のコライダが剣先
 		{
-			if (o->Type() == CCollider::EType::ESPHERE)//相手のコライダタイプが球
+			if (o->Type() == CCollider::EType::ESPHERE) //相手のコライダタイプが球
 			{
-				if (m->Tag() == CCollider::ETag::EBODY)
+				if (m->Tag() == CCollider::ETag::EBODY) //自分のコライダが体
 				{
 					//自分のコライダと相手のコライダが衝突している
 					if (CCollider::Collision(m, o))

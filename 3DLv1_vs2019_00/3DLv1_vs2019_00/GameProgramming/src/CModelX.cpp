@@ -13,6 +13,23 @@ CModelX::CModelX()
 	memset(mToken, 0, sizeof(mToken));
 }
 
+/*
+CModelX::~CModelX()
+{
+	for (auto& animationSet : mAnimationSet)
+	{
+		delete animationSet;
+	}
+	for (auto& frame : mFrame)
+	{
+		delete frame;
+	}
+	for (auto& material : mMaterial)
+	{
+		delete material;
+	}
+}
+*/
 CModelX::~CModelX()
 {
 	if (mFrame.size() > 0)
@@ -601,6 +618,21 @@ bool CModelX::EOT()
 	return *mpPointer == '\0';
 }
 
+/*
+CAnimationSet::~CAnimationSet()
+{
+	delete[] mpName;
+	for (size_t i = 0; i < mAnimation.size(); i++)
+	{
+		delete mAnimation[i];
+	}
+	for (auto& animation : mAnimation)
+	{
+		delete animation;
+	}
+}
+*/
+// CAnimationSetのデストラクタ
 CAnimationSet::~CAnimationSet()
 {
 	SAFE_DELETE_ARRAY(mpName);
@@ -613,9 +645,9 @@ CAnimationSet::~CAnimationSet()
 
 CAnimationSet::CAnimationSet(CModelX* model)
 	:mpName(nullptr)
-	,mTime(0)
-	,mWeight(0)
-	,mMaxTime(0)
+	, mTime(0)
+	, mWeight(0)
+	, mMaxTime(0)
 {
 	model->mAnimationSet.push_back(this);
 	model->GetToken(); //Animation Name
@@ -637,6 +669,14 @@ CAnimationSet::CAnimationSet(CModelX* model)
 	mMaxTime = mAnimation[0]->mpKey[mAnimation[0]->mKeyNum - 1].mTime;
 }
 
+/*
+CAnimation::~CAnimation()
+{
+	delete[] mpFrameName;
+	delete[] mpKey;
+}
+*/
+// CAnimationのデストラクタ
 CAnimation::~CAnimation()
 {
 	SAFE_DELETE_ARRAY(mpFrameName);
@@ -1084,6 +1124,28 @@ CModelXFrame::CModelXFrame()
 {
 }
 
+CAnimationSet::CAnimationSet()
+	:mpName(nullptr)
+	, mTime(0)
+	, mMaxTime(0)
+{
+	delete[] mpName;
+	for (auto& animation : mAnimation)
+	{
+		delete animation;
+	}
+}
+
+CAnimation::CAnimation()
+	: mpFrameName(nullptr)
+	, mFrameIndex(0)
+	, mKeyNum(0)
+	, mpKey(nullptr)
+{
+	delete[] mpFrameName;
+	delete[] mpKey;
+}
+
 void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name)
 {
 	CAnimationSet* anim = mAnimationSet[idx]; //分割するアニメーションセットを確定
@@ -1118,20 +1180,4 @@ void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name)
 		as->mAnimation.push_back(animation); //アニメーションの追加
 	}
 	mAnimationSet.push_back(as); //アニメーションセットの追加
-}
-
-CAnimationSet::CAnimationSet()
-	:mpName(nullptr)
-	, mTime(0)
-	, mMaxTime(0)
-
-{
-}
-
-CAnimation::CAnimation()
-	: mpFrameName(nullptr)
-	, mFrameIndex(0)
-	, mKeyNum(0)
-	, mpKey(nullptr)
-{
 }

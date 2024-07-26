@@ -50,17 +50,12 @@ public:
 	std::vector<CMaterial*>& Material(); //マテリアル配列の取得
 	/*
 	アニメーションを抜き出す
-	idx : 分割したいアニメーションセットの番号
-	start : 分割したいアニメーションの開始時間
-	end : 分割したいアニメーションの終了時間
-	name : 追加するアニメーションセットの名前
+	idx:分割したいアニメーションセットの番号
+	start:分割したいアニメーションの開始時間
+	end:分割したいアニメーションの終了時間
+	name:追加するアニメーションセットの名前
 	*/
 	void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name);
-	/*
-	CAnimationSet()
-	CAnimation()
-	mTime
-	*/
 private:
 	std::vector<CModelXFrame*> mFrame; //フレームの配列
 	char* mpPointer; //読み込み位置
@@ -156,7 +151,6 @@ class CAnimationSet
 {
 	friend CModelX;
 public:
-	CAnimationSet();
 	CAnimationSet(CModelX* model);
 	~CAnimationSet();
 	void Time(float time);      //時間の設定
@@ -165,6 +159,7 @@ public:
 	std::vector<CAnimation*>& Animation();
 	float Time();
 	float MaxTime();
+	CAnimationSet();
 private:
 	char* mpName; //アニメーションセット名
 	std::vector<CAnimation*> mAnimation; //アニメーション
@@ -179,9 +174,9 @@ class CAnimation
 	friend CAnimationSet;
 	friend CModelX;
 public:
-	CAnimation();
 	CAnimation(CModelX* model);
 	~CAnimation();
+	CAnimation();
 private:
 	char* mpFrameName; //フレーム名
 	int mFrameIndex;   //フレーム番号

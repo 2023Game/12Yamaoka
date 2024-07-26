@@ -12,9 +12,9 @@ public:
 private:
 	CCollider mColSphereBody;
 	CCollider mColSphereHead;
-	CCollider mColSphereSword0; //Œ•
-	CCollider mColSphereSword1; //Œ•
-	CCollider mColSphereSword2; //Œ•
+	CCollider mColSphereSword0;	//Œ•
+	CCollider mColSphereSword1;	//Œ•
+	CCollider mColSphereSword2;	//Œ•
 };
 
 #endif
