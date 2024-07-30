@@ -13,23 +13,6 @@ CModelX::CModelX()
 	memset(mToken, 0, sizeof(mToken));
 }
 
-/*
-CModelX::~CModelX()
-{
-	for (auto& animationSet : mAnimationSet)
-	{
-		delete animationSet;
-	}
-	for (auto& frame : mFrame)
-	{
-		delete frame;
-	}
-	for (auto& material : mMaterial)
-	{
-		delete material;
-	}
-}
-*/
 CModelX::~CModelX()
 {
 	if (mFrame.size() > 0)
@@ -273,16 +256,16 @@ CSkinWeights::CSkinWeights(CModelX* model)
 	}
 	model->GetToken(); // }
 
-/*
-#ifdef _DEBUG
-	printf("SkinWeights%s\n", mpFrameName);
-	for (int i = 0; i < mIndexNum; i++)
-	{
-		printf("%3d %10f\n", mpIndex[i], mpWeight[i]);
-	}
-	mOffset.Print();
-#endif
-*/
+	/*
+	#ifdef _DEBUG
+		printf("SkinWeights%s\n", mpFrameName);
+		for (int i = 0; i < mIndexNum; i++)
+		{
+			printf("%3d %10f\n", mpIndex[i], mpWeight[i]);
+		}
+		mOffset.Print();
+	#endif
+	*/
 }
 
 /*
@@ -542,30 +525,30 @@ void CMesh::Init(CModelX* model)
 			model->SkipNode();
 		}
 	}
-/*
-#ifdef _DEBUG
-	//デバッグ時に、読み込んだ頂点数と頂点座用をコンソール出力する
-	printf("VertexNum:%d\n", mVertexNum);
-	for (int i = 0; i < mVertexNum; i++)
-	{
-		printf("%10f %10f %10f\n", mpVertex[i].X(), mpVertex[i].Y(), mpVertex[i].Z());
-	}
-	//デバッグ時に、読み込んだ面数と面を構成する頂点番号をコンソール出力する
-	printf("FaceNum:%d\n", mFaceNum);
-	for (int i = 0; i < mFaceNum * 3; i += 3)
-	{
-		printf("%2d %2d %2d\n", mpVertexIndex[i], mpVertexIndex[i + 1], mpVertexIndex[i + 2]);
-	}
+	/*
+	#ifdef _DEBUG
+		//デバッグ時に、読み込んだ頂点数と頂点座用をコンソール出力する
+		printf("VertexNum:%d\n", mVertexNum);
+		for (int i = 0; i < mVertexNum; i++)
+		{
+			printf("%10f %10f %10f\n", mpVertex[i].X(), mpVertex[i].Y(), mpVertex[i].Z());
+		}
+		//デバッグ時に、読み込んだ面数と面を構成する頂点番号をコンソール出力する
+		printf("FaceNum:%d\n", mFaceNum);
+		for (int i = 0; i < mFaceNum * 3; i += 3)
+		{
+			printf("%2d %2d %2d\n", mpVertexIndex[i], mpVertexIndex[i + 1], mpVertexIndex[i + 2]);
+		}
 
-	//デバッグ時に、法線数と法線ベクトル84個を頂点の順にコンソール出力する
-	printf("NormalNum:%d\n", mNormalNum);
-	for (int i = 0; i < mNormalNum; i++)
-	{
-		printf("%10f %10f %10f\n", mpNormal[i].X(), mpNormal[i].Y(), mpNormal[i].Z());
-	}
-	//デバッグ時に、スキンウェイトごとに表示する
-#endif
-*/
+		//デバッグ時に、法線数と法線ベクトル84個を頂点の順にコンソール出力する
+		printf("NormalNum:%d\n", mNormalNum);
+		for (int i = 0; i < mNormalNum; i++)
+		{
+			printf("%10f %10f %10f\n", mpNormal[i].X(), mpNormal[i].Y(), mpNormal[i].Z());
+		}
+		//デバッグ時に、スキンウェイトごとに表示する
+	#endif
+	*/
 }
 
 //Render 画面に描画する
@@ -583,7 +566,7 @@ void CMesh::Render()
 	glTexCoordPointer(2, GL_FLOAT, 0, mpTextureCoords);
 
 	// 頂点のインデックスの場所を指定して図形を描画する
-	for (int i = 0; i < mFaceNum; i++) 
+	for (int i = 0; i < mFaceNum; i++)
 	{
 		//マテリアルを適用する
 		mMaterial[mpMaterialIndex[i]]->Enabled();
@@ -618,21 +601,6 @@ bool CModelX::EOT()
 	return *mpPointer == '\0';
 }
 
-/*
-CAnimationSet::~CAnimationSet()
-{
-	delete[] mpName;
-	for (size_t i = 0; i < mAnimation.size(); i++)
-	{
-		delete mAnimation[i];
-	}
-	for (auto& animation : mAnimation)
-	{
-		delete animation;
-	}
-}
-*/
-// CAnimationSetのデストラクタ
 CAnimationSet::~CAnimationSet()
 {
 	SAFE_DELETE_ARRAY(mpName);
@@ -667,16 +635,11 @@ CAnimationSet::CAnimationSet(CModelX* model)
 	}
 	//時間終了設定
 	mMaxTime = mAnimation[0]->mpKey[mAnimation[0]->mKeyNum - 1].mTime;
+#ifdef _DEBUG
+	//	printf("AnimationSet:%s\n", mpName);
+#endif
 }
 
-/*
-CAnimation::~CAnimation()
-{
-	delete[] mpFrameName;
-	delete[] mpKey;
-}
-*/
-// CAnimationのデストラクタ
 CAnimation::~CAnimation()
 {
 	SAFE_DELETE_ARRAY(mpFrameName);
@@ -830,13 +793,13 @@ CAnimation::CAnimation(CModelX* model)
 		SAFE_DELETE_ARRAY(time[i]);
 		SAFE_DELETE_ARRAY(key[i]);
 	}
-/*
-#ifdef _DEBUG
-	printf("Animation:%s\n", mpFrameName);
-	printf("Animation:%s\n", mpFrameName);
-	mpKey[0].mMatrix.Print();
-#endif
-*/
+	/*
+	#ifdef _DEBUG
+		printf("Animation:%s\n", mpFrameName);
+		printf("Animation:%s\n", mpFrameName);
+		mpKey[0].mMatrix.Print();
+	#endif
+	*/
 }
 
 void CAnimationSet::Time(float time)
@@ -929,16 +892,16 @@ void CModelX::AnimateFrame()
 		if (animSet->mWeight == 0)continue;
 		animSet->AnimateMatrix(this);
 	}
-/*
-	//全フレームのフレーム名とmTransformMatrixの設定を表示するデバッグコード
-#ifdef _DEBUG
-	for (size_t i = 0; i < mFrame.size(); i++)
-	{
-		printf("Frame:%s\n", mFrame[i]->mpName);
-		mFrame[i]->mTransformMatrix.Print();
-	}
-#endif
-*/
+	/*
+		//全フレームのフレーム名とmTransformMatrixの設定を表示するデバッグコード
+	#ifdef _DEBUG
+		for (size_t i = 0; i < mFrame.size(); i++)
+		{
+			printf("Frame:%s\n", mFrame[i]->mpName);
+			mFrame[i]->mTransformMatrix.Print();
+		}
+	#endif
+	*/
 }
 
 //AnimateCombined 合成行列の作成
@@ -951,12 +914,12 @@ void CModelXFrame::AnimateCombined(CMatrix* parent)
 	{
 		mChild[i]->AnimateCombined(&mCombinedMatrix);
 	}
-/*
-#ifdef _DEBUG
-	printf("Frame::%s\n", mpName);
-	mCombinedMatrix.Print();
-#endif
-*/
+	/*
+	#ifdef _DEBUG
+		printf("Frame::%s\n", mpName);
+		mCombinedMatrix.Print();
+	#endif
+	*/
 }
 
 std::vector<CModelXFrame*>& CModelX::Frames()
@@ -1124,32 +1087,10 @@ CModelXFrame::CModelXFrame()
 {
 }
 
-CAnimationSet::CAnimationSet()
-	:mpName(nullptr)
-	, mTime(0)
-	, mMaxTime(0)
-{
-	delete[] mpName;
-	for (auto& animation : mAnimation)
-	{
-		delete animation;
-	}
-}
-
-CAnimation::CAnimation()
-	: mpFrameName(nullptr)
-	, mFrameIndex(0)
-	, mKeyNum(0)
-	, mpKey(nullptr)
-{
-	delete[] mpFrameName;
-	delete[] mpKey;
-}
-
 void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name)
 {
-	CAnimationSet* anim = mAnimationSet[idx]; //分割するアニメーションセットを確定
-	CAnimationSet* as = new CAnimationSet();  //アニメーションセットの生成
+	CAnimationSet* anim = anim = mAnimationSet[idx]; //分割するアニメーションセットを確定
+	CAnimationSet* as = new CAnimationSet(); //アニメーションセットの生成
 	as->mpName = new char[strlen(name) + 1];
 	strcpy(as->mpName, name);
 	as->mMaxTime = end - start;
@@ -1163,7 +1104,8 @@ void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name)
 		animation->mKeyNum = end - start + 1;
 		animation->mpKey = new CAnimationKey[animation->mKeyNum]; //アニメーションキーの生成
 		animation->mKeyNum = 0;
-		for (int j = start; j <= end && j < anim->mAnimation[i]->mKeyNum; j++)
+
+		for (int j = start; j < end && j < anim->mAnimation[i]->mKeyNum; j++)
 		{
 			if (j < anim->mAnimation[i]->mKeyNum)
 			{
@@ -1175,9 +1117,22 @@ void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name)
 					anim->mAnimation[i]->mpKey[anim->mAnimation[i]->mKeyNum - 1];
 			}
 			animation->mpKey[animation->mKeyNum].mTime = animation->mKeyNum++;
-		}
-		//アニメーションキーのコピー
+		}//アニメーションキーのコピー
 		as->mAnimation.push_back(animation); //アニメーションの追加
 	}
 	mAnimationSet.push_back(as); //アニメーションセットの追加
 }
+
+CAnimation::CAnimation()
+	:mKeyNum(0)
+	,mpKey(nullptr)
+	,mpFrameName(nullptr)
+	,mFrameIndex(0)
+{}
+
+CAnimationSet::CAnimationSet()
+	:mTime(0.0f)
+	,mWeight(0.0f)
+	,mMaxTime(0.0f)
+	,mpName(nullptr)
+{}

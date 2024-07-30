@@ -2,16 +2,16 @@
 #include "CXPlayer.h"
 
 CXEnemy::CXEnemy()
-	: mColSphereBody(this, nullptr, CVector(0.5f, -1.0f, 0.0f), 1.0f)
+	: mColSphereBody(this, nullptr, CVector(0.5f, -10.0f, 0.0f), 1.0f)
 	, mColSphereHead(this, nullptr, CVector(0.0f, 1.0f, 0.0f), 1.5f)
 	, mColSphereSword0(this, nullptr, CVector(0.7f, 3.5f, -0.2f), 0.5f)
 	, mColSphereSword1(this, nullptr, CVector(0.5f, 2.5f, -0.2f), 0.5f)
 	, mColSphereSword2(this, nullptr, CVector(0.3f, 1.5f, -0.2f), 0.5f)
-{
-}
+{}
 
 void CXEnemy::Init(CModelX* model)
 {
+	CXCharacter::Init(model);
 	//合成行列の設定
 	mColSphereBody.Matrix(&mpCombinedMatrix[1]);
 	//頭
@@ -24,22 +24,19 @@ void CXEnemy::Init(CModelX* model)
 
 void CXEnemy::Collision(CCollider* m, CCollider* o)
 {
-	if (m->Type() == CCollider::EType::ESPHERE) //自分のコライダタイプが球
+	switch (o->Tag())
 	{
-		if (o->Tag() == CCollider::ETag::ESWORD) //相手のコライダが剣先
+	case CCollider::ETag::ESWORD: //相手のコライダが剣先
+		switch (o->Type())
 		{
-			if (o->Type() == CCollider::EType::ESPHERE) //相手のコライダタイプが球
+		case CCollider::EType::ESPHERE: //相手のコライダタイプが球
+			//自分のコライダと相手のコライダが衝突している
+			if (CCollider::Collision(m, o))
 			{
-				if (m->Tag() == CCollider::ETag::EBODY) //自分のコライダが体
-				{
-					//自分のコライダと相手のコライダが衝突している
-					if (CCollider::Collision(m, o))
-					{
-						//30フレームかけてダウンし、繰り返さない
-						ChangeAnimation(11, false, 30);
-					}
-				}
+				//30フレームかけてダウンし、繰り返さない
+				ChangeAnimation(11, false, 30);
 			}
+			break;
 		}
 	}
 }

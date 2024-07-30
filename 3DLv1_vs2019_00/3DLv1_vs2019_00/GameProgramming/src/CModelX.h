@@ -25,6 +25,14 @@ class CModelX
 	friend CAnimationSet;
 	friend CAnimation;
 public:
+	/*
+	アニメーションを抜き出す
+	idx:分割したいアニメーションセットの番号
+	start:分割したいアニメーションの開始時間
+	end:分割したいアニメーションの終了時間
+	name:追加するアニメーションセットの名前
+	*/
+	void CModelX::SeparateAnimationSet(int idex, int start, int end, char* name);
 	~CModelX();
 	CModelX();
 	//ノードの読み飛ばし
@@ -48,14 +56,6 @@ public:
 	std::vector<CModelXFrame*>& Frames();
 	CMaterial* FindMaterial(char* name); //マテリアルの検索
 	std::vector<CMaterial*>& Material(); //マテリアル配列の取得
-	/*
-	アニメーションを抜き出す
-	idx:分割したいアニメーションセットの番号
-	start:分割したいアニメーションの開始時間
-	end:分割したいアニメーションの終了時間
-	name:追加するアニメーションセットの名前
-	*/
-	void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name);
 private:
 	std::vector<CModelXFrame*> mFrame; //フレームの配列
 	char* mpPointer; //読み込み位置
@@ -128,7 +128,7 @@ private:
 };
 
 //スキンウェイトクラス
-class CSkinWeights 
+class CSkinWeights
 {
 	friend CModelX;
 	friend CMesh;
@@ -189,9 +189,9 @@ class CAnimationKey
 {
 	friend CAnimation;
 	friend CAnimationSet;
-public:
-	float mTime; //時間
+	friend CModelX;
 private:
+	float mTime; //時間
 	CMatrix mMatrix; //行列
 };
 

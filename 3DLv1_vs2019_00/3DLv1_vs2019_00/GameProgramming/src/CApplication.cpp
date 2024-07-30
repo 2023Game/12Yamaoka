@@ -48,7 +48,6 @@ void CApplication::Start()
 	mKnight.SeparateAnimationSet(0, 10, 80, "walk"); //9:ダミー
 	mKnight.SeparateAnimationSet(0, 10, 80, "walk"); //10:ダミー
 	mKnight.SeparateAnimationSet(0, 1160, 1260, "death1"); //11:ダウン
-
 	//敵の初期位置
 	mXEnemy.Init(&mKnight);
 	//敵の配置
@@ -88,7 +87,7 @@ void CApplication::Update()
 	mModelX.AnimationSet()[0]->Time(
 		(int)mModelX.AnimationSet()[0]->Time() %
 		(int)(mModelX.AnimationSet()[0]->MaxTime() + 1));
-	
+
 	//X軸＋回転
 	if (mInput.Key('K'))
 	{
