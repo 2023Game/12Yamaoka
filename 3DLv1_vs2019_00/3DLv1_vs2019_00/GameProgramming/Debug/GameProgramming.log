@@ -1,2 +1,9 @@
 ﻿  CApplication.cpp
+  CBillBoard.cpp
+  CCharacter3.cpp
+  CGame.cpp
+  CPlayer.cpp
+  CXEnemy.cpp
+  main.cpp
+  コードを生成中...
   GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\Debug\GameProgramming.exe

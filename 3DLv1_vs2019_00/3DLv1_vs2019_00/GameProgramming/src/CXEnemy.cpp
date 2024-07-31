@@ -2,7 +2,7 @@
 #include "CXPlayer.h"
 
 CXEnemy::CXEnemy()
-	: mColSphereBody(this, nullptr, CVector(0.5f, -10.0f, 0.0f), 1.0f)
+	: mColSphereBody(this, nullptr, CVector(0.5f, -1.0f, 0.0f), 1.0f)
 	, mColSphereHead(this, nullptr, CVector(0.0f, 1.0f, 0.0f), 1.5f)
 	, mColSphereSword0(this, nullptr, CVector(0.7f, 3.5f, -0.2f), 0.5f)
 	, mColSphereSword1(this, nullptr, CVector(0.5f, 2.5f, -0.2f), 0.5f)
@@ -24,19 +24,20 @@ void CXEnemy::Init(CModelX* model)
 
 void CXEnemy::Collision(CCollider* m, CCollider* o)
 {
-	switch (o->Tag())
+	if (m->Type() == CCollider::EType::ESPHERE)
 	{
-	case CCollider::ETag::ESWORD: //相手のコライダが剣先
-		switch (o->Type())
+		if (o->Type() == CCollider::EType::ESPHERE)
 		{
-		case CCollider::EType::ESPHERE: //相手のコライダタイプが球
-			//自分のコライダと相手のコライダが衝突している
-			if (CCollider::Collision(m, o))
+			if (o->Tag() == CCollider::ETag::ESWORD)
 			{
-				//30フレームかけてダウンし、繰り返さない
-				ChangeAnimation(11, false, 30);
+				if (m->Tag() == CCollider::CCollider::ETag::EBODY)
+				{
+					if (CCollider::Collision(m, o))
+					{
+						ChangeAnimation(11, false, 30);
+					}
+				}
 			}
-			break;
 		}
 	}
 }
