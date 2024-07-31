@@ -7,7 +7,8 @@
 #include "CMaterial.h"
 
 CModelX::CModelX()
-	:mpPointer(nullptr)
+	: mpPointer(nullptr)
+	, mLoaded(false)
 {
 	//mTokenを初期化
 	memset(mToken, 0, sizeof(mToken));
@@ -109,6 +110,8 @@ void CModelX::Load(char* file)
 
 	SAFE_DELETE_ARRAY(buf); //確保した領域を開放する
 	SetSkinWeightFrameIndex();	//スキンウェイトのフレーム番号設定
+
+	mLoaded = true; //読み込み済
 }
 
 //GetToken 文字列データから、単語１つ取得する
@@ -1136,3 +1139,54 @@ CAnimationSet::CAnimationSet()
 	,mMaxTime(0.0f)
 	,mpName(nullptr)
 {}
+
+bool CModelX::IsLoaded()
+{
+	return mLoaded;
+}
+
+void CModelX::AddAnimationSet(const char* file)
+{
+	//ファイルサイズを取得する
+	FILE* fp; //ファイルポインタ変数の作成
+	fp = fopen(file, "rb"); //ファイルをオープンする
+	if (fp == NULL)
+	{
+		//エラーチェック
+		printf("fopen error:%s\n", file);
+		return;
+	}
+	//ファイルの最後へ移動
+	fseek(fp, 0L, SEEK_END);
+	//ファイルサイズの取得
+	int size = ftell(fp);
+
+	//ファイルサイズ＋１バイト分の領域を確保
+	char* buf = mpPointer = new char[size + 1];
+
+	//ファイルから3Dモデルのデータを読み込む
+	//ファイルの戦闘へ移動
+	fseek(fp, 0L, SEEK_SET);
+	//確保した領域にファイルサイズ分データを読み込む
+	fread(buf, size, 1, fp);
+	//最後に\0を設定する（文字列の終端）
+	buf[size] = '\0';
+	fclose(fp); //ファイルをクローズする
+
+	//文字列の最後まで繰り返し
+	while (*mpPointer != '\0')
+	{
+		GetToken(); //単語の取得
+		//template 読み飛ばし
+		if (strcmp(mToken, "template") == 0)
+		{
+			SkipNode();
+		}
+		//単語がAnimationSetの場合
+		else if (strcmp(mToken, "AnimationSet") == 0)
+		{
+			new CAnimationSet(this);
+		}
+	}
+	SAFE_DELETE_ARRAY(buf); //確保した領域を開放する
+}

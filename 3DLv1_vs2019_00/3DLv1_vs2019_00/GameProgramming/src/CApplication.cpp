@@ -54,14 +54,20 @@ void CApplication::Start()
 	mXEnemy.Position(CVector(7.0f, 0.0f, 0.0f));
 	//敵のアニメーション
 	mXEnemy.ChangeAnimation(2, true, 200);
+
+	mpPaladin = new CPaladin();
+	mpPaladin->Position(CVector(-1.0f, 0.0f, 5.0f));
+	mpPaladin->ChangeAnimation(1, true, 60);
 }
 
 void CApplication::Update()
 {
 	//キャラクタークラスの更新
 	mXPlayer.Update();
-	//敵の行進
+	//敵の更新
 	mXEnemy.Update();
+	//mpPaladin
+	mpPaladin->Update();
 
 	//カメラのパラメータを作成する
 	CVector e, c, u; //視点,注視点,上方向
@@ -113,6 +119,8 @@ void CApplication::Update()
 	mModelX.AnimateVertex();
 	//モデル描画
 	mXPlayer.Render();
+	//mpPaladin
+	mpPaladin->Render();
 	//コライダの描画
 	CCollisionManager::Instance()->Render();
 	//敵描画

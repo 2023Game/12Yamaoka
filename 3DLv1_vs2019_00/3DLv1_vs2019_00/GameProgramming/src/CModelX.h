@@ -56,6 +56,9 @@ public:
 	std::vector<CModelXFrame*>& Frames();
 	CMaterial* FindMaterial(char* name); //マテリアルの検索
 	std::vector<CMaterial*>& Material(); //マテリアル配列の取得
+	bool IsLoaded();
+	//アニメーションセットの追加
+	void AddAnimationSet(const char* file);
 private:
 	std::vector<CModelXFrame*> mFrame; //フレームの配列
 	char* mpPointer; //読み込み位置
@@ -64,6 +67,7 @@ private:
 	bool IsDelimiter(char c);
 	std::vector<CAnimationSet*> mAnimationSet; //アニメーションセットの配列
 	std::vector<CMaterial*>mMaterial; //マテリアル配列
+	bool mLoaded;
 };
 
 //CModelXFrameクラスの定義
