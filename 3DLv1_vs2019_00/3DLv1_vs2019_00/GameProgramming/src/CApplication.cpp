@@ -1,6 +1,6 @@
-#include "CApplication.h"
 //OpenGL
 #include "glut.h"
+#include "CApplication.h"
 #include "CVector.h"
 #include "CTriangle.h"
 #include "CMatrix.h"

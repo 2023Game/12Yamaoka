@@ -1,9 +1,47 @@
 ﻿  CApplication.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
   CBillBoard.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CBullet.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
   CCharacter3.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CCollider.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CColliderLine.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CColliderMesh.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CColliderTriangle.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CCollisionManager.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CEffect.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CEnemy.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CEnemy3.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
   CGame.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CMaterial.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CModel.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp : fatal error C1041: プログラム データベース 'C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\Debug\vc142.idb' を開けません。複数の CL.EXE が同じ .PDB ファイルに書き込む場合、/FS を使用してください。
+  CModelX.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CPaladin.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
   CPlayer.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  CXCharacter.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
   CXEnemy.cpp
-  main.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CXEnemy.cpp : fatal error C1041: プログラム データベース 'C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\Debug\vc142.idb' を開けません。複数の CL.EXE が同じ .PDB ファイルに書き込む場合、/FS を使用してください。
   コードを生成中...
-  GameProgramming.vcxproj -> C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\Debug\GameProgramming.exe
+  コンパイル中...
+  CXPlayer.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  main.cpp
+C:\Users\yama877\Downloads\git\12Yamaoka\3DLv1_vs2019_00\3DLv1_vs2019_00\GameProgramming\src\CModelX.h(6,10): fatal error C1083: include ファイルを開けません。'CMyShader.h':No such file or directory
+  コードを生成中...

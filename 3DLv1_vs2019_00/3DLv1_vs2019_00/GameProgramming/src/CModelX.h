@@ -1,9 +1,9 @@
 #ifndef CMODELX_H    // インクルードガード
 #define CMODELX_H
-//#define MODEL_FILE "res\\sample.blend.x" //ファイル名
 #define MODEL_FILE "res\\ラグナ.x" //入力ファイル名
 #include <vector>    //vectorクラスのインクルード(動的配置)
 #include "CMatrix.h" //マトリクスクラスのインクルード
+#include "CMyShader.h" //シェーダーのインクルード
 class CModelX;       //CModelクラスの宣言
 class CModelXFrame;  //CModelXFrameクラスの宣言
 class CMesh;         //CMeshクラスの宣言
@@ -25,14 +25,6 @@ class CModelX
 	friend CAnimationSet;
 	friend CAnimation;
 public:
-	/*
-	アニメーションを抜き出す
-	idx:分割したいアニメーションセットの番号
-	start:分割したいアニメーションの開始時間
-	end:分割したいアニメーションの終了時間
-	name:追加するアニメーションセットの名前
-	*/
-	void CModelX::SeparateAnimationSet(int idex, int start, int end, char* name);
 	~CModelX();
 	CModelX();
 	//ノードの読み飛ばし
@@ -56,9 +48,19 @@ public:
 	std::vector<CModelXFrame*>& Frames();
 	CMaterial* FindMaterial(char* name); //マテリアルの検索
 	std::vector<CMaterial*>& Material(); //マテリアル配列の取得
+	/*
+	アニメーションを抜き出す
+	idx:分割したいアニメーションセットの番号
+	start:分割したいアニメーションの開始時間
+	end:分割したいアニメーションの終了時間
+	name:追加するアニメーションセットの名前
+	*/
+	void CModelX::SeparateAnimationSet(int idex, int start, int end, char* name);
 	bool IsLoaded();
 	//アニメーションセットの追加
 	void AddAnimationSet(const char* file);
+	//シェーダーを使った描画
+	void RenderShader(CMatrix* m);
 private:
 	std::vector<CModelXFrame*> mFrame; //フレームの配列
 	char* mpPointer; //読み込み位置
@@ -68,6 +70,9 @@ private:
 	std::vector<CAnimationSet*> mAnimationSet; //アニメーションセットの配列
 	std::vector<CMaterial*>mMaterial; //マテリアル配列
 	bool mLoaded;
+	//シェーダー用スキンマトリックス
+	CMatrix* mpSkinningMatrix;
+	CMyShader mShader; //シェーダーのインスタンス
 };
 
 //CModelXFrameクラスの定義
@@ -114,6 +119,8 @@ public:
 	//頂点にアニメーション適用
 	void AnimateVertex(CModelX* model);
 	void AnimateVertex(CMatrix*);
+	//頂点バッファの作成
+	void CreateVertexBuffer();
 private:
 	int mVertexNum;     //頂点座標
 	int mFaceNum;       //面積
@@ -129,6 +136,10 @@ private:
 	CVector* mpAnimateNormal; //アニメーション用法線
 	std::vector<CMaterial*> mMaterial;      //マテリアルデータ
 	std::vector<CSkinWeights*>mSkinWeights; //スキンウェイト
+	//マテリアル毎の面数
+	std::vector<int> mMaterialVertexCount;
+	//頂点バッファ識別子
+	GLuint mMyVertexBufferid;
 };
 
 //スキンウェイトクラス
