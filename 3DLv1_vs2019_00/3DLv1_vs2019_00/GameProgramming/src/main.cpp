@@ -1,5 +1,5 @@
-#include <Windows.h>
 #include "glew.h"
+#include <Windows.h>
 #include "glut.h"
 #include "GLFW/glfw3.h"
 #include "main.h"

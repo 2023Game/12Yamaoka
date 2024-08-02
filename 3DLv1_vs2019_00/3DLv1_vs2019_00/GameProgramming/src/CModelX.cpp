@@ -385,7 +385,7 @@ CMesh::CMesh()
 	, mpAnimateVertex(nullptr)
 	, mpAnimateNormal(nullptr)
 	, mpTextureCoords(nullptr)
-	, mMyVertexBufferid(0)
+	, mMyVertexBufferId(0)
 {
 }
 
@@ -1248,7 +1248,7 @@ void CMesh::CreateVertexBuffer()
 					if (vec[idx].mBoneIndex[m] == 0)
 					{
 						vec[idx].mBoneIndex[m] = mSkinWeights[k]->mFrameIndex;
-						vec[idx].mBoneWeight[m] = mSkinWeights[k]->mpWeight;
+						vec[idx].mBoneWeight[m] = mSkinWeights[k]->mpWeight[l];
 						break;
 					}
 				}

@@ -24,6 +24,7 @@ class CModelX
 	friend CModelXFrame;
 	friend CAnimationSet;
 	friend CAnimation;
+	friend CMyShader;
 public:
 	~CModelX();
 	CModelX();
@@ -106,6 +107,7 @@ private:
 
 class CMesh
 {
+	friend CMyShader;
 public:
 	//コンストラクタ
 	CMesh();
@@ -139,7 +141,7 @@ private:
 	//マテリアル毎の面数
 	std::vector<int> mMaterialVertexCount;
 	//頂点バッファ識別子
-	GLuint mMyVertexBufferid;
+	GLuint mMyVertexBufferId;
 };
 
 //スキンウェイトクラス
